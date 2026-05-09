@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bj8wkbs8uph3m"]
+
+[ext_resource type="Script" uid="uid://dmo8a11aco4f5" path="res://gameplay/actors/CharacterController.cs" id="2_8s7nr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2o6t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e2o6t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vef74"]
+albedo_color = Color(0, 0.65882355, 1, 1)
+
+[node name="Actor" type="CharacterBody3D" unique_id=1976705041]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=746093139]
+shape = SubResource("CapsuleShape3D_e2o6t")
+debug_color = Color(0.9411765, 0.48235294, 0.29803923, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1798522317]
+mesh = SubResource("CapsuleMesh_e2o6t")
+surface_material_override/0 = SubResource("StandardMaterial3D_vef74")
+
+[node name="Components" type="Node3D" parent="." unique_id=487168389]
+
+[node name="CharacterController" type="Node" parent="Components" unique_id=2071814407 node_paths=PackedStringArray("_body")]
+script = ExtResource("2_8s7nr")
+Speed = 5.0
+_body = NodePath("../..")
+metadata/_custom_type_script = "uid://dmo8a11aco4f5"

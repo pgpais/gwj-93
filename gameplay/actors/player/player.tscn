@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d2fx44qfbp47l"]
+
+[ext_resource type="PackedScene" uid="uid://bj8wkbs8uph3m" path="res://gameplay/actors/actor.tscn" id="1_8s7nr"]
+[ext_resource type="Script" uid="uid://bo8f4t7fpw2qh" path="res://gameplay/actors/player/Player.cs" id="1_jftto"]
+[ext_resource type="Script" uid="uid://b8r07trsqev5c" path="res://gameplay/input/PlayerCharacterInput.cs" id="3_ddyh4"]
+
+[node name="Player" unique_id=1976705041 instance=ExtResource("1_8s7nr")]
+script = ExtResource("1_jftto")
+
+[node name="PlayerCharacterInput" type="Node" parent="Components" parent_id_path=PackedInt32Array(487168389) index="1" unique_id=773179792 node_paths=PackedStringArray("controller")]
+script = ExtResource("3_ddyh4")
+controller = NodePath("../CharacterController")
+metadata/_custom_type_script = "uid://b8r07trsqev5c"
