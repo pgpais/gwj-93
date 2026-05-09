@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class ResourceCreator : Node3D
+public partial class ResourceCreator : Building
 {
 	[Export] GameResourceData data;
 	[Export] ConveyorBelt belt;

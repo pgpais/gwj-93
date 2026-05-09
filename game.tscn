@@ -2,15 +2,17 @@
 
 [ext_resource type="MeshLibrary" uid="uid://boto1y0im52wb" path="res://mesh_library.meshlib" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_hve3p"]
+[ext_resource type="Script" uid="uid://dth7kt6yabjav" path="res://core/grid/FactoryGrid.cs" id="1_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://dcfjfysapbuc7" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/oopi.glb" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d2fx44qfbp47l" path="res://gameplay/actors/player/player.tscn" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bkluclb3fec64" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/bevel-hq-brick-1x1-round.glb" id="5_ryrav"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_eow3j"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_j5wjh"]
-[ext_resource type="Script" uid="uid://3hqmxdox0jxt" path="res://gameplay/factory/ResourceCreator.cs" id="9_hve3p"]
-[ext_resource type="PackedScene" uid="uid://fvpiu0tgu6xf" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine.glb" id="9_vef74"]
-[ext_resource type="Resource" uid="uid://bt081y3qh82cv" path="res://gameplay/resources/data/proto_resource.tres" id="10_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://c1l8prth176uh" path="res://gameplay/factory/machines/resource_creator.tscn" id="10_iotsf"]
+[ext_resource type="Script" uid="uid://b6qiiwj4dfitl" path="res://gameplay/building/BuildingController.cs" id="10_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="12_215e1"]
+[ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/factory/machines/data/resource_creator_data.tres" id="12_lc2xo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e2o6t"]
 size = Vector2(25, 25)
@@ -26,6 +28,11 @@ script = ExtResource("7_j5wjh")
 
 [node name="game" type="Node3D" unique_id=170556669]
 
+[node name="FactoryGrid" type="Node3D" parent="." unique_id=1285337994]
+script = ExtResource("1_mfdv2")
+TileSize = 1.0
+metadata/_custom_type_script = "uid://dth7kt6yabjav"
+
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1068225102]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1844984996]
@@ -40,11 +47,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh_library = ExtResource("1_80nbo")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(10, 12, 27, 9, 12, 27, 8, 12, 27, 7, 12, 27, 6, 12, 27, 5, 12, 27, 4, 12, 27, 3, 12, 27, 2, 12, 27, 1, 12, 27, 0, 12, 27, 65535, 12, 27, 65534, 12, 27, 65533, 12, 27, 65532, 12, 27, 65531, 12, 27, 65530, 12, 27, 65529, 12, 27, 65528, 12, 27, 65527, 12, 27, 65526, 12, 27, 65525, 12, 27, 65524, 12, 27, 65523, 11, 1441819, 65523, 10, 1441819, 65523, 9, 1441819, 65523, 8, 1441819, 65523, 7, 1441819, 65523, 6, 1441819, 65523, 5, 1441819, 65523, 4, 1441819, 65523, 3, 1441819, 65523, 2, 1441819, 65523, 1, 1441819, 65523, 0, 1441819, 65523, 65535, 1441819, 65523, 65534, 1441819, 65523, 65533, 1441819, 65523, 65532, 1441819, 65523, 65531, 1441819, 65523, 65530, 1441819, 65523, 65529, 1441819, 65523, 65528, 1441819, 65523, 65527, 1441819, 65523, 65526, 1441819, 65523, 65525, 1441819, 65523, 65524, 1441819, 65524, 65523, 655387, 65525, 65523, 655387, 65526, 65523, 655387, 65527, 65523, 655387, 65528, 65523, 655387, 65529, 65523, 655387, 65531, 65523, 655387, 65530, 65523, 655387, 65532, 65523, 655387, 65533, 65523, 655387, 65534, 65523, 655387, 65535, 65523, 655387, 0, 65523, 655387, 1, 65523, 655387, 2, 65523, 655387, 3, 65523, 655387, 4, 65523, 655387, 5, 65523, 655387, 6, 65523, 655387, 7, 65523, 655387, 8, 65523, 655387, 9, 65523, 655387, 10, 65523, 655387, 11, 65523, 655387, 12, 65524, 1048603, 12, 65525, 1048603, 12, 65526, 1048603, 12, 65527, 1048603, 12, 65528, 1048603, 12, 65529, 1048603, 12, 65530, 1048603, 12, 65531, 1048603, 12, 65532, 1048603, 12, 65533, 1048603, 12, 65534, 1048603, 12, 65535, 1048603, 12, 0, 1048603, 12, 1, 1048603, 12, 2, 1048603, 12, 3, 1048603, 12, 4, 1048603, 12, 5, 1048603, 12, 6, 1048603, 12, 7, 1048603, 12, 8, 1048603, 12, 9, 1048603, 12, 10, 1048603, 65523, 65523, 655379, 65523, 12, 1441811, 12, 12, 19, 12, 65523, 1048595, 12, 11, 1048603, 11, 12, 27, 2, 65535, 11, 1, 65535, 11, 0, 65535, 11)
+"cells": PackedInt32Array(10, 12, 27, 9, 12, 27, 8, 12, 27, 7, 12, 27, 6, 12, 27, 5, 12, 27, 4, 12, 27, 3, 12, 27, 2, 12, 27, 1, 12, 27, 0, 12, 27, 65535, 12, 27, 65534, 12, 27, 65533, 12, 27, 65532, 12, 27, 65531, 12, 27, 65530, 12, 27, 65529, 12, 27, 65528, 12, 27, 65527, 12, 27, 65526, 12, 27, 65525, 12, 27, 65524, 12, 27, 65523, 11, 1441819, 65523, 10, 1441819, 65523, 9, 1441819, 65523, 8, 1441819, 65523, 7, 1441819, 65523, 6, 1441819, 65523, 5, 1441819, 65523, 4, 1441819, 65523, 3, 1441819, 65523, 2, 1441819, 65523, 1, 1441819, 65523, 0, 1441819, 65523, 65535, 1441819, 65523, 65534, 1441819, 65523, 65533, 1441819, 65523, 65532, 1441819, 65523, 65531, 1441819, 65523, 65530, 1441819, 65523, 65529, 1441819, 65523, 65528, 1441819, 65523, 65527, 1441819, 65523, 65526, 1441819, 65523, 65525, 1441819, 65523, 65524, 1441819, 65524, 65523, 655387, 65525, 65523, 655387, 65526, 65523, 655387, 65527, 65523, 655387, 65528, 65523, 655387, 65529, 65523, 655387, 65531, 65523, 655387, 65530, 65523, 655387, 65532, 65523, 655387, 65533, 65523, 655387, 65534, 65523, 655387, 65535, 65523, 655387, 0, 65523, 655387, 1, 65523, 655387, 2, 65523, 655387, 3, 65523, 655387, 4, 65523, 655387, 5, 65523, 655387, 6, 65523, 655387, 7, 65523, 655387, 8, 65523, 655387, 9, 65523, 655387, 10, 65523, 655387, 11, 65523, 655387, 12, 65524, 1048603, 12, 65525, 1048603, 12, 65526, 1048603, 12, 65527, 1048603, 12, 65528, 1048603, 12, 65529, 1048603, 12, 65530, 1048603, 12, 65531, 1048603, 12, 65532, 1048603, 12, 65533, 1048603, 12, 65534, 1048603, 12, 65535, 1048603, 12, 0, 1048603, 12, 1, 1048603, 12, 2, 1048603, 12, 3, 1048603, 12, 4, 1048603, 12, 5, 1048603, 12, 6, 1048603, 12, 7, 1048603, 12, 8, 1048603, 12, 9, 1048603, 12, 10, 1048603, 65523, 65523, 655379, 65523, 12, 1441811, 12, 12, 19, 12, 65523, 1048595, 12, 11, 1048603, 11, 12, 27, 2, 65535, 11, 1, 65535, 11, 0, 65535, 11, 65535, 65535, 35, 65534, 65535, 35, 65533, 65535, 11, 65533, 65534, 11, 65534, 65534, 35, 65532, 0, 35, 65531, 0, 35, 65530, 0, 35, 65529, 0, 35, 65528, 0, 35, 65527, 0, 35, 65526, 0, 35, 65525, 0, 35, 65525, 65535, 35, 65526, 65535, 35, 65527, 65535, 35, 65528, 65535, 35, 65529, 65535, 35, 65530, 65535, 35, 65531, 65535, 35, 65532, 65535, 35)
 }
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=117207278]
-transform = Transform3D(0.99896884, 0.0021420743, -0.04535101, 0, 0.9988864, 0.047180623, 0.04540157, -0.04713197, 0.9978564, -2.9647675, 0.6843025, 7.3994737)
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.44721258, 0.89442515, 0, -0.89442515, 0.44721258, 4.1236315, 9.896125, 4.4472127)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=612939804]
@@ -93,17 +101,20 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 [node name="PhantomCamera3D2" type="Node3D" parent="." unique_id=889606678]
 transform = Transform3D(0.99896884, 0.0021420743, -0.04535101, 0, 0.9988864, 0.047180623, 0.04540157, -0.04713197, 0.9978564, -2.9647675, 0.6843025, 7.3994737)
 script = ExtResource("6_eow3j")
-priority = 1
 tween_resource = SubResource("Resource_vef74")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Player" parent="." unique_id=1976705041 instance=ExtResource("3_j5wjh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1236315, 1.0016994, 0)
 
-[node name="ResourceCreator" type="Node3D" parent="." unique_id=1955746330 node_paths=PackedStringArray("belt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5.5)
-script = ExtResource("9_hve3p")
-data = ExtResource("10_mfdv2")
-belt = NodePath("../ConveyorBelt")
+[node name="BuildingController" type="Node3D" parent="Player" unique_id=357779225 node_paths=PackedStringArray("Camera")]
+script = ExtResource("10_lc2xo")
+Camera = NodePath("../../Camera3D")
+GhostScene = ExtResource("12_215e1")
+_debug = true
+debug_buildingData = ExtResource("12_lc2xo")
+metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 
-[node name="machine2" parent="ResourceCreator" unique_id=2054626450 instance=ExtResource("9_vef74")]
+[node name="ResourceCreator" parent="." unique_id=263480292 node_paths=PackedStringArray("belt") instance=ExtResource("10_iotsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5.5)
+belt = NodePath("../ConveyorBelt")
