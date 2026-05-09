@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bphm6gtfg7me3"]
+
+[ext_resource type="Shader" uid="uid://cbp8yrdcwoidw" path="res://assets/materials/shaders/conveyor_belt.gdshader" id="1_qxktd"]
+[ext_resource type="Texture2D" uid="uid://bt4gpjq5glkbh" path="res://assets/textures/basic_conveyor.png" id="2_6rfqw"]
+[ext_resource type="Texture2D" uid="uid://65mvuh1xpy6d" path="res://assets/textures/basic_conveyor_normal.png" id="3_ngb0j"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qxktd")
+shader_parameter/albedo_texture = ExtResource("2_6rfqw")
+shader_parameter/normal_texture = ExtResource("3_ngb0j")
+shader_parameter/tint_color = Color(0.27362522, 0.2026045, 0.15526599, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.50000002375
+shader_parameter/belt_speed = 0.1
+shader_parameter/belt_direction = Vector2(-1, 0)

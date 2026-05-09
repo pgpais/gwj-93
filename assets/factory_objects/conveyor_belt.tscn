@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c7p5x4xgd37ab"]
+
+[ext_resource type="PackedScene" uid="uid://bgnd5pimebuxq" path="res://assets/imports/conveyor.glb" id="1_6id7f"]
+[ext_resource type="Material" uid="uid://bphm6gtfg7me3" path="res://assets/materials/conveyor_belt.tres" id="2_sc3p1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2ckp"]
+albedo_color = Color(0.58, 0.5742, 0.57565, 1)
+metallic = 1.0
+roughness = 0.68
+
+[node name="conveyor_belt" unique_id=1527113887 instance=ExtResource("1_6id7f")]
+
+[node name="Conveyor" parent="." index="0" unique_id=847648682]
+surface_material_override/0 = SubResource("StandardMaterial3D_k2ckp")
+surface_material_override/1 = ExtResource("2_sc3p1")

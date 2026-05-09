@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameResourceData" format=4 uid="uid://bt081y3qh82cv"]
+[gd_resource type="Resource" format=4 uid="uid://bt081y3qh82cv"]
 
 [ext_resource type="Texture2D" uid="uid://qc56hrox4m1q" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/Textures/colormap.png" id="1_r5db6"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="2_5dh6b"]
