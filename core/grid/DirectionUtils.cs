@@ -15,9 +15,9 @@ public static class DirectionUtils
     {
         return direction switch
         {
-            Direction.North => new Vector3I(0, 0, 1),
+            Direction.North => new Vector3I(0, 0, -1),
             Direction.East => new Vector3I(1, 0, 0),
-            Direction.South => new Vector3I(0, 0, -1),
+            Direction.South => new Vector3I(0, 0, 1),
             Direction.West => new Vector3I(-1, 0, 0),
             _ => new Vector3I(0, 0, 0)
         };
@@ -28,9 +28,9 @@ public static class DirectionUtils
         return direction switch
         {
             Direction.East => 0,
-            Direction.South => 90,
+            Direction.North => 90,
             Direction.West => 180,
-            Direction.North => 270,
+            Direction.South => 270,
             _ => 0
         };
     }

@@ -101,7 +101,6 @@ top_level = true
 script = ExtResource("10_lc2xo")
 Camera = NodePath("../../Camera3D")
 GhostScene = ExtResource("12_215e1")
-_debug = true
 debug_buildingData = ExtResource("12_lc2xo")
 metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 

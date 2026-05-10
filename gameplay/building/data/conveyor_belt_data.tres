@@ -49,6 +49,5 @@ script = ExtResource("4_3qv6a")
 Name = "Conveyor Belt"
 Scene = ExtResource("3_coc3r")
 Preview = ExtResource("2_qwv1f")
-Footprint = Array[Array]([[null], []])
 Mesh = SubResource("ArrayMesh_b7gpi")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"
