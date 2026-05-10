@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1l8prth176uh"]
 
-[ext_resource type="Script" uid="uid://3hqmxdox0jxt" path="res://gameplay/factory/ResourceCreator.cs" id="1_ury3v"]
+[ext_resource type="Script" uid="uid://3hqmxdox0jxt" path="res://gameplay/factory/machines/ResourceCreator.cs" id="1_ury3v"]
 [ext_resource type="Resource" uid="uid://bt081y3qh82cv" path="res://gameplay/resources/data/proto_resource.tres" id="2_1mw5e"]
 [ext_resource type="PackedScene" uid="uid://fvpiu0tgu6xf" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine.glb" id="3_n0h7l"]
 [ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="4_1mw5e"]

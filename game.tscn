@@ -10,10 +10,10 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_j5wjh"]
 [ext_resource type="Script" uid="uid://b6qiiwj4dfitl" path="res://gameplay/building/BuildingController.cs" id="10_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="12_215e1"]
-[ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/factory/machines/data/resource_creator_data.tres" id="12_lc2xo"]
+[ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="12_lc2xo"]
 [ext_resource type="Script" uid="uid://c5e4w1am6lrr2" path="res://BuildingSelector.cs" id="14_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://chjha50eusle0" path="res://gameplay/building/ui/building_preview.tscn" id="15_80cx4"]
-[ext_resource type="Resource" uid="uid://c4y50yl1o3kpy" path="res://gameplay/factory/machines/data/buildings_collection.tres" id="15_e8heu"]
+[ext_resource type="Resource" uid="uid://c4y50yl1o3kpy" path="res://gameplay/building/data/buildings_collection.tres" id="15_e8heu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e2o6t"]
 size = Vector2(25, 25)

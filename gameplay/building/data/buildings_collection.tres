@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuildingDataCollection" format=3 uid="uid://c4y50yl1o3kpy"]
+
+[ext_resource type="Resource" uid="uid://dsdavoadqpwdh" path="res://gameplay/building/data/conveyor_belt_data.tres" id="1_gbe66"]
+[ext_resource type="Script" uid="uid://jo5wuk1t57y5" path="res://gameplay/building/BuildingDataCollection.cs" id="1_q7k2m"]
+[ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="2_oki4w"]
+
+[resource]
+script = ExtResource("1_q7k2m")
+Buildings = Array[Object]([ExtResource("1_gbe66"), ExtResource("2_oki4w")])
+metadata/_custom_type_script = "uid://jo5wuk1t57y5"

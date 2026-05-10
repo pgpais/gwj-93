@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_eka2n"]
 [ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="2_eka2n"]
 [ext_resource type="Texture2D" uid="uid://dhpum0ljfw2y6" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/conveyor.png" id="2_f6wmn"]
-[ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/factory/BuildingData.cs" id="3_b7gpi"]
+[ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="3_b7gpi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbaxw"]
 resource_name = "colormap"
