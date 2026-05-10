@@ -1,38 +1,22 @@
 using Godot;
-using System;
-using System.Collections.Generic;
+using Godot.Collections;
 using System.Linq;
 
-public partial class Constructor : Building, IItemInput, IItemOutput
+public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 {
 	[Export] ItemTransport input;
 	[Export] ItemTransport output;
-
-	[ExportGroup("Debug")]
-	[Export] bool debug = false;
-	[Export] RecipeData debug_startingRecipe;
-
-	RecipeData recipe;
 
 	Dictionary<GameResourceData, int> inputInventory = new();
 
 	Dictionary<GameResourceData, int> outputInventory = new();
 
-	bool isCrafting = false;
-	float craftingTime = 0f;
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		if (debug)
-		{
-			SetRecipe(debug_startingRecipe);
-		}
-	}
-
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
+
+		if (currentRecipe == null) return;
+
 		if (input.HasItem())
 		{
 			PullItemFromInput();
@@ -40,15 +24,11 @@ public partial class Constructor : Building, IItemInput, IItemOutput
 
 		if (!isCrafting)
 		{
-			TryToCraftRecipe();
+			TryToStartCraft();
 		}
 		else
 		{
 			CraftingTick(delta);
-			if (craftingTime >= recipe.CraftTime)
-			{
-				EndCraft();
-			}
 		}
 
 		foreach (var output in outputInventory)
@@ -58,32 +38,12 @@ public partial class Constructor : Building, IItemInput, IItemOutput
 				OutputItem(output.Key);
 			}
 		}
-
 	}
 
 	private void PullItemFromInput()
 	{
 		ReceiveItem(input.GetItem());
 	}
-
-	public void SetRecipe(RecipeData recipe)
-	{
-		this.recipe = recipe;
-		inputInventory.Clear();
-		outputInventory.Clear();
-
-		foreach (var input in recipe.Input)
-		{
-			inputInventory.Add(input.Key, 0);
-		}
-
-		foreach (var output in recipe.Output)
-		{
-			outputInventory.Add(output.Key, 0);
-		}
-	}
-
-	//TODO: receive items in input, craft using recipe, output the result
 
 	public void ReceiveItem(GameResource item, int amount = 1)
 	{
@@ -99,7 +59,7 @@ public partial class Constructor : Building, IItemInput, IItemOutput
 		item.QueueFree();
 	}
 
-	private void TryToCraftRecipe()
+	private void TryToStartCraft()
 	{
 		if (!CanCraftRecipe())
 		{
@@ -111,7 +71,7 @@ public partial class Constructor : Building, IItemInput, IItemOutput
 
 	private bool CanCraftRecipe()
 	{
-		foreach (var input in recipe.Input)
+		foreach (var input in currentRecipe.Input)
 		{
 			if (!InventoryHasItem(input.Key, input.Value))
 			{
@@ -144,21 +104,9 @@ public partial class Constructor : Building, IItemInput, IItemOutput
 		return output;
 	}
 
-	private void StartCrafting()
+	protected override void EndCraft()
 	{
-		isCrafting = true;
-		craftingTime = 0f;
-	}
-
-	public void CraftingTick(double delta)
-	{
-		craftingTime += (float)delta;
-		GD.Print($"[{nameof(Constructor)} {Name}] crafting time: {craftingTime}");
-	}
-
-	private void EndCraft()
-	{
-		foreach (var output in recipe.Output)
+		foreach (var output in currentRecipe.Output)
 		{
 			outputInventory[output.Key] += output.Value;
 		}
@@ -189,5 +137,29 @@ public partial class Constructor : Building, IItemInput, IItemOutput
 		{
 			inputInventory[item] -= amount;
 		}
+	}
+
+	protected override bool CanAcceptRecipe(RecipeData recipe)
+	{
+		return recipe.Input.Count == 1 && recipe.Output.Count == 1;
+	}
+
+	protected override void ApplyRecipe(RecipeData recipe)
+	{
+		inputInventory.Clear();
+		outputInventory.Clear();
+
+		foreach (var input in recipe.Input)
+		{
+			inputInventory.Add(input.Key, 0);
+		}
+
+		foreach (var output in recipe.Output)
+		{
+			outputInventory.Add(output.Key, 0);
+		}
+
+		input.SetFilter(new Array<GameResourceData>(recipe.Input.Keys.ToArray()), true);
+		output.SetFilter(new Array<GameResourceData>(recipe.Output.Keys.ToArray()), true);
 	}
 }

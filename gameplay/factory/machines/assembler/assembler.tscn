@@ -51,37 +51,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
 [node name="Output" type="Node3D" parent="." unique_id=1376798658]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
 script = ExtResource("6_6i4ss")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
 [node name="StartPos" type="Marker3D" parent="Output" unique_id=964176186]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
 
 [node name="EndPos" type="Marker3D" parent="Output" unique_id=1549697646]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.4, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
 
 [node name="InputLeft" type="Node3D" parent="." unique_id=1551652400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1)
 script = ExtResource("6_6i4ss")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
-[node name="StartPos" type="Marker3D" parent="InputLeft" unique_id=977248775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 1.5)
+[node name="StartPos" type="Marker3D" parent="InputLeft" unique_id=391844591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 
-[node name="EndPos" type="Marker3D" parent="InputLeft" unique_id=150358923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 1.5)
+[node name="EndPos" type="Marker3D" parent="InputLeft" unique_id=1271300119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 
 [node name="InputRight" type="Node3D" parent="." unique_id=417576367]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
 script = ExtResource("6_6i4ss")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
-[node name="StartPos" type="Marker3D" parent="InputRight" unique_id=391844591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+[node name="StartPos" type="Marker3D" parent="InputRight" unique_id=977248775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 
-[node name="EndPos" type="Marker3D" parent="InputRight" unique_id=1271300119]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0.5)
+[node name="EndPos" type="Marker3D" parent="InputRight" unique_id=150358923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=241316416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)

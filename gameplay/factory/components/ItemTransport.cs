@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class ItemTransport : Node3D
@@ -20,6 +22,9 @@ public partial class ItemTransport : Node3D
 
 	GameResource currentItem;
 	float currentItemPos;
+
+	Array<GameResourceData> filteredItems = new();
+	bool isFilterWhitelist = false;
 
 	public override void _Ready()
 	{
@@ -60,11 +65,35 @@ public partial class ItemTransport : Node3D
 		this.nextPort = nextPort;
 	}
 
+	public void SetFilter(Array<GameResourceData> items, bool isWhitelist)
+	{
+		filteredItems = items;
+		isFilterWhitelist = isWhitelist;
+	}
+
+	public bool CanReceiveItem(GameResource item)
+	{
+		if (isFilterWhitelist)
+		{
+			return filteredItems.Contains(item.Data);
+		}
+		else
+		{
+			return !filteredItems.Contains(item.Data);
+		}
+	}
+
 	public void ReceiveItem(GameResource item)
 	{
 		if (IsFull())
 		{
 			GD.Print($"Belt {Name} tried to receive {item.Name} but was full");
+			return;
+		}
+
+		if (!CanReceiveItem(item))
+		{
+			GD.Print($"Belt {Name} tried to receive {item.Name} but was filtered");
 			return;
 		}
 
