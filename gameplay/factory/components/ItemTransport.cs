@@ -6,6 +6,7 @@ public partial class ItemTransport : Node3D
 	[Signal] public delegate void FullEventHandler();
 	[Signal] public delegate void HasCapacityEventHandler();
 
+
 	[Export] float beltSpeed = 2f;
 
 	[Export] Node3D startPos;
@@ -78,6 +79,14 @@ public partial class ItemTransport : Node3D
 			GD.Print($"Belt {Name} became full");
 			EmitSignal(SignalName.Full);
 		}
+	}
+
+	public GameResource GetItem()
+	{
+		//TODO: Only allow getting item if it reached the end
+		var item = currentItem;
+		ClearItem();
+		return item;
 	}
 
 	public void ClearItem()

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://djbscctgifutq"]
+
+[ext_resource type="PackedScene" uid="uid://f7l0f57g6uba" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-window.glb" id="1_nk4a2"]
+[ext_resource type="Script" uid="uid://dhhxllwubd76h" path="res://gameplay/factory/machines/constructor/Constructor.cs" id="1_u8fdu"]
+[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/factory/recipes/data/1x4_brick.tres" id="2_t0vy7"]
+[ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="2_u8fdu"]
+[ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="3_t0vy7"]
+
+[node name="Constructor" type="Node3D" unique_id=2021182075 node_paths=PackedStringArray("input", "output")]
+script = ExtResource("1_u8fdu")
+input = NodePath("Input")
+output = NodePath("Output")
+debug = true
+debug_startingRecipe = ExtResource("2_t0vy7")
+
+[node name="machine-window2" parent="." unique_id=118367443 instance=ExtResource("1_nk4a2")]
+
+[node name="Input" type="Node3D" parent="." unique_id=146211316 node_paths=PackedStringArray("startPos", "endPos")]
+script = ExtResource("2_u8fdu")
+startPos = NodePath("InputStart")
+endPos = NodePath("InputEnd")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="InputStart" type="Marker3D" parent="Input" unique_id=1096186280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+
+[node name="InputEnd" type="Marker3D" parent="Input" unique_id=2115819708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+
+[node name="Output" type="Node3D" parent="." unique_id=10689530 node_paths=PackedStringArray("startPos", "endPos")]
+script = ExtResource("2_u8fdu")
+startPos = NodePath("OutputStart")
+endPos = NodePath("OutputEnd")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="OutputStart" type="Marker3D" parent="Output" unique_id=1767124096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+
+[node name="OutputEnd" type="Marker3D" parent="Output" unique_id=33252066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+
+[node name="ConveyorBelt" parent="." unique_id=931640884 instance=ExtResource("3_t0vy7")]
