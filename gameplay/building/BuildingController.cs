@@ -63,8 +63,6 @@ public partial class BuildingController : Node3D
 			{
 				Rotate();
 			}
-
-
 		}
 
 		if (@event.IsActionPressed("ui_cancel"))
@@ -89,10 +87,10 @@ public partial class BuildingController : Node3D
 
 	public void TryPlaceBuilding()
 	{
-		if (!FactoryGrid.Instance.IsPlacementValid(_currentGridPos))
+		if (!FactoryGrid.Instance.IsPlacementValid(_currentGridPos, _direction, _buildingData.Footprint))
 			return;
 
-		FactoryGrid.Instance.PlaceBuilding(_buildingData, _currentGridPos, _direction);
+		FactoryGrid.Instance.PlaceBuilding(_buildingData, _currentGridPos, _direction, _buildingData.Footprint);
 	}
 
 	private void UpdateGhost()
@@ -103,7 +101,7 @@ public partial class BuildingController : Node3D
 
 		_ghost.RotationDegrees = new Vector3(0, _direction.GetDirectionAngle(), 0);
 
-		bool valid = FactoryGrid.Instance.IsPlacementValid(_currentGridPos);
+		bool valid = FactoryGrid.Instance.IsPlacementValid(_currentGridPos, _direction, _buildingData.Footprint);
 		_ghost.SetValid(valid);
 	}
 

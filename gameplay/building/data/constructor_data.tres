@@ -80,6 +80,5 @@ script = ExtResource("1_m4r78")
 Name = "Constructor"
 Scene = ExtResource("3_knk8g")
 Preview = ExtResource("2_qbcgd")
-Footprint = Array[Array]([])
 Mesh = SubResource("ArrayMesh_rp1qu")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"
