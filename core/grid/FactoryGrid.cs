@@ -19,16 +19,18 @@ public partial class FactoryGrid : Node3D
 
 	public override void _Ready()
 	{
-		if (Instance == null)
+		if (!Engine.IsEditorHint())
 		{
-			Instance = this;
+			if (Instance == null)
+			{
+				Instance = this;
+			}
+			else
+			{
+				QueueFree();
+			}
 		}
 		else
-		{
-			QueueFree();
-		}
-
-		if (Engine.IsEditorHint())
 		{
 			if (showGizmo)
 			{
@@ -49,23 +51,34 @@ public partial class FactoryGrid : Node3D
 		return grid.ContainsKey(pos);
 	}
 
+	public Building GetBuilding(Vector3I pos)
+	{
+		if (!IsOccupied(pos)) return null;
+
+		return grid[pos];
+	}
+
 	public bool IsPlacementValid(Vector3I pos)
 	{
 		//TODO: might need to make more checks eventually
 		return !IsOccupied(pos);
 	}
 
-	public Building PlaceBuilding(BuildingData buildingData, Vector3I pos = default, Direction direction = default)
+	public Building PlaceBuilding(BuildingData buildingData, Vector3I gridPos = default, Direction direction = default)
 	{
 		var building = buildingData.Scene.Instantiate<Building>();
 		GetTree().Root.AddChild(building);
 
-		building.GlobalPosition = GridToWorld(pos);
+		building.GlobalPosition = GridToWorld(gridPos);
 		building.RotationDegrees = new Vector3(0, direction.GetDirectionAngle(), 0);
+		building.GridPosition = gridPos;
+		building.direction = direction;
 
 		building.OnPlaced();
 
-		grid[pos] = building;
+		grid[gridPos] = building;
+
+		GD.Print($"Placed {building.Name} at {gridPos}");
 
 		return building;
 	}

@@ -1,0 +1,117 @@
+using Godot;
+
+[GlobalClass]
+public partial class ItemTransport : Node3D
+{
+	[Signal] public delegate void FullEventHandler();
+	[Signal] public delegate void HasCapacityEventHandler();
+
+	[Export] float beltSpeed = 2f;
+
+	[Export] Node3D startPos;
+	[Export] Node3D endPos;
+
+	[Export] ItemTransport nextPort;
+
+	[ExportGroup("Debug")]
+	[Export] bool Debug = false;
+	[Export] GameResourceData debug_startingResource;
+
+	GameResource currentItem;
+	float currentItemPos;
+
+	public override void _Ready()
+	{
+		if (Debug)
+		{
+			currentItemPos = 0;
+			currentItem = GameResource.Instantiate(debug_startingResource);
+			AddChild(currentItem);
+		}
+	}
+
+	public override void _Process(double delta)
+	{
+		if (currentItem != null)
+		{
+			bool hasSpaceToMove = currentItemPos < 1;
+			if (hasSpaceToMove)
+			{
+				MoveItem(delta);
+			}
+			else
+			{
+				bool hasNextPort = nextPort != null;
+				if (hasNextPort)
+				{
+					SendItem();
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// Connect this Transport to another
+	/// </summary>
+	/// <param name="nextPort">The next Transport</param>
+	public void ConnectTo(ItemTransport nextPort)
+	{
+		this.nextPort = nextPort;
+	}
+
+	public void ReceiveItem(GameResource item)
+	{
+		if (IsFull())
+		{
+			GD.Print($"Belt {Name} tried to receive {item.Name} but was full");
+			return;
+		}
+
+		GD.Print($"Belt {Name} received {item.Name}");
+		item.Reparent(this);
+		currentItem = item;
+		currentItemPos = 0;
+
+		bool becameFull = IsFull();
+		if (becameFull)
+		{
+			GD.Print($"Belt {Name} became full");
+			EmitSignal(SignalName.Full);
+		}
+	}
+
+	public void ClearItem()
+	{
+		GD.Print($"Belt {Name} cleared");
+		currentItem = null;
+		currentItemPos = 0;
+
+		EmitSignal(SignalName.HasCapacity);
+	}
+
+	public bool HasItem()
+	{
+		return currentItem != null;
+	}
+
+	public bool IsFull()
+	{
+		//TODO: A belt may have more capacity than just one item
+		return HasItem();
+	}
+
+	private void MoveItem(double delta)
+	{
+		currentItemPos += beltSpeed * (float)delta;
+		currentItem.Position = startPos.Position.Lerp(endPos.Position, currentItemPos);
+	}
+
+	private void SendItem()
+	{
+		if (!nextPort.IsFull())
+		{
+			nextPort.ReceiveItem(currentItem);
+			ClearItem();
+		}
+	}
+}

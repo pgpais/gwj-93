@@ -1,103 +1,46 @@
-using System.Threading.Tasks;
 using Godot;
 
-public partial class ConveyorBelt : Node3D
+public partial class ConveyorBelt : Building, IItemInput, IItemOutput
 {
-	[Signal] public delegate void FullEventHandler();
-	[Signal] public delegate void HasCapacityEventHandler();
+	[Export] ItemTransport itemTransport;
 
-	[Export] float beltSpeed = 0.5f;
-
-	[Export] Node3D startPos;
-	[Export] Node3D endPos;
-
-	[Export] ConveyorBelt nextBelt;
-
-	[ExportGroup("Debug")]
-	[Export] bool Debug = false;
-	[Export] GameResourceData debug_startingResource;
-
-	GameResource currentItem;
-	float currentItemPos;
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public ItemTransport GetInputPort(DirectionUtils.Direction direction, Vector3I gridPos)
 	{
-		if (Debug)
+		if (this.direction == direction)
 		{
-			currentItemPos = 0;
-			currentItem = GameResource.Instantiate(debug_startingResource);
-			AddChild(currentItem);
+			return itemTransport;
 		}
+		return null;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public ItemTransport GetOutputPort(DirectionUtils.Direction direction, Vector3I gridPos)
 	{
-		if (currentItem != null)
+		if (this.direction == direction)
 		{
-			if (currentItemPos < 1)
-			{
-				currentItemPos += beltSpeed * (float)delta;
-				currentItem.Position = startPos.Position.Lerp(endPos.Position, currentItemPos);
-			}
-			else
-			{
-				if (nextBelt != null)
-				{
-					SendItem();
-				}
-			}
+			return itemTransport;
 		}
+		return null;
 	}
 
-	private void SendItem()
+	public override void OnPlaced()
 	{
-		if (!nextBelt.IsFull())
-		{
-			nextBelt.ReceiveItem(currentItem);
-			ClearItem();
-		}
-	}
+		base.OnPlaced();
 
-	public void ReceiveItem(GameResource item)
-	{
-		if (IsFull())
+		// Check for building connections
+		var nextBuilding = FactoryGrid.Instance.GetBuilding(GridPosition + direction.GetDirectionVector());
+		GD.Print($"Next building at {GridPosition + direction.GetDirectionVector()}: {nextBuilding}");
+		if (nextBuilding is IItemInput nextItemInput)
 		{
-			GD.Print($"Belt {Name} tried to receive {item.Name} but was full");
-			return;
+			var port = nextItemInput.GetInputPort(this.direction, GridPosition);
+			itemTransport.ConnectTo(port);
 		}
 
-		GD.Print($"Belt {Name} received {item.Name}");
-		item.Reparent(this);
-		currentItem = item;
-		currentItemPos = 0;
-
-		bool becameFull = IsFull();
-		if (becameFull)
+		var prevBuilding = FactoryGrid.Instance.GetBuilding(GridPosition - direction.GetDirectionVector());
+		GD.Print($"Prev building at {GridPosition - direction.GetDirectionVector()}: {prevBuilding}");
+		if (prevBuilding is IItemOutput prevItemOutput)
 		{
-			GD.Print($"Belt {Name} became full");
-			EmitSignal(SignalName.Full);
+			var port = prevItemOutput.GetOutputPort(this.direction, GridPosition);
+			port.ConnectTo(itemTransport);
 		}
-	}
-
-	public void ClearItem()
-	{
-		GD.Print($"Belt {Name} cleared");
-		currentItem = null;
-		currentItemPos = 0;
-
-		EmitSignal(SignalName.HasCapacity);
-	}
-
-	public bool HasItem()
-	{
-		return currentItem != null;
-	}
-
-	public bool IsFull()
-	{
-		//TODO: A belt may have more capacity than just one item
-		return HasItem();
 	}
 }

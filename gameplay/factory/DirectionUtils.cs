@@ -5,10 +5,10 @@ public static class DirectionUtils
 {
     public enum Direction
     {
-        North,
-        East,
-        South,
-        West
+        East = 0,
+        South = 1,
+        West = 2,
+        North = 3
     }
 
     public static Vector3I GetDirectionVector(this Direction direction)
@@ -27,10 +27,10 @@ public static class DirectionUtils
     {
         return direction switch
         {
-            Direction.North => 0,
-            Direction.East => 90,
-            Direction.South => 180,
-            Direction.West => 270,
+            Direction.East => 0,
+            Direction.South => 90,
+            Direction.West => 180,
+            Direction.North => 270,
             _ => 0
         };
     }

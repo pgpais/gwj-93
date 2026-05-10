@@ -2,10 +2,11 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class ResourceCreator : Building
+public partial class ResourceCreator : Building, IItemOutput
 {
 	[Export] GameResourceData data;
-	[Export] ConveyorBelt belt;
+
+	[Export] ItemTransport itemTransport;
 
 	[ExportGroup("Spawning Settings")]
 	[Export] float spawnRate = 0.5f;
@@ -26,13 +27,23 @@ public partial class ResourceCreator : Building
 		while (true)
 		{
 			await Task.Delay(TimeSpan.FromSeconds(spawnRate));
-			while (belt.IsFull())
+			while (itemTransport.IsFull())
 			{
-				await ToSignal(belt, ConveyorBelt.SignalName.HasCapacity);
+				await ToSignal(itemTransport, ItemTransport.SignalName.HasCapacity);
 			}
-			GameResource item = GameResource.Instantiate(data);
-			AddChild(item);
-			belt.ReceiveItem(item);
+			CallDeferred(MethodName.SpawnResource);
 		}
+	}
+
+	public void SpawnResource()
+	{
+		GameResource item = GameResource.Instantiate(data);
+		AddChild(item);
+		itemTransport.ReceiveItem(item);
+	}
+
+	public ItemTransport GetOutputPort(DirectionUtils.Direction direction, Vector3I gridPos)
+	{
+		return itemTransport;
 	}
 }

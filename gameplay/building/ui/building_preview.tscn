@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://chjha50eusle0"]
+
+[ext_resource type="Script" uid="uid://bihq6d5dpo7ga" path="res://BuildingPreview.cs" id="1_3htpl"]
+[ext_resource type="Texture2D" uid="uid://d2t66t3vuxlcy" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine.png" id="2_soouu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3htpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_soouu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtl3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wttd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekh23"]
+
+[node name="BuildingPreview" type="PanelContainer" unique_id=2088636975 node_paths=PackedStringArray("button", "textureRect", "label")]
+script = ExtResource("1_3htpl")
+button = NodePath("Button")
+textureRect = NodePath("MarginContainer/VBoxContainer/BuildingImage")
+label = NodePath("MarginContainer/VBoxContainer/BuildingLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1969234341]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2128884374]
+layout_mode = 2
+
+[node name="BuildingImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=2014122836]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("2_soouu")
+stretch_mode = 4
+
+[node name="BuildingLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=932200772]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Resource Creator"
+
+[node name="Button" type="Button" parent="." unique_id=1639474041]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3htpl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_soouu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wtl3k")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wttd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ekh23")

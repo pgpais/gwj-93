@@ -2,17 +2,12 @@
 
 [ext_resource type="Script" uid="uid://vfp6tpwdpg77" path="res://gameplay/factory/belts/ConveyorBelt.cs" id="1_eemtw"]
 [ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="1_wy8fd"]
-[ext_resource type="Resource" uid="uid://bt081y3qh82cv" path="res://gameplay/resources/data/proto_resource.tres" id="2_c4w4g"]
-[ext_resource type="PackedScene" uid="uid://c5ub8plrwk3ij" path="res://gameplay/resources/game_resource.tscn" id="3_s0r61"]
+[ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
 
-[node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("startPos", "endPos")]
+[node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("itemTransport", "componentsParent")]
 script = ExtResource("1_eemtw")
-beltSpeed = 3.0
-startPos = NodePath("BeltStart")
-endPos = NodePath("BeltEnd")
-Debug = true
-debug_startingResource = ExtResource("2_c4w4g")
-debug_gameResourceScene = ExtResource("3_s0r61")
+itemTransport = NodePath("Components/ItemTransport")
+componentsParent = NodePath("Components")
 
 [node name="conveyor2" parent="." unique_id=231581322 instance=ExtResource("1_wy8fd")]
 
@@ -21,3 +16,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
 
 [node name="BeltEnd" type="Marker3D" parent="." unique_id=736393848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+
+[node name="Components" type="Node3D" parent="." unique_id=1781978450]
+
+[node name="ItemTransport" type="Node3D" parent="Components" unique_id=886194860 node_paths=PackedStringArray("startPos", "endPos")]
+script = ExtResource("3_xtqex")
+startPos = NodePath("../../BeltStart")
+endPos = NodePath("../../BeltEnd")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
