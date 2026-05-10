@@ -69,7 +69,7 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 		StartCrafting();
 	}
 
-	private bool CanCraftRecipe()
+	protected override bool CanCraftRecipe()
 	{
 		foreach (var input in currentRecipe.Input)
 		{
@@ -106,19 +106,10 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 
 	protected override void EndCraft()
 	{
+		base.EndCraft();
 		foreach (var output in currentRecipe.Output)
 		{
 			outputInventory[output.Key] += output.Value;
-		}
-
-		if (!CanCraftRecipe())
-		{
-			isCrafting = false;
-			return;
-		}
-		else
-		{
-			StartCrafting();
 		}
 	}
 

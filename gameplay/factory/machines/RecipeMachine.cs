@@ -49,7 +49,21 @@ public abstract partial class RecipeMachine : Building
         isCrafting = true;
         craftingTime = 0f;
     }
-    protected virtual void EndCraft() { }
+
+    protected virtual void EndCraft()
+    {
+        if (!CanCraftRecipe())
+        {
+            isCrafting = false;
+            return;
+        }
+        else
+        {
+            StartCrafting();
+        }
+    }
+
+    protected abstract bool CanCraftRecipe();
     protected abstract bool CanAcceptRecipe(RecipeData recipe);
     protected abstract void ApplyRecipe(RecipeData recipe);
 }

@@ -11,14 +11,11 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 	Dictionary<GameResourceData, int> inputInventory = new Dictionary<GameResourceData, int>();
 	Dictionary<GameResourceData, int> outputInventory = new Dictionary<GameResourceData, int>();
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
 
 	override public void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
+		if (currentRecipe == null) return;
 
 		PullItemsFromInputs();
 
@@ -73,6 +70,7 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 	{
 		foreach (var input in inputs)
 		{
+			GD.Print($"Pulling from {input.Name}");
 			if (input.HasItem())
 			{
 				ReceiveItem(input.GetItem());
@@ -82,6 +80,7 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 
 	private void ReceiveItem(GameResource gameResource)
 	{
+		GD.Print($"Received {gameResource.Name}");
 		inputInventory[gameResource.Data]++;
 	}
 
@@ -127,7 +126,7 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 		StartCrafting();
 	}
 
-	private bool CanCraftRecipe()
+	protected override bool CanCraftRecipe()
 	{
 		foreach (var input in currentRecipe.Input)
 		{
@@ -154,6 +153,15 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 		if (inputInventory.ContainsKey(item))
 		{
 			inputInventory[item] -= amount;
+		}
+	}
+
+	protected override void EndCraft()
+	{
+		base.EndCraft();
+		foreach (var output in currentRecipe.Output)
+		{
+			outputInventory[output.Key] += output.Value;
 		}
 	}
 }
