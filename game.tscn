@@ -63,7 +63,7 @@ script = ExtResource("1_hve3p")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=458275489]
-transform = Transform3D(-0.73758376, -0.23440291, 0.63326573, 0, 0.93781626, 0.3471321, -0.67525566, 0.256039, -0.69171804, 0, 4.761544, 0)
+transform = Transform3D(-0.41641304, -0.9063991, 0.07099966, -0.34127524, 0.22821262, 0.91183907, -0.8426931, 0.3554712, -0.40436223, 0, 4.761544, 0)
 shadow_enabled = true
 
 [node name="oopi2" parent="." unique_id=317335373 instance=ExtResource("3_fc0e3")]

@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e2o6t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vef74"]
-albedo_color = Color(0, 0.65882355, 1, 1)
+albedo_color = Color(0, 0.89784014, 1.353256, 1)
 
 [node name="Actor" type="CharacterBody3D" unique_id=1976705041]
 
@@ -21,8 +21,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vef74")
 
 [node name="Components" type="Node3D" parent="." unique_id=487168389]
 
-[node name="CharacterController" type="Node" parent="Components" unique_id=2071814407 node_paths=PackedStringArray("_body")]
+[node name="CharacterController" type="Node" parent="Components" unique_id=2071814407]
 script = ExtResource("2_8s7nr")
 Speed = 5.0
-_body = NodePath("../..")
 metadata/_custom_type_script = "uid://dmo8a11aco4f5"

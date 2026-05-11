@@ -115,6 +115,14 @@ public partial class BuildingController : Node3D
 	{
 		base._UnhandledInput(@event);
 
+		if (@event.IsPressed() && @event is InputEventKey key)
+		{
+			if (key.Keycode == Key.F1)
+			{
+				PrintCurrentMouseGridPos();
+			}
+		}
+
 		if (isBuilding)
 		{
 			var worldPos = GetMouseWorldPosition();
@@ -143,5 +151,12 @@ public partial class BuildingController : Node3D
 			return (Vector3)result["position"];
 
 		return Vector3.Zero;
+	}
+
+	private void PrintCurrentMouseGridPos()
+	{
+		var mousePos = GetMouseWorldPosition();
+		var gridPos = FactoryGrid.Instance.WorldToGrid(mousePos);
+		GD.Print($"Current mouse grid pos: {gridPos}");
 	}
 }

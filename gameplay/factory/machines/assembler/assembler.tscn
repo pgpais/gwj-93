@@ -68,30 +68,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
 
 [node name="InputLeft" type="Node3D" parent="." unique_id=1551652400 node_paths=PackedStringArray("startPos", "endPos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 script = ExtResource("6_6i4ss")
 startPos = NodePath("StartPos")
 endPos = NodePath("EndPos")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
 [node name="StartPos" type="Marker3D" parent="InputLeft" unique_id=391844591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
 
 [node name="EndPos" type="Marker3D" parent="InputLeft" unique_id=1271300119]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
 
 [node name="InputRight" type="Node3D" parent="." unique_id=417576367 node_paths=PackedStringArray("startPos", "endPos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 script = ExtResource("6_6i4ss")
 startPos = NodePath("StartPos")
 endPos = NodePath("EndPos")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
 [node name="StartPos" type="Marker3D" parent="InputRight" unique_id=977248775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
 
 [node name="EndPos" type="Marker3D" parent="InputRight" unique_id=150358923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=241316416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)

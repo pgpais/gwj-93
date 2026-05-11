@@ -70,7 +70,6 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 	{
 		foreach (var input in inputs)
 		{
-			GD.Print($"Pulling from {input.Name}");
 			if (input.HasItem())
 			{
 				ReceiveItem(input.GetItem());
@@ -80,8 +79,9 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 
 	private void ReceiveItem(GameResource gameResource)
 	{
-		GD.Print($"Received {gameResource.Name}");
+		GD.Print($"[{Name}] Received {gameResource.Name}");
 		inputInventory[gameResource.Data]++;
+		gameResource.QueueFree();
 	}
 
 	protected override bool CanAcceptRecipe(RecipeData recipe)

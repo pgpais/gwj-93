@@ -87,17 +87,17 @@ public partial class ItemTransport : Node3D
 	{
 		if (IsFull())
 		{
-			GD.Print($"Belt {Name} tried to receive {item.Name} but was full");
+			GD.Print($"[{Owner.Name}] Belt {Name} tried to receive {item.Name} but was full");
 			return;
 		}
 
 		if (!CanReceiveItem(item))
 		{
-			GD.Print($"Belt {Name} tried to receive {item.Name} but was filtered");
+			GD.Print($"[{Owner.Name}] Belt {Name} tried to receive {item.Name} but was filtered");
 			return;
 		}
 
-		GD.Print($"Belt {Name} received {item.Name}");
+		GD.Print($"[{Owner.Name}] Belt {Name} received {item.Name}");
 		item.Reparent(this);
 		currentItem = item;
 		currentItemPos = 0;
@@ -105,7 +105,7 @@ public partial class ItemTransport : Node3D
 		bool becameFull = IsFull();
 		if (becameFull)
 		{
-			GD.Print($"Belt {Name} became full");
+			// GD.Print($"Belt {Name} became full");
 			EmitSignal(SignalName.Full);
 		}
 	}
@@ -120,7 +120,7 @@ public partial class ItemTransport : Node3D
 
 	public void ClearItem()
 	{
-		GD.Print($"Belt {Name} cleared");
+		GD.Print($"[{Owner.Name}] Belt {Name} cleared");
 		currentItem = null;
 		currentItemPos = 0;
 

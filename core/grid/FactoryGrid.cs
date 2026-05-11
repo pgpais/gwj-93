@@ -84,7 +84,7 @@ public partial class FactoryGrid : Node3D
 	public Building PlaceBuilding(BuildingData buildingData, Vector3I gridPos = default, Direction direction = default, Array<Array<bool>> footprint = null)
 	{
 		var building = buildingData.Scene.Instantiate<Building>();
-		GetTree().Root.AddChild(building);
+		GetTree().Root.AddChild(building, true);
 
 		building.GlobalPosition = GridToWorld(gridPos);
 		building.RotationDegrees = new Vector3(0, direction.GetDirectionAngle(), 0);
@@ -102,7 +102,7 @@ public partial class FactoryGrid : Node3D
 					if (footprint[x][z])
 					{
 						var offset = x * -direction.GetDirectionVector() + z * direction.RotateLeft().GetDirectionVector();
-						GD.Print(GridToString(gridPos + offset, true));
+						// GD.Print(GridToString(gridPos + offset, true));
 						grid[gridPos + offset] = building;
 					}
 				}
@@ -114,7 +114,7 @@ public partial class FactoryGrid : Node3D
 		}
 
 		GD.Print($"Placed {building.Name} at {gridPos}");
-		GD.Print(GridToString(gridPos, true));
+		// GD.Print(GridToString(gridPos, true));
 
 		return building;
 	}

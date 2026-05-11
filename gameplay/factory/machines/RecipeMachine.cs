@@ -37,7 +37,7 @@ public abstract partial class RecipeMachine : Building
     public virtual void CraftingTick(double delta)
     {
         craftingTime += (float)delta;
-        GD.Print($"[{nameof(Constructor)} {Name}] crafting time: {craftingTime}");
+        // GD.Print($"[{nameof(Constructor)} {Name}] crafting time: {craftingTime}");
         if (craftingTime >= currentRecipe.CraftTime)
         {
             EndCraft();
