@@ -4,6 +4,7 @@ public partial class GameResource : Node3D
 {
 	const string GAME_RESOURCE_SCENE_UID = "uid://c5ub8plrwk3ij";
 	public string ResourceName => data.Name;
+	public GameResourceData Data => data;
 
 	[Export] GameResourceData data;
 

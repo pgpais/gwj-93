@@ -1,9 +1,53 @@
-[gd_scene format=3 uid="uid://bvmd3mw4xilju"]
+[gd_scene format=4 uid="uid://bvmd3mw4xilju"]
 
 [ext_resource type="Script" uid="uid://dmovxeg7u0n23" path="res://gameplay/building/GhostBuilding.cs" id="1_s8vtg"]
+[ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="2_w1220"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgrlu"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_w1220")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uqm0r"]
+_surfaces = [{
+"aabb": AABB(-0.24748737, 0, -0.3889087, 0.49497473, 0.2, 0.7778174),
+"format": 34896613377,
+"index_count": 120,
+"index_data": PackedByteArray("AwAMAAgADQAIAAwABwAMAAMADAAHAA0ADQAHAA4AAwAOAAcAAQAIAA0ACAABAAMADgAPAA0ADQAPAAEADwAOAAQAAwAEAA4ABAAJAA8ADwAJAAEAAgAJAAQACQACAAEABAAQAAIAAwAQAAQAEQACABAAAgARAAEAEAAFABEAAwAFABAAEQAFAAAAAAAFAAMAAQARAAYAAAAGABEABgAAABIAEgAAAAMAAQAGABMAEgATAAYACgABABMAAwABAAoAFAATABIAEwAUAAoAEgADAAsACgALAAMAEgAVABQACgAUABUACwAVABIAFQALAAoA"),
+"lods": [0.22859767, PackedByteArray("AwAHAAgABwAJAAgACQAHAAQAAwAEAAcACAAJAAEACAABAAMAAgAJAAQACQACAAEABAAFAAIAAwAFAAQAAgAFAAAAAAAFAAMAAQACAAYAAAAGAAIACgABAAYAAwABAAoAAAALAAYAAAADAAsACgAGAAsACgALAAMA"), 0.34289652, PackedByteArray("AwAEAAEAAwAFAAQAAQAGAAMAAAAFAAMAAAADAAYAAQACAAYAAAAGAAIABAACAAEAAgAFAAAABAAFAAIA"), 0.5268674, PackedByteArray("AAABAAIAAwACAAEAAgADAAAAAAADAAEA")],
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 22,
+"vertex_data": PackedByteArray("2rb/////AAD/fwAA/38AAAAAAABcdAAA/3////9/AADatv//AAAAAAAA//+iiwAA2rYAAP//AAD/////RRcAAP//AACLLgAA2rYAAAAAAAD//wAAc9EAAP////9z0QAA/////4suAAD//wAARRcAAGzb//8AAAAAbNsAAAAAAAAAAP//XHQAAAAAAACiiwAAbNv/////AABs2wAA//8AAP//AAC56AAA/////7noAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jqhwg"]
+resource_name = "arrow-basic-rounded_arrow-basic-rounded"
+_surfaces = [{
+"aabb": AABB(-0.24748737, 0, -0.3889087, 0.49497473, 0.2, 0.7778174),
+"attribute_data": PackedByteArray("/7dmRv+3mXn/t5l5/7dmRv+3Zkb/t5l5/7dmRv+3Zkb/t5l5/7dmRv+3Zkb/t2ZG/7dmRv+3mXn/t5l5/7eZef+3Zkb/t5l5/7eZef+3Zkb/t5l5/7dmRv+3Zkb/t5l5/7eZef+3mXn/t2ZG/7eZef+3Zkb/t2ZG/7eZef+3mXn/t2ZG/7dmRv+3mXn/t5l5/7dmRv+3Zkb/t5l5/7eZef+3Zkb/t2ZG/7eZef+3mXn/t2ZG/7eZef+3mXn/t2ZG/7dmRv+3mXn/t5l5/7dmRv+3mXn/t5l5/7dmRv+3Zkb/t2ZG/7dmRv+3Zkb/t2ZG/7dmRv+3mXn/t5l5/7eZef+3mXn/t5l5"),
+"format": 34896613399,
+"index_count": 120,
+"index_data": PackedByteArray("BAAaABEAEQAFAAQAAAAIABsAGwAHAAAAAwABABQAFAATAAMAHAAdAB4AHgAfABwAAgASAAYABgAgAAIAIQAiACMAIwAQACEAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAFQA4AAkACQA5ABUACQALADkACQA6AAsACQAKADoADAAKAAkAOwAMAAkAOwAJABYAFgA8ADsAPQA+ABcAFwANAD0ADQAPAD0ADQA/AA8ADgA/AA0AGAAOAA0AQAAYAA0AQQBAAA0ADQAZAEEA"),
+"lods": [0.22859767, PackedByteArray("BAAQABEAEQAFAAQAEAASABEAEgAQAAYAAgASAAYABgAHAAIAAgAHAAAAAAAIAAIAAAATAAgAFAAIABMAFAATAAMAAwABABQACQALABUACQAKAAsADAAKAAkADAAJABYAFwANAA8ADQAOAA8AGAAOAA0AGQAYAA0A"), 0.34289652, PackedByteArray("BAAGAAUABgACAAUABgAHAAIAAgAHAAAAAAAIAAIAAAADAAgAAQAIAAMACQAKAAsADAAKAAkADQAOAA8A"), 0.5268674, PackedByteArray("AAABAAIAAAADAAEAAgAEAAAABAACAAUA")],
+"material": SubResource("StandardMaterial3D_tgrlu"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 66,
+"vertex_data": PackedByteArray("2rb//////4//fwAA/3//3wAAAABcdP/P/3////9//9//f////3//n/9/AAD/f/+f2rb//wAA/+8AAP//oov/r9q2AAD///+P/3////9///8AAP//oov//9q2//8AAP//2rb/////////fwAA/3//vwAAAABcdP+/2rYAAP///7//////RRf/z///AACLLv+v2rYAAAAA/+//////c9H/z///AABz0f/P/////0UX////////c9H/////AABz0f+/2rYAAAAA/7///wAAiy7/v/////+LLv+vAAAAAKKL/69s2///////j/////+56P+v//8AALno/69s2wAA////jwAA//9cdP/PbNv//wAA/+9s2wAAAAD/7///AABFF//P/////4su/6//////RRf/z///AABFF//P//8AAIsu/6//////uej/r/////9z0f/P//8AAHPR/8///wAAuej/r2zb//////+PbNsAAP///4/atgAA////j9q2//////+P2rb//wAA/+/atgAAAAD/72zbAAAAAP/vbNv//wAA/+8AAAAAoov/rwAAAABcdP/PAAD//1x0/88AAP//oov/r/////+LLv//bNv//wAA//8AAP//XHT//2zb/////////////7no//9s2wAA////v///AAC56P+/AAAAAKKL/79s2wAAAAD/v///AABFF/+//3////9/AAD/f////38AAP9/AAD/fwAA/3////9/////f////3//v/9//7//f/+//3//vwAA/38AAP9/AAD/f/9/AAD/fwAA/3////9/AAD/fwAA/3//v/9//78AAP9/AAD/fwAA/3//fwAA/3////9/AAD/fwAA/38AAP9/AAD/f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////fwAA/38AAP9/////f////3////9/////f/+//3//v/9//7//f/+//3//vwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uqm0r")
 
 [node name="GhostBuilding" type="Node3D" unique_id=1929129775 node_paths=PackedStringArray("_mesh")]
 script = ExtResource("1_s8vtg")
 _mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1523404393]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2055435492]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 1, 0, 0)
+mesh = SubResource("ArrayMesh_jqhwg")

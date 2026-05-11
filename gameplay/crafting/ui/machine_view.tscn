@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cwrgekca5snk"]
+
+[ext_resource type="Script" uid="uid://7tnegx0xa0mk" path="res://gameplay/crafting/ui/MachineView.cs" id="1_8akhi"]
+[ext_resource type="PackedScene" uid="uid://su06kvi6q2f3" path="res://gameplay/crafting/ui/recipe_selection.tscn" id="1_yvmgs"]
+[ext_resource type="PackedScene" uid="uid://bgwiu1ir6kv5o" path="res://gameplay/crafting/ui/active_view.tscn" id="3_51ges"]
+
+[node name="MachineView" type="PanelContainer" unique_id=1320788613 node_paths=PackedStringArray("activeMachineView", "recipeSelectionUI")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8akhi")
+activeMachineView = NodePath("MarginContainer/ActiveView")
+recipeSelectionUI = NodePath("MarginContainer/RecipeSelection")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1797249106]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RecipeSelection" parent="MarginContainer" unique_id=1477577932 instance=ExtResource("1_yvmgs")]
+visible = false
+layout_mode = 2
+
+[node name="ActiveView" parent="MarginContainer" unique_id=29745734 instance=ExtResource("3_51ges")]
+layout_mode = 2

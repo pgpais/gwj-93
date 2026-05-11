@@ -4,11 +4,22 @@ using Godot;
 public partial class PlayerCharacterInput : Node
 {
 	[Export] CharacterController controller;
+	[Export] Interactor interactor;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		HandleMovementInput();
+
+		if (Input.IsActionJustPressed("interact"))
+		{
+			interactor.StartInteracting();
+		}
+
+		if (Input.IsActionJustPressed("ui_cancel"))
+		{
+			interactor.StopInteracting();
+		}
 	}
 
 	private void HandleMovementInput()

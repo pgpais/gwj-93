@@ -1,13 +1,14 @@
 [gd_resource type="Resource" format=4 uid="uid://c1d0uh3g6duqu"]
 
-[ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_811yx"]
-[ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/factory/BuildingData.cs" id="1_oxsm3"]
-[ext_resource type="PackedScene" uid="uid://c1l8prth176uh" path="res://gameplay/factory/machines/resource_creator.tscn" id="2_5ifs7"]
+[ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_6qu5j"]
+[ext_resource type="Texture2D" uid="uid://d2t66t3vuxlcy" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine.png" id="2_gxffc"]
+[ext_resource type="PackedScene" uid="uid://c1l8prth176uh" path="res://gameplay/factory/machines/resource_creator.tscn" id="3_dicj7"]
+[ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="4_ahjjs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g22w"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("1_811yx")
+albedo_texture = ExtResource("1_6qu5j")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_omtq7"]
 _surfaces = [{
@@ -44,8 +45,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_omtq7")
 
 [resource]
-script = ExtResource("1_oxsm3")
+script = ExtResource("4_ahjjs")
 Name = "Resource Creator"
-Scene = ExtResource("2_5ifs7")
+Scene = ExtResource("3_dicj7")
+Preview = ExtResource("2_gxffc")
 Mesh = SubResource("ArrayMesh_a4rfw")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

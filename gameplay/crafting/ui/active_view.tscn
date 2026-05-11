@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bgwiu1ir6kv5o"]
+
+[ext_resource type="Script" uid="uid://bao4hhphueqvk" path="res://gameplay/crafting/ui/ActiveMachineView.cs" id="1_qe4jh"]
+[ext_resource type="PackedScene" uid="uid://ec1ttiphijf0" path="res://gameplay/crafting/ui/item_preview.tscn" id="2_ut5iv"]
+[ext_resource type="PackedScene" uid="uid://fd0sfnpfdf7w" path="res://gameplay/crafting/ui/recipe_preview.tscn" id="3_mm2h5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvmgs"]
+bg_color = Color(0.24115604, 0.24115607, 0.24115595, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ActiveView" type="PanelContainer" unique_id=29745734 node_paths=PackedStringArray("machineNameLabel", "ingredientsContainer", "resultsContainer", "recipePreview", "craftProgress", "stopButton")]
+custom_minimum_size = Vector2(700, 400)
+script = ExtResource("1_qe4jh")
+machineNameLabel = NodePath("MarginContainer/VBoxContainer/Label")
+ingredientsContainer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2/VBoxContainer")
+resultsContainer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2/VBoxContainer")
+recipePreview = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/RecipePreview")
+craftProgress = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/ProgressBar")
+ItemPreviewScene = ExtResource("2_ut5iv")
+stopButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/Button")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1921020831]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1073956587]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1551813319]
+layout_mode = 2
+text = "Machine Name"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1923184919]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="InputView" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=72207605]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView" unique_id=2009554361]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer" unique_id=1114491007]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2" unique_id=1754655163]
+layout_mode = 2
+text = "Input"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2" unique_id=1763176909]
+layout_mode = 2
+
+[node name="ItemPreview" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2011658887 instance=ExtResource("2_ut5iv")]
+layout_mode = 2
+
+[node name="ActiveRecipeView" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1829186186]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvmgs")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView" unique_id=268892877]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer" unique_id=1710201323]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer" unique_id=1944267920]
+layout_mode = 2
+text = "Active Recipe"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer" unique_id=823010114]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="RecipePreview" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1325352035 instance=ExtResource("3_mm2h5")]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer" unique_id=148391301]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+
+[node name="MetadataDetails" type="HFlowContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer" unique_id=915063218]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/MetadataDetails" unique_id=1914623262]
+layout_mode = 2
+text = "Speed"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/MetadataDetails" unique_id=2121101941]
+layout_mode = 2
+text = "Consumption"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/MetadataDetails" unique_id=1359431200]
+layout_mode = 2
+text = "Power"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer" unique_id=14326572]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Stop"
+
+[node name="OutputView" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1705325033]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView" unique_id=1250417306]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer" unique_id=1001164202]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2" unique_id=871648377]
+layout_mode = 2
+text = "Output"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2" unique_id=1838816898]
+layout_mode = 2
+
+[node name="ItemPreview" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1777225559 instance=ExtResource("2_ut5iv")]
+layout_mode = 2

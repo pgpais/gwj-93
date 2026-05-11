@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bq3mwgcnolfl6"]
+
+[ext_resource type="Script" uid="uid://c5e4w1am6lrr2" path="res://BuildingSelector.cs" id="1_0rlxs"]
+[ext_resource type="Resource" uid="uid://c4y50yl1o3kpy" path="res://gameplay/building/data/buildings_collection.tres" id="2_dkac8"]
+[ext_resource type="PackedScene" uid="uid://chjha50eusle0" path="res://gameplay/building/ui/building_preview.tscn" id="3_ulqg5"]
+
+[node name="BuildingSelector" type="PanelContainer" unique_id=627501354 node_paths=PackedStringArray("buildingController", "previewsContainer")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = -132.0
+offset_right = -240.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_0rlxs")
+buildingController = NodePath("")
+buildingDataCollection = ExtResource("2_dkac8")
+previewsContainer = NodePath("MarginContainer/HBoxContainer")
+previewScene = ExtResource("3_ulqg5")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1534320070]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=350137120]
+layout_mode = 2
+
+[node name="BuildingPreview" parent="MarginContainer/HBoxContainer" unique_id=2088636975 instance=ExtResource("3_ulqg5")]
+layout_mode = 2

@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_375yu"]
 
-[node name="GameResource" type="Area3D" unique_id=154640862 node_paths=PackedStringArray("_meshInstance")]
+[node name="GameResource" type="Node3D" unique_id=907021718 node_paths=PackedStringArray("_meshInstance")]
 script = ExtResource("1_p0lni")
 data = ExtResource("2_375yu")
 _meshInstance = NodePath("MeshInstance3D")

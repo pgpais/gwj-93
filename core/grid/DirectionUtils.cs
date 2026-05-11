@@ -5,19 +5,19 @@ public static class DirectionUtils
 {
     public enum Direction
     {
-        North,
-        East,
-        South,
-        West
+        East = 0,
+        South = 1,
+        West = 2,
+        North = 3
     }
 
     public static Vector3I GetDirectionVector(this Direction direction)
     {
         return direction switch
         {
-            Direction.North => new Vector3I(0, 0, 1),
+            Direction.North => new Vector3I(0, 0, -1),
             Direction.East => new Vector3I(1, 0, 0),
-            Direction.South => new Vector3I(0, 0, -1),
+            Direction.South => new Vector3I(0, 0, 1),
             Direction.West => new Vector3I(-1, 0, 0),
             _ => new Vector3I(0, 0, 0)
         };
@@ -27,10 +27,10 @@ public static class DirectionUtils
     {
         return direction switch
         {
-            Direction.North => 0,
-            Direction.East => 90,
-            Direction.South => 180,
-            Direction.West => 270,
+            Direction.East => 0,
+            Direction.North => 90,
+            Direction.West => 180,
+            Direction.South => 270,
             _ => 0
         };
     }

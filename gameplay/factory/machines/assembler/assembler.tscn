@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c2qpjf1bu6ylx"]
+
+[ext_resource type="Script" uid="uid://68537v4vbwcj" path="res://gameplay/factory/machines/assembler/Assembler.cs" id="1_1aw3i"]
+[ext_resource type="PackedScene" uid="uid://fvpiu0tgu6xf" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine.glb" id="1_g0fbh"]
+[ext_resource type="PackedScene" uid="uid://chy0at2mbxgku" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor-corner.glb" id="2_1aw3i"]
+[ext_resource type="Resource" uid="uid://br6xlgas7td6l" path="res://gameplay/crafting/recipes/data/2x4_brick.tres" id="2_ter6k"]
+[ext_resource type="PackedScene" uid="uid://cm8u0ivnerihi" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor-junction-t.glb" id="3_ter6k"]
+[ext_resource type="PackedScene" uid="uid://crn7ijla8l7ul" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-fortified.glb" id="4_6m7fc"]
+[ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="5_ft8t3"]
+[ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="6_6i4ss"]
+[ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="9_6m7fc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0fbh"]
+size = Vector3(3, 1.4, 2.4980469)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ft8t3"]
+height = 1.0
+radius = 1.5
+
+[node name="Assembler" type="Node3D" unique_id=1725021305 node_paths=PackedStringArray("inputs", "output", "interactable")]
+script = ExtResource("1_1aw3i")
+inputs = [NodePath("InputLeft"), NodePath("InputRight")]
+output = NodePath("Output")
+interactable = NodePath("Components/Interactable")
+debug_startingRecipe = ExtResource("2_ter6k")
+
+[node name="Model" type="Node3D" parent="." unique_id=380016524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
+
+[node name="machine2" parent="Model" unique_id=2054626450 instance=ExtResource("1_g0fbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+
+[node name="machine3" parent="Model" unique_id=177814456 instance=ExtResource("1_g0fbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="machine4" parent="Model" unique_id=390507815 instance=ExtResource("1_g0fbh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0, 0.5)
+
+[node name="machine5" parent="Model" unique_id=1587090640 instance=ExtResource("1_g0fbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+
+[node name="machine6" parent="Model" unique_id=720159438 instance=ExtResource("1_g0fbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
+
+[node name="conveyor-corner2" parent="Model" unique_id=1297589978 instance=ExtResource("2_1aw3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+
+[node name="conveyor-junction-t2" parent="Model" unique_id=587814466 instance=ExtResource("3_ter6k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 0, 1.5)
+
+[node name="machine-fortified2" parent="Model" unique_id=1729065046 instance=ExtResource("4_6m7fc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+
+[node name="conveyor2" parent="Model" unique_id=231581322 instance=ExtResource("5_ft8t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+
+[node name="conveyor3" parent="Model" unique_id=2025694309 instance=ExtResource("5_ft8t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+
+[node name="conveyor4" parent="Model" unique_id=125525816 instance=ExtResource("5_ft8t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="Output" type="Node3D" parent="." unique_id=1376798658 node_paths=PackedStringArray("startPos", "endPos")]
+script = ExtResource("6_6i4ss")
+startPos = NodePath("StartPos")
+endPos = NodePath("EndPos")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="StartPos" type="Marker3D" parent="Output" unique_id=964176186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+
+[node name="EndPos" type="Marker3D" parent="Output" unique_id=1549697646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+
+[node name="InputLeft" type="Node3D" parent="." unique_id=1551652400 node_paths=PackedStringArray("startPos", "endPos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+script = ExtResource("6_6i4ss")
+startPos = NodePath("StartPos")
+endPos = NodePath("EndPos")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="StartPos" type="Marker3D" parent="InputLeft" unique_id=391844591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+
+[node name="EndPos" type="Marker3D" parent="InputLeft" unique_id=1271300119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+
+[node name="InputRight" type="Node3D" parent="." unique_id=417576367 node_paths=PackedStringArray("startPos", "endPos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+script = ExtResource("6_6i4ss")
+startPos = NodePath("StartPos")
+endPos = NodePath("EndPos")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="StartPos" type="Marker3D" parent="InputRight" unique_id=977248775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+
+[node name="EndPos" type="Marker3D" parent="InputRight" unique_id=150358923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=241316416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=332025067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.7, 1)
+shape = SubResource("BoxShape3D_g0fbh")
+
+[node name="Components" type="Node3D" parent="." unique_id=16610]
+
+[node name="Interactable" type="Area3D" parent="Components" unique_id=2086982222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -0.5)
+script = ExtResource("9_6m7fc")
+metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=1474680246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+shape = SubResource("CylinderShape3D_ft8t3")
+
+[editable path="Model/machine-fortified2"]
