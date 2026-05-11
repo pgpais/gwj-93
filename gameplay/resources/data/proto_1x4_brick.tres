@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_67t6h"]
 [ext_resource type="Texture2D" uid="uid://qc56hrox4m1q" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/Textures/colormap.png" id="1_bl2pa"]
+[ext_resource type="Texture2D" uid="uid://tpshp87i0bsy" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-brick-1x4.png" id="1_posin"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ouks"]
 resource_name = "colormap"
@@ -47,4 +48,5 @@ shadow_mesh = SubResource("ArrayMesh_m36c0")
 script = ExtResource("1_67t6h")
 Name = "1x4 Brick"
 Mesh = SubResource("ArrayMesh_posin")
+Icon = ExtResource("1_posin")
 metadata/_custom_type_script = "uid://dhvw5rapf4uid"

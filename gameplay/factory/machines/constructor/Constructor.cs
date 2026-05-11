@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 using System.Linq;
 
 public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
@@ -38,6 +39,11 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 				OutputItem(output.Key);
 			}
 		}
+	}
+
+	public override Func<RecipeData, bool> GetRecipePredicate()
+	{
+		return recipe => recipe.Input.Count == 1 && recipe.Output.Count == 1;
 	}
 
 	private void PullItemFromInput()

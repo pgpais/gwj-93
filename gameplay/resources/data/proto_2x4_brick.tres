@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="GameResourceData" format=4 uid="uid://dg3j2ojjjauii"]
 
+[ext_resource type="Texture2D" uid="uid://cgnyeyimml8kf" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-brick-2x4.png" id="1_1s7fo"]
 [ext_resource type="Texture2D" uid="uid://qc56hrox4m1q" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/Textures/colormap.png" id="1_uhbgf"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_xy7an"]
 
@@ -47,4 +48,5 @@ shadow_mesh = SubResource("ArrayMesh_c1lpr")
 script = ExtResource("1_xy7an")
 Name = "2x4 Brick"
 Mesh = SubResource("ArrayMesh_1s7fo")
+Icon = ExtResource("1_1s7fo")
 metadata/_custom_type_script = "uid://dhvw5rapf4uid"

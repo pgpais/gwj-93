@@ -2,14 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://f7l0f57g6uba" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-window.glb" id="1_nk4a2"]
 [ext_resource type="Script" uid="uid://dhhxllwubd76h" path="res://gameplay/factory/machines/constructor/Constructor.cs" id="1_u8fdu"]
-[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/factory/recipes/data/1x4_brick.tres" id="2_t0vy7"]
+[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/crafting/recipes/data/1x4_brick.tres" id="2_t0vy7"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="2_u8fdu"]
 [ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="3_t0vy7"]
+[ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="6_48vmo"]
 
-[node name="Constructor" type="Node3D" unique_id=2021182075 node_paths=PackedStringArray("input", "output")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_48vmo"]
+height = 1.0
+
+[node name="Constructor" type="Node3D" unique_id=2021182075 node_paths=PackedStringArray("input", "output", "interactable")]
 script = ExtResource("1_u8fdu")
 input = NodePath("Input")
 output = NodePath("Output")
+interactable = NodePath("Components/Interactable")
 debug = true
 debug_startingRecipe = ExtResource("2_t0vy7")
 
@@ -40,3 +45,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
 
 [node name="ConveyorBelt" parent="." unique_id=931640884 instance=ExtResource("3_t0vy7")]
+
+[node name="Components" type="Node3D" parent="." unique_id=1661008949]
+
+[node name="Interactable" type="Area3D" parent="Components" unique_id=2013474873]
+script = ExtResource("6_48vmo")
+metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=1740957891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_48vmo")

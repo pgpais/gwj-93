@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RecipeData" format=3 uid="uid://bpxlpkd3b3xcy"]
+
+[ext_resource type="Texture2D" uid="uid://tpshp87i0bsy" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-brick-1x4.png" id="1_xgbiy"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="2_a3l18"]
+[ext_resource type="Resource" uid="uid://dhxss35blsf2q" path="res://gameplay/resources/data/proto_1x2_brick.tres" id="3_rer7d"]
+[ext_resource type="Resource" uid="uid://ce7ci15p7xryi" path="res://gameplay/resources/data/proto_1x4_brick.tres" id="4_dixnk"]
+[ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="5_qyyru"]
+
+[resource]
+script = ExtResource("5_qyyru")
+Input = Dictionary[ExtResource("2_a3l18"), int]({
+ExtResource("3_rer7d"): 2
+})
+Output = Dictionary[ExtResource("2_a3l18"), int]({
+ExtResource("4_dixnk"): 1
+})
+Name = "1x4 Brick"
+Description = "asdasdasd"
+Icon = ExtResource("1_xgbiy")
+metadata/_custom_type_script = "uid://cf5te5sqk40pp"

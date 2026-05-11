@@ -51,6 +51,12 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 		return null;
 	}
 
+
+	public override Func<RecipeData, bool> GetRecipePredicate()
+	{
+		return recipe => recipe.Input.Count == inputs.Length && recipe.Output.Count == 1;
+	}
+
 	private void PushItemsToOutputs()
 	{
 		foreach (var item in outputInventory)

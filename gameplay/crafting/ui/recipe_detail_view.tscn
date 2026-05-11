@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bnekpipfyjos0"]
+
+[ext_resource type="Script" uid="uid://d1w70el0kqa7o" path="res://gameplay/crafting/ui/RecipeDetailView.cs" id="1_t76e3"]
+[ext_resource type="PackedScene" uid="uid://ec1ttiphijf0" path="res://gameplay/crafting/ui/item_preview.tscn" id="2_338nx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w237c"]
+bg_color = Color(1, 1, 1, 0.4392157)
+
+[node name="RecipeDetailView" type="PanelContainer" unique_id=951428150 node_paths=PackedStringArray("recipeNameLabel", "ingredientsContainer", "resultsContainer", "selectButton")]
+custom_minimum_size = Vector2(300, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w237c")
+script = ExtResource("1_t76e3")
+ItemPreviewScene = ExtResource("2_338nx")
+recipeNameLabel = NodePath("MarginContainer/VBoxContainer/Label")
+ingredientsContainer = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/IngredientsContainer")
+resultsContainer = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ResultContainer")
+selectButton = NodePath("MarginContainer/VBoxContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=828648182]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1307426335]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=206543882]
+layout_mode = 2
+text = "Recipe Name"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1816872939]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=1532224029]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1669869392]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1151266483]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1698142946]
+layout_mode = 2
+text = "Ingredients"
+horizontal_alignment = 1
+
+[node name="IngredientsContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=608780615]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 2
+
+[node name="ItemPreview" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/IngredientsContainer" unique_id=2011658887 instance=ExtResource("2_338nx")]
+layout_mode = 2
+
+[node name="ItemPreview2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/IngredientsContainer" unique_id=543926184 instance=ExtResource("2_338nx")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1474028477]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=147200281]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1004011985]
+layout_mode = 2
+text = "Result"
+horizontal_alignment = 1
+
+[node name="ResultContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1503852767]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 2
+
+[node name="ItemPreview" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ResultContainer" unique_id=134444381 instance=ExtResource("2_338nx")]
+layout_mode = 2
+
+[node name="ItemPreview2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ResultContainer" unique_id=780634444 instance=ExtResource("2_338nx")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1290155564]
+layout_mode = 2
+text = "Select"

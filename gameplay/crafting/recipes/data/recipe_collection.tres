@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecipeCollectionData" format=3 uid="uid://yaxdlgmjc7wd"]
+
+[ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="1_wng6g"]
+[ext_resource type="Script" uid="uid://c32m26ximp5lh" path="res://gameplay/crafting/recipes/RecipeCollectionData.cs" id="2_a81ex"]
+[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/crafting/recipes/data/1x4_brick.tres" id="2_slknk"]
+[ext_resource type="Resource" uid="uid://br6xlgas7td6l" path="res://gameplay/crafting/recipes/data/2x4_brick.tres" id="3_5p5ta"]
+
+[resource]
+script = ExtResource("2_a81ex")
+Recipes = Array[ExtResource("1_wng6g")]([ExtResource("2_slknk"), ExtResource("3_5p5ta")])
+metadata/_custom_type_script = "uid://c32m26ximp5lh"

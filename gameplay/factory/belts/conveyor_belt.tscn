@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://vfp6tpwdpg77" path="res://gameplay/factory/belts/ConveyorBelt.cs" id="1_eemtw"]
 [ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="1_wy8fd"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
+[ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="4_c4w4g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s0r61"]
+height = 1.0
+radius = 0.29003906
 
 [node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("itemTransport", "componentsParent")]
 script = ExtResource("1_eemtw")
@@ -24,3 +29,11 @@ script = ExtResource("3_xtqex")
 startPos = NodePath("../../BeltStart")
 endPos = NodePath("../../BeltEnd")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Interactable" type="Area3D" parent="Components" unique_id=1260434122]
+script = ExtResource("4_c4w4g")
+metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=2063752279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_s0r61")

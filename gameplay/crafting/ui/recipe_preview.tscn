@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://fd0sfnpfdf7w"]
+
+[ext_resource type="Texture2D" uid="uid://bbujovbg0c52v" path="res://assets/kenney/kenney_brick-kit/Previews/none-hq-brick-1x2.png" id="1_bwp33"]
+[ext_resource type="Script" uid="uid://d1ef43dcwoyfa" path="res://gameplay/crafting/ui/RecipePreview.cs" id="1_u4gv3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4gv3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kk4t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a3blb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y15b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nossy"]
+
+[node name="RecipePreview" type="PanelContainer" unique_id=2011658887 node_paths=PackedStringArray("previewRect", "recipeName", "recipeButton")]
+script = ExtResource("1_u4gv3")
+previewRect = NodePath("MarginContainer/VBoxContainer/TextureRect")
+recipeName = NodePath("MarginContainer/VBoxContainer/Label")
+recipeButton = NodePath("Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2062571367]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=245108805]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=521784666]
+layout_mode = 2
+texture = ExtResource("1_bwp33")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1093719426]
+layout_mode = 2
+text = "Brick"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1658103032]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u4gv3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5kk4t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a3blb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0y15b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nossy")
