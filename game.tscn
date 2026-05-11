@@ -10,10 +10,8 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_j5wjh"]
 [ext_resource type="Script" uid="uid://b6qiiwj4dfitl" path="res://gameplay/building/BuildingController.cs" id="10_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="12_215e1"]
+[ext_resource type="PackedScene" uid="uid://bq3mwgcnolfl6" path="res://gameplay/building/ui/building_selector.tscn" id="12_iotsf"]
 [ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="12_lc2xo"]
-[ext_resource type="Script" uid="uid://c5e4w1am6lrr2" path="res://BuildingSelector.cs" id="14_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://chjha50eusle0" path="res://gameplay/building/ui/building_preview.tscn" id="15_80cx4"]
-[ext_resource type="Resource" uid="uid://c4y50yl1o3kpy" path="res://gameplay/building/data/buildings_collection.tres" id="15_e8heu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e2o6t"]
 size = Vector2(25, 25)
@@ -53,7 +51,7 @@ data = {
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=117207278]
 physics_interpolation_mode = 1
-transform = Transform3D(0.99999964, 0, 0, 0, 0.49999827, 0.8660222, 0, -0.8660225, 0.49999812, 4.1236315, 5.8677216, 2.499998)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 5.9676213, -0.74118197)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=612939804]
@@ -73,14 +71,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.558005, 0.000500679, 7.129
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.272297, -2.3841858e-07, 5.8953915)
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=11480595 node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(0.99999964, 0, 0, 0, 0.49999827, 0.8660222, 0, -0.8660225, 0.49999812, 4.1236315, 5.8677216, 2.499998)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 5.9676213, -0.74118197)
 top_level = true
 script = ExtResource("6_eow3j")
 priority = 1
 follow_mode = 5
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_j5wjh")
-follow_offset = Vector3(0, 4, 2)
+follow_offset = Vector3(0, 4, -1)
 follow_damping = true
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
@@ -106,32 +104,4 @@ metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=830004089]
 
-[node name="BuildingSelector" type="PanelContainer" parent="CanvasLayer" unique_id=780444048 node_paths=PackedStringArray("buildingController", "previewsContainer")]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 240.0
-offset_top = -132.0
-offset_right = -240.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("14_7sc4i")
-buildingController = NodePath("../../Player/BuildingController")
-buildingDataCollection = ExtResource("15_e8heu")
-previewsContainer = NodePath("MarginContainer/HBoxContainer")
-previewScene = ExtResource("15_80cx4")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BuildingSelector" unique_id=37545730]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BuildingSelector/MarginContainer" unique_id=1516129128]
-layout_mode = 2
-
-[node name="BuildingPreview" parent="CanvasLayer/BuildingSelector/MarginContainer/HBoxContainer" unique_id=2088636975 instance=ExtResource("15_80cx4")]
-layout_mode = 2
+[node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 instance=ExtResource("12_iotsf")]
