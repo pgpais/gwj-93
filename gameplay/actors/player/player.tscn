@@ -3,11 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://bj8wkbs8uph3m" path="res://gameplay/actors/actor.tscn" id="1_8s7nr"]
 [ext_resource type="Script" uid="uid://bo8f4t7fpw2qh" path="res://gameplay/actors/player/Player.cs" id="1_jftto"]
 [ext_resource type="Script" uid="uid://b8r07trsqev5c" path="res://gameplay/input/PlayerCharacterInput.cs" id="3_ddyh4"]
+[ext_resource type="Script" uid="uid://ci8gy8dvjtwc8" path="res://gameplay/interacting/Interactor.cs" id="4_8s7nr"]
 
-[node name="Player" unique_id=1976705041 instance=ExtResource("1_8s7nr")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ddyh4"]
+height = 1.0
+radius = 1.0
+
+[node name="Player" unique_id=1976705041 node_paths=PackedStringArray("characterController", "interactor", "_componentsParent") instance=ExtResource("1_8s7nr")]
 script = ExtResource("1_jftto")
+characterController = NodePath("Components/CharacterController")
+interactor = NodePath("Components/Interactor")
+_componentsParent = NodePath("Components")
 
-[node name="PlayerCharacterInput" type="Node" parent="Components" parent_id_path=PackedInt32Array(487168389) index="1" unique_id=773179792 node_paths=PackedStringArray("controller")]
+[node name="PlayerCharacterInput" type="Node" parent="Components" parent_id_path=PackedInt32Array(487168389) index="1" unique_id=773179792 node_paths=PackedStringArray("controller", "interactor")]
 script = ExtResource("3_ddyh4")
 controller = NodePath("../CharacterController")
+interactor = NodePath("../Interactor")
 metadata/_custom_type_script = "uid://b8r07trsqev5c"
+
+[node name="Interactor" type="Area3D" parent="Components" parent_id_path=PackedInt32Array(487168389) index="2" unique_id=1769781250]
+script = ExtResource("4_8s7nr")
+metadata/_custom_type_script = "uid://ci8gy8dvjtwc8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactor" index="0" unique_id=1845344359]
+shape = SubResource("CylinderShape3D_ddyh4")

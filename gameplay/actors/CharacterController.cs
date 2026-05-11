@@ -5,6 +5,7 @@ public partial class CharacterController : Node
 {
 	[Export] public float Speed { get; private set; }
 
+	public bool MovementEnabled { get; set; } = true;
 	public Vector2 MovInput { get; set; } = Vector2.Zero;
 
 	CharacterBody3D _body;
@@ -19,6 +20,14 @@ public partial class CharacterController : Node
 	{
 		base._PhysicsProcess(delta);
 
+		if (MovementEnabled)
+		{
+			HandleMovement(delta);
+		}
+	}
+
+	private void HandleMovement(double delta)
+	{
 		Vector3 velocity = _body.Velocity;
 
 		// Add the gravity.
