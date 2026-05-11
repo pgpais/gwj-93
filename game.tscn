@@ -104,4 +104,5 @@ metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=830004089]
 
-[node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 instance=ExtResource("12_iotsf")]
+[node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 node_paths=PackedStringArray("buildingController") instance=ExtResource("12_iotsf")]
+buildingController = NodePath("../../Player/BuildingController")
