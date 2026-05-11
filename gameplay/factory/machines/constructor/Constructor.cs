@@ -8,20 +8,15 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 	[Export] ItemTransport input;
 	[Export] ItemTransport output;
 
-	Dictionary<GameResourceData, int> inputInventory = new();
-
-	Dictionary<GameResourceData, int> outputInventory = new();
+	[Export] SlotInventory inputInventory;
+	[Export] SlotInventory outputInventory;
 
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
-
 		if (currentRecipe == null) return;
 
-		if (input.HasItem())
-		{
-			PullItemFromInput();
-		}
+		PullItemsFromInputs();
 
 		if (!isCrafting)
 		{
@@ -32,12 +27,29 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 			CraftingTick(delta);
 		}
 
-		foreach (var output in outputInventory)
+		PushItemsToOutputs();
+	}
+
+	private void PullItemsFromInputs()
+	{
+		if (input.HasItem() && inputInventory.HasCapacity(input.GetCurrentItem().Data))
 		{
-			if (output.Value > 0)
-			{
-				OutputItem(output.Key);
-			}
+			ReceiveItem(input.TakeItem());
+		}
+	}
+
+	private void PushItemsToOutputs()
+	{
+		foreach (var result in currentRecipe.Output)
+		{
+			if (output.IsFull()) return;
+			if (!outputInventory.HasItemAmount(result.Key, result.Value)) continue;
+
+			var item = GameResource.Instantiate(result.Key);
+			AddChild(item);
+			output.ReceiveItem(item);
+
+			outputInventory.TryRemoveItem(result.Key, result.Value);
 		}
 	}
 
@@ -46,23 +58,11 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 		return recipe => recipe.Input.Count == 1 && recipe.Output.Count == 1;
 	}
 
-	private void PullItemFromInput()
+	public void ReceiveItem(GameResource gameResource, int amount = 1)
 	{
-		ReceiveItem(input.GetItem());
-	}
-
-	public void ReceiveItem(GameResource item, int amount = 1)
-	{
-		if (inputInventory.ContainsKey(item.Data))
-		{
-			inputInventory[item.Data] += amount;
-		}
-		else
-		{
-			GD.Print($"Item {item.Name} not in recipe");
-		}
-
-		item.QueueFree();
+		GD.Print($"[{Name}] Received {gameResource.Name}");
+		inputInventory.TryAddItem(gameResource.Data);
+		gameResource.QueueFree();
 	}
 
 	private void TryToStartCraft()
@@ -79,25 +79,21 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 	{
 		foreach (var input in currentRecipe.Input)
 		{
-			if (!InventoryHasItem(input.Key, input.Value))
+			if (!inputInventory.HasItemAmount(input.Key, input.Value))
+			{
+				return false;
+			}
+		}
+
+		foreach (var output in currentRecipe.Output)
+		{
+			if (!outputInventory.HasCapacity(output.Key, output.Value))
 			{
 				return false;
 			}
 		}
 
 		return true;
-	}
-
-	private void OutputItem(GameResourceData itemData)
-	{
-		if (output.IsFull()) return;
-		GD.Print($"Outputting {itemData.Name}");
-
-		var item = GameResource.Instantiate(itemData);
-		AddChild(item);
-
-		InventorySpendItem(item.Data, 1);
-		output.ReceiveItem(item);
 	}
 
 	public ItemTransport GetInputPort(DirectionUtils.Direction direction, Vector3I gridPos)
@@ -115,24 +111,13 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 		base.EndCraft();
 		foreach (var output in currentRecipe.Output)
 		{
-			outputInventory[output.Key] += output.Value;
-		}
-	}
-
-	private bool InventoryHasItem(GameResourceData item, int amount = 1)
-	{
-		if (inputInventory.ContainsKey(item))
-		{
-			return inputInventory[item] >= amount;
-		}
-		return false;
-	}
-
-	private void InventorySpendItem(GameResourceData item, int amount = 1)
-	{
-		if (inputInventory.ContainsKey(item))
-		{
-			inputInventory[item] -= amount;
+			if (!outputInventory.TryAddItem(output.Key, output.Value))
+			{
+				GD.PushError($"Failed to add {output.Key.Name} to output inventory");
+			}
+			{
+				GD.Print($"[{Name}] Added {output.Key.Name} to output inventory, outputInventory: {outputInventory.GetItemCount(output.Key)}");
+			}
 		}
 	}
 
@@ -143,21 +128,10 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 
 	protected override void ApplyRecipe(RecipeData recipe)
 	{
-		inputInventory.Clear();
-		outputInventory.Clear();
+		inputInventory = new SlotInventory();
+		outputInventory = new SlotInventory();
 
 		if (recipe == null) return;
-
-
-		foreach (var input in recipe.Input)
-		{
-			inputInventory.Add(input.Key, 0);
-		}
-
-		foreach (var output in recipe.Output)
-		{
-			outputInventory.Add(output.Key, 0);
-		}
 
 		input.SetFilter(new Array<GameResourceData>(recipe.Input.Keys.ToArray()), true);
 		output.SetFilter(new Array<GameResourceData>(recipe.Output.Keys.ToArray()), true);

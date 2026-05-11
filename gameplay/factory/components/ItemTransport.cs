@@ -110,7 +110,12 @@ public partial class ItemTransport : Node3D
 		}
 	}
 
-	public GameResource GetItem()
+	public GameResource GetCurrentItem()
+	{
+		return currentItem;
+	}
+
+	public GameResource TakeItem()
 	{
 		//TODO: Only allow getting item if it reached the end
 		var item = currentItem;
