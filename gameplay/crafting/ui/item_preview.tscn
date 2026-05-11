@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbujovbg0c52v" path="res://assets/kenney/kenney_brick-kit/Previews/none-hq-brick-1x2.png" id="2_yb56a"]
 
 [node name="ItemPreview" type="PanelContainer" unique_id=2011658887 node_paths=PackedStringArray("resourceTexture", "resourceNameLabel")]
+size_flags_horizontal = 0
 script = ExtResource("1_8r0d0")
 resourceTexture = NodePath("MarginContainer/VBoxContainer/TextureRect")
 resourceNameLabel = NodePath("MarginContainer/VBoxContainer/Label")
@@ -21,6 +22,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=521784666]
 layout_mode = 2
 texture = ExtResource("2_yb56a")
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1093719426]
 layout_mode = 2

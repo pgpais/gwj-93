@@ -22,7 +22,6 @@ script = ExtResource("1_1aw3i")
 inputs = [NodePath("InputLeft"), NodePath("InputRight")]
 output = NodePath("Output")
 interactable = NodePath("Components/Interactable")
-debug = true
 debug_startingRecipe = ExtResource("2_ter6k")
 
 [node name="Model" type="Node3D" parent="." unique_id=380016524]

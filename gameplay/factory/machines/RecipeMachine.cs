@@ -4,14 +4,22 @@ using Godot;
 
 public abstract partial class RecipeMachine : Building
 {
+    [Signal] public delegate void StartedCraftingEventHandler();
+    [Signal] public delegate void StoppedCraftingEventHandler();
+    [Signal] public delegate void RecipeChangedEventHandler(RecipeData recipe);
+
     [ExportGroup("References")]
     [Export] Interactable interactable;
 
     [ExportGroup("Debug")]
     [Export] bool debug = false;
     [Export] RecipeData debug_startingRecipe;
-    protected RecipeData currentRecipe;
 
+    public RecipeData CurrentRecipe => currentRecipe;
+    public bool IsCrafting => isCrafting;
+    public float CraftingTime => craftingTime;
+
+    protected RecipeData currentRecipe;
     protected bool isCrafting = false;
     protected float craftingTime = 0f;
 
@@ -30,7 +38,7 @@ public abstract partial class RecipeMachine : Building
 
     public void SetRecipe(RecipeData recipe)
     {
-        if (!CanAcceptRecipe(recipe))
+        if (recipe != null && !CanAcceptRecipe(recipe))
         {
             GD.Print($"{Name} cannot use recipe {recipe.ResourceName}");
             return;
@@ -39,6 +47,8 @@ public abstract partial class RecipeMachine : Building
         currentRecipe = recipe;
 
         ApplyRecipe(recipe);
+
+        EmitSignal(SignalName.RecipeChanged, recipe);
     }
 
     public virtual void CraftingTick(double delta)
@@ -49,6 +59,11 @@ public abstract partial class RecipeMachine : Building
         {
             EndCraft();
         }
+    }
+
+    public void ClearRecipe()
+    {
+        SetRecipe(null);
     }
 
     protected virtual void StartCrafting()

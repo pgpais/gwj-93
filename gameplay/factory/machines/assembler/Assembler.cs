@@ -103,6 +103,9 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 		}
 		outputInventory.Clear();
 
+		if (recipe == null) return;
+
+
 		foreach (var input in recipe.Input)
 		{
 			inputInventory.Add(input.Key, 0);
@@ -119,7 +122,6 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 		}
 
 		output.SetFilter(new Array<GameResourceData>(recipe.Output.Keys.ToArray()), true);
-
 	}
 
 	private void TryToStartCraft()

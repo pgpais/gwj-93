@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="GameResourceData" format=4 uid="uid://djpg5e22ssxok"]
+
+[ext_resource type="Texture2D" uid="uid://cjwmne3p3uuu4" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-plate-4x4.png" id="1_5ds2p"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_fgwvl"]
+[ext_resource type="Texture2D" uid="uid://qc56hrox4m1q" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/Textures/colormap.png" id="2_71uto"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88eph"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_71uto")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1t2yc"]
+_surfaces = [{
+"aabb": AABB(-0.15900001, 0, -0.15799999, 0.31800002, 0.031999998, 0.31599998),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgABAAgACAABAAAAAgAHAAAAAAAHAAkACQAHAAIACQAKAAAAAAAKAAgAAgALAAkACAALAAIACgAJAAYABgAJAAsABAALAAgACwAEAAYACAADAAQABgAEAAMAAwAIAAoABgAFAAoACgAFAAMAAwAFAAYA"),
+"lods": [0.057627622, PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAwAEAAIAAAAFAAMABgAEAAMAAwAFAAYABwAFAAAAAgAHAAAABQAHAAYAAgAEAAcABgAHAAQA")],
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("5tAivgAAAADAyiE+5dAiPgAAAADAyiE+5dAiPgAAAADAyiG+LbIdPm4SAz0JrBw+LbIdPm4SAz0IrBy+LLIdvm4SAz0JrBw+LLIdvm4SAz0IrBy+5tAivgAAAADAyiG+5dAiPhov3TzAyiE+5tAivhov3TzAyiG+5tAivhov3TzAyiE+5dAiPhov3TzAyiG+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ueead"]
+resource_name = "none-hq-plate-4x4_none-hq-plate-4x4"
+_surfaces = [{
+"aabb": AABB(-0.15900001, 0, -0.15799999, 0.31800002, 0.031999998, 0.31599998),
+"attribute_data": PackedByteArray("AAAYP5qZeT8AABg/mpl5PwAAGD+amXk/AAAYP5qZeT8AABg/mpl5PwAAGD9mZkY/AAAYP5qZeT8AABg/ZmZGPwAAGD9mZkY/AAAYP5qZeT8AABg/mpl5PwAAGD9mZkY/AAAYP5qZeT8AABg/ZmZGPwAAGD+amXk/AAAYP2ZmRj8AABg/ZmZGPwAAGD9mZkY/AAAYP2ZmRj8AABg/ZmZGPwAAGD+amXk/AAAYP5qZeT8AABg/ZmZGPwAAGD9mZkY/AAAYP2ZmTj8AABg/ZmZOPwAAGD9mZk4/AAAYP2ZmTj8AABg/ZmZOPwAAGD9mZk4/AAAYP2ZmTj8AABg/ZmZOPw=="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABgAEABgAGAAZAAYAGQAYAAcABwAFABkAGgAJAAoACgAbABoACAAaABsAGwALAAgAHAAOAAwADAAdABwADwAcAB0AHQANAA8AEAARABIAEgATABAAFAAVAB4AHgAfABQAFwAfAB4AHgAWABcA"),
+"lods": [0.057627622, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABQAEAAcACAAJAAoACgALAAgADAANAA4ADwAOAA0AEAARABIAEgATABAAFAAVABYAFgAXABQA")],
+"material": SubResource("StandardMaterial3D_88eph"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("5tAivgAAAADAyiE+5dAiPgAAAADAyiE+5dAiPgAAAADAyiG+5tAivgAAAADAyiG+5tAivgAAAADAyiG+LLIdvm4SAz0JrBw+5tAivgAAAADAyiE+LLIdvm4SAz0IrBy+LbIdPm4SAz0JrBw+5dAiPgAAAADAyiE+5tAivgAAAADAyiE+LLIdvm4SAz0JrBw+5dAiPgAAAADAyiG+LbIdPm4SAz0IrBy+5tAivgAAAADAyiG+LLIdvm4SAz0IrBy+LLIdvm4SAz0IrBy+LbIdPm4SAz0IrBy+LbIdPm4SAz0JrBw+LLIdvm4SAz0JrBw+5dAiPgAAAADAyiG+5dAiPgAAAADAyiE+LbIdPm4SAz0JrBw+LbIdPm4SAz0IrBy+5tAivhov3TzAyiG+5tAivhov3TzAyiE+5dAiPhov3TzAyiE+5tAivhov3TzAyiE+5tAivhov3TzAyiG+5dAiPhov3TzAyiG+5dAiPhov3TzAyiE+5dAiPhov3TzAyiG+/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/78AAP9/AAD/v/8//78AAP+/AAD/fwAA/7//P/+/AAD/v/9//78AAP+//3//fwAA/7//f/9/AAD/v/9//78AAP+//////wAA/7//v///AAD/v/////8AAP+//7///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v////38AAP+/////fwAA/7//v/+/AAD/v/+//78AAP+/lx2XnQAA/7+XHZedAAD/v/9/l50AAP+//3+XnQAA/79n4v//AAD/v2fi//8AAP+/Z+KXnQAA/79n4pedAAD/vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1t2yc")
+
+[resource]
+script = ExtResource("1_fgwvl")
+Name = "4x4 Brick"
+Mesh = SubResource("ArrayMesh_ueead")
+Icon = ExtResource("1_5ds2p")
+metadata/_custom_type_script = "uid://dhvw5rapf4uid"

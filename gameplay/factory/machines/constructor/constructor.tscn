@@ -15,7 +15,6 @@ script = ExtResource("1_u8fdu")
 input = NodePath("Input")
 output = NodePath("Output")
 interactable = NodePath("Components/Interactable")
-debug = true
 debug_startingRecipe = ExtResource("2_t0vy7")
 
 [node name="machine-window2" parent="." unique_id=118367443 instance=ExtResource("1_nk4a2")]

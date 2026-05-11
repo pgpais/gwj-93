@@ -146,6 +146,9 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 		inputInventory.Clear();
 		outputInventory.Clear();
 
+		if (recipe == null) return;
+
+
 		foreach (var input in recipe.Input)
 		{
 			inputInventory.Add(input.Key, 0);

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="12_215e1"]
 [ext_resource type="PackedScene" uid="uid://bq3mwgcnolfl6" path="res://gameplay/building/ui/building_selector.tscn" id="12_iotsf"]
 [ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="12_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://su06kvi6q2f3" path="res://gameplay/crafting/ui/recipe_selection.tscn" id="13_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://cwrgekca5snk" path="res://gameplay/crafting/ui/machine_view.tscn" id="13_lc2xo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e2o6t"]
 size = Vector2(25, 25)
@@ -108,5 +108,16 @@ metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 [node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 node_paths=PackedStringArray("buildingController") instance=ExtResource("12_iotsf")]
 buildingController = NodePath("../../Player/BuildingController")
 
-[node name="RecipeSelection" parent="CanvasLayer" unique_id=1477577932 instance=ExtResource("13_lc2xo")]
+[node name="MachineView" parent="CanvasLayer" unique_id=1320788613 instance=ExtResource("13_lc2xo")]
 visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -230.0
+offset_right = 370.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2

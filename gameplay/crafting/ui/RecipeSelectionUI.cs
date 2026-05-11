@@ -4,19 +4,26 @@ using System.Linq;
 
 public partial class RecipeSelectionUI : PanelContainer
 {
-	[Signal] public delegate void RecipeSelectedEventHandler(int recipeId);
+	[Signal] public delegate void RecipeSelectedEventHandler(RecipeData recipe);
 
 	[Export] RecipeCollectionData recipeCollectionData;
 	[Export] PackedScene recipePreviewScene;
 	[Export] Container previewContainer;
 	[Export] RecipeDetailView recipeDetailView;
 
+	RecipeMachine machine;
+
 	public override void _Ready()
 	{
-		//TODO: move this into an orchestrator class
+		recipeDetailView.RecipeSelected += SelectRecipe;
 
-		EventBus.Instance.RecipeMachineInteractionStarted += OnRecipeMachineInteractionStarted;
-		EventBus.Instance.RecipeMachineInteractionStopped += OnRecipeMachineInteractionStopped;
+
+	}
+
+	private void SelectRecipe(RecipeData recipe)
+	{
+		machine.SetRecipe(recipe);
+		recipeDetailView.Hide();
 	}
 
 	public void ShowFilteredRecipes(Func<RecipeData, bool> predicate)
@@ -31,11 +38,11 @@ public partial class RecipeSelectionUI : PanelContainer
 			recipePreview.SetRecipe(recipe);
 			previewContainer.AddChild(recipePreview);
 
-			recipePreview.Pressed += () => SelectRecipe(recipe);
+			recipePreview.Pressed += () => ShowRecipe(recipe);
 		}
 	}
 
-	private void SelectRecipe(RecipeData recipe)
+	private void ShowRecipe(RecipeData recipe)
 	{
 		recipeDetailView.SetRecipe(recipe);
 	}
@@ -48,16 +55,18 @@ public partial class RecipeSelectionUI : PanelContainer
 		}
 	}
 
-	private void OnRecipeMachineInteractionStarted(RecipeMachine machine)
+	public void SetRecipeMachine(RecipeMachine machine)
 	{
+		this.machine = machine;
 		ShowFilteredRecipes(machine.GetRecipePredicate());
+
 		Show();
 		recipeDetailView.Hide();
 	}
 
-	private void OnRecipeMachineInteractionStopped(RecipeMachine machine)
+	private new void Hide()
 	{
 		ClearRecipes();
-		Hide();
+		base.Hide();
 	}
 }

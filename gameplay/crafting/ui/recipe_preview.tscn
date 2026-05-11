@@ -32,6 +32,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=521784666]
 layout_mode = 2
 texture = ExtResource("1_bwp33")
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1093719426]
 layout_mode = 2
