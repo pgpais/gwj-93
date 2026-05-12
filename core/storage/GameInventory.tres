@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StorageInventory" format=3 uid="uid://ifam1yaybwe2"]
+
+[ext_resource type="Script" uid="uid://dp6jgkpblxd5x" path="res://gameplay/inventory/StorageInventory.cs" id="1_poj0k"]
+
+[resource]
+script = ExtResource("1_poj0k")
+items = Dictionary[Object, int]({})
+metadata/_custom_type_script = "uid://dp6jgkpblxd5x"

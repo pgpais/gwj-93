@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d0igewc88k7jv"]
+
+[ext_resource type="PackedScene" uid="uid://d3xsp657r251n" path="res://gameplay/factory/machines/containers/storage_container.tscn" id="1_6igmt"]
+[ext_resource type="Resource" uid="uid://ifam1yaybwe2" path="res://core/storage/GameInventory.tres" id="2_yiwo3"]
+
+[node name="InterdimensionalContainer" unique_id=174526617 instance=ExtResource("1_6igmt")]
+storage = ExtResource("2_yiwo3")
+
+[node name="Label3D" parent="Visuals" parent_id_path=PackedInt32Array(1757954270) index="1" unique_id=832559470]
+text = "Interdimensional Container"

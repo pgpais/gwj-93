@@ -50,4 +50,14 @@ public partial class StorageInventory : Inventory
         }
         return false;
     }
+
+    public override string ToString()
+    {
+        string s = "";
+        foreach (var item in items)
+        {
+            s += $"{item.Key.Name}: {item.Value}\n";
+        }
+        return s;
+    }
 }
