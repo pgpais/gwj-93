@@ -18,6 +18,8 @@ public partial class SlotInventory : Inventory
         capacity = numberOfSlots;
     }
 
+    public Slot GetSlot(int index) => slots[index];
+
     public override int GetItemCount(GameResourceData item)
     {
         int count = 0;
