@@ -7,10 +7,16 @@ public partial class ItemPreview : Control
 	[Export] Label resourceNameLabel;
 	[Export] Label resourceAmountLabel;
 
-	internal void SetResource(GameResourceData itemData, int amount = 1)
+	internal void SetResource(GameResourceData itemData, int amount = -1)
 	{
 		resourceTexture.Texture = itemData.Icon;
 		resourceNameLabel.Text = itemData.Name;
-		resourceAmountLabel.Text = amount.ToString();
+
+		if (amount == -1) resourceAmountLabel.Hide();
+		else
+		{
+			resourceAmountLabel.Show();
+			resourceAmountLabel.Text = amount.ToString();
+		}
 	}
 }

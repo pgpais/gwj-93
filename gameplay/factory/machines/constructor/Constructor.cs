@@ -136,4 +136,9 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 		input.SetFilter(new Array<GameResourceData>(recipe.Input.Keys.ToArray()), true);
 		output.SetFilter(new Array<GameResourceData>(recipe.Output.Keys.ToArray()), true);
 	}
+
+	public override int GetItemQuantity(GameResourceData resource)
+	{
+		return inputInventory.GetItemCount(resource);
+	}
 }

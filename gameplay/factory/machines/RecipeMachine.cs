@@ -85,6 +85,8 @@ public abstract partial class RecipeMachine : Building
         }
     }
 
+
+    public abstract int GetItemQuantity(GameResourceData resource);
     public abstract Func<RecipeData, bool> GetRecipePredicate();
     protected abstract bool CanCraftRecipe();
     protected abstract bool CanAcceptRecipe(RecipeData recipe);
@@ -99,4 +101,5 @@ public abstract partial class RecipeMachine : Building
     {
         EventBus.Instance.EmitSignal(EventBus.SignalName.RecipeMachineInteractionStopped, this);
     }
+
 }

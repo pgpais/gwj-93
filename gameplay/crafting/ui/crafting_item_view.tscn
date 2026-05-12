@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://hlxgkr04slo0"]
+
+[ext_resource type="Script" uid="uid://cjjjfqmkwseeu" path="res://gameplay/crafting/ui/CraftingItemView.cs" id="1_eleuf"]
+[ext_resource type="Texture2D" uid="uid://bbujovbg0c52v" path="res://assets/kenney/kenney_brick-kit/Previews/none-hq-brick-1x2.png" id="2_4d62q"]
+
+[node name="CraftingItemview" type="PanelContainer" unique_id=2011658887 node_paths=PackedStringArray("itemName", "icon", "currentAmount", "maxAmount", "requiredAmount")]
+offset_right = 528.0
+offset_bottom = 101.0
+size_flags_horizontal = 3
+script = ExtResource("1_eleuf")
+itemName = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Label")
+icon = NodePath("MarginContainer/HBoxContainer/VBoxContainer/TextureRect")
+currentAmount = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Label2")
+maxAmount = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Label4")
+requiredAmount = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/AmountPerCraft")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2062571367]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1913307986]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=245108805]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=521784666]
+layout_mode = 2
+texture = ExtResource("2_4d62q")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=78838167]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=275268778]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 10
+text = "20"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1111791073]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 10
+text = "/"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1363477092]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 10
+text = "500"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=831680830]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=659249234]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1093719426]
+layout_mode = 2
+text = "Brick"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=327998393]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="AmountPerCraft" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1367403853]
+layout_mode = 2
+size_flags_vertical = 6
+text = "3"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=327005965]
+layout_mode = 2
+size_flags_vertical = 6
+text = "per craft"
+horizontal_alignment = 1

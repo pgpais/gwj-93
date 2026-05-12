@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bgwiu1ir6kv5o"]
 
 [ext_resource type="Script" uid="uid://bao4hhphueqvk" path="res://gameplay/crafting/ui/ActiveMachineView.cs" id="1_qe4jh"]
-[ext_resource type="PackedScene" uid="uid://ec1ttiphijf0" path="res://gameplay/crafting/ui/item_preview.tscn" id="2_ut5iv"]
 [ext_resource type="PackedScene" uid="uid://fd0sfnpfdf7w" path="res://gameplay/crafting/ui/recipe_preview.tscn" id="3_mm2h5"]
+[ext_resource type="PackedScene" uid="uid://hlxgkr04slo0" path="res://gameplay/crafting/ui/crafting_item_view.tscn" id="3_ut5iv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvmgs"]
 bg_color = Color(0.24115604, 0.24115607, 0.24115595, 1)
@@ -19,7 +19,7 @@ ingredientsContainer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Inp
 resultsContainer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2/VBoxContainer")
 recipePreview = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/RecipePreview")
 craftProgress = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/ProgressBar")
-ItemPreviewScene = ExtResource("2_ut5iv")
+CraftingItemViewScene = ExtResource("3_ut5iv")
 stopButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ActiveRecipeView/MarginContainer/VBoxContainer/VBoxContainer/Button")
 metadata/_edit_group_ = true
 
@@ -66,7 +66,7 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2" unique_id=1763176909]
 layout_mode = 2
 
-[node name="ItemPreview" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2011658887 instance=ExtResource("2_ut5iv")]
+[node name="CraftingItemview" parent="MarginContainer/VBoxContainer/HBoxContainer/InputView/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2011658887 instance=ExtResource("3_ut5iv")]
 layout_mode = 2
 
 [node name="ActiveRecipeView" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1829186186]
@@ -146,5 +146,5 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2" unique_id=1838816898]
 layout_mode = 2
 
-[node name="ItemPreview" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1777225559 instance=ExtResource("2_ut5iv")]
+[node name="CraftingItemview" parent="MarginContainer/VBoxContainer/HBoxContainer/OutputView/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2108582766 instance=ExtResource("3_ut5iv")]
 layout_mode = 2

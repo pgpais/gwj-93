@@ -9,7 +9,7 @@ public partial class ActiveMachineView : PanelContainer
 	[Export] Container resultsContainer;
 	[Export] RecipePreview recipePreview;
 	[Export] ProgressBar craftProgress;
-	[Export] PackedScene ItemPreviewScene;
+	[Export] PackedScene CraftingItemViewScene;
 	[Export] Button stopButton;
 
 	RecipeMachine machine;
@@ -98,10 +98,10 @@ public partial class ActiveMachineView : PanelContainer
 		}
 	}
 
-	private Node CreateItemPreview(GameResourceData key, int value)
+	private Node CreateItemPreview(GameResourceData resource, int requiredQuantity)
 	{
-		var itemPreview = ItemPreviewScene.Instantiate<ItemPreview>();
-		itemPreview.SetResource(key, value);
+		var itemPreview = CraftingItemViewScene.Instantiate<CraftingItemView>();
+		itemPreview.SetResource(resource, machine.GetItemQuantity(resource), resource.MaxStack, requiredQuantity);
 		return itemPreview;
 	}
 }
