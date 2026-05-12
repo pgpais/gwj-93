@@ -11,8 +11,7 @@ public partial class ItemTransport : Node3D
 
 	[Export] float beltSpeed = 2f;
 
-	[Export] Node3D startPos;
-	[Export] Node3D endPos;
+	[Export] PathFollow3D followPath;
 
 	[Export] ItemTransport nextPort;
 
@@ -146,7 +145,9 @@ public partial class ItemTransport : Node3D
 	private void MoveItem(double delta)
 	{
 		currentItemPos += beltSpeed * (float)delta;
-		currentItem.Position = startPos.Position.Lerp(endPos.Position, currentItemPos);
+
+		followPath.ProgressRatio = Mathf.Min(1, currentItemPos);
+		currentItem.GlobalPosition = followPath.GlobalPosition;
 	}
 
 	private void SendItem()

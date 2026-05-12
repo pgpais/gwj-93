@@ -10,6 +10,13 @@
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="6_6i4ss"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="9_6m7fc"]
 
+[sub_resource type="Curve3D" id="Curve3D_6m7fc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g0fbh"]
 size = Vector3(3, 1.4, 2.4980469)
 
@@ -60,43 +67,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
 [node name="conveyor4" parent="Model" unique_id=125525816 instance=ExtResource("5_ft8t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
-[node name="Output" type="Node3D" parent="." unique_id=1376798658 node_paths=PackedStringArray("startPos", "endPos")]
+[node name="Output" type="Node3D" parent="." unique_id=1376798658 node_paths=PackedStringArray("followPath")]
 script = ExtResource("6_6i4ss")
-startPos = NodePath("StartPos")
-endPos = NodePath("EndPos")
+followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
-[node name="StartPos" type="Marker3D" parent="Output" unique_id=964176186]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+[node name="Path3D" type="Path3D" parent="Output" unique_id=292695726]
+curve = SubResource("Curve3D_6m7fc")
 
-[node name="EndPos" type="Marker3D" parent="Output" unique_id=1549697646]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+[node name="PathFollow3D" type="PathFollow3D" parent="Output/Path3D" unique_id=2091887863]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
 
-[node name="InputLeft" type="Node3D" parent="." unique_id=1551652400 node_paths=PackedStringArray("startPos", "endPos")]
+[node name="InputLeft" type="Node3D" parent="." unique_id=1551652400 node_paths=PackedStringArray("followPath")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 script = ExtResource("6_6i4ss")
-startPos = NodePath("StartPos")
-endPos = NodePath("EndPos")
+followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
-[node name="StartPos" type="Marker3D" parent="InputLeft" unique_id=391844591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+[node name="Path3D" type="Path3D" parent="InputLeft" unique_id=1596384809]
+curve = SubResource("Curve3D_6m7fc")
 
-[node name="EndPos" type="Marker3D" parent="InputLeft" unique_id=1271300119]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+[node name="PathFollow3D" type="PathFollow3D" parent="InputLeft/Path3D" unique_id=1925192685]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
 
-[node name="InputRight" type="Node3D" parent="." unique_id=417576367 node_paths=PackedStringArray("startPos", "endPos")]
+[node name="InputRight" type="Node3D" parent="." unique_id=417576367 node_paths=PackedStringArray("followPath")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 script = ExtResource("6_6i4ss")
-startPos = NodePath("StartPos")
-endPos = NodePath("EndPos")
+followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
-[node name="StartPos" type="Marker3D" parent="InputRight" unique_id=977248775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+[node name="Path3D" type="Path3D" parent="InputRight" unique_id=34598284]
+curve = SubResource("Curve3D_6m7fc")
 
-[node name="EndPos" type="Marker3D" parent="InputRight" unique_id=150358923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+[node name="PathFollow3D" type="PathFollow3D" parent="InputRight/Path3D" unique_id=1718454163]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=241316416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)

@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://d3xsp657r251n"]
 
 [ext_resource type="Script" uid="uid://c48rrkugnwl3b" path="res://gameplay/factory/machines/containers/StorageContainer.cs" id="1_025sl"]
-[ext_resource type="Script" uid="uid://dp6jgkpblxd5x" path="res://gameplay/inventory/StorageInventory.cs" id="2_ovxp5"]
 [ext_resource type="PackedScene" uid="uid://crn7ijla8l7ul" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-fortified.glb" id="3_fekkb"]
 [ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="4_8sr2g"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="5_q3he2"]
 
-[sub_resource type="Resource" id="Resource_g0vjj"]
-script = ExtResource("2_ovxp5")
-items = null
-metadata/_custom_type_script = "uid://dp6jgkpblxd5x"
+[sub_resource type="Curve3D" id="Curve3D_sbp5f"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Container" type="Node3D" unique_id=174526617 node_paths=PackedStringArray("input", "componentsParent")]
 script = ExtResource("1_025sl")
 input = NodePath("Components/ItemTransport")
-Storage = SubResource("Resource_g0vjj")
 componentsParent = NodePath("Components")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1757954270]
@@ -30,14 +30,13 @@ text = "Container"
 
 [node name="Components" type="Node3D" parent="." unique_id=768678201]
 
-[node name="ItemTransport" type="Node3D" parent="Components" unique_id=1831824042 node_paths=PackedStringArray("startPos", "endPos")]
+[node name="ItemTransport" type="Node3D" parent="Components" unique_id=1831824042 node_paths=PackedStringArray("followPath")]
 script = ExtResource("5_q3he2")
-startPos = NodePath("StartPos")
-endPos = NodePath("EndPos")
+followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
-[node name="StartPos" type="Marker3D" parent="Components/ItemTransport" unique_id=1249698222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+[node name="Path3D" type="Path3D" parent="Components/ItemTransport" unique_id=1249930546]
+curve = SubResource("Curve3D_sbp5f")
 
-[node name="EndPos" type="Marker3D" parent="Components/ItemTransport" unique_id=1486455451]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+[node name="PathFollow3D" type="PathFollow3D" parent="Components/ItemTransport/Path3D" unique_id=1897753070]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
