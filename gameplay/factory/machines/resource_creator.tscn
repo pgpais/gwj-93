@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="4_1mw5e"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="5_n0h7l"]
 
+[sub_resource type="Curve3D" id="Curve3D_n0h7l"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="ResourceCreator" type="Node3D" unique_id=263480292 node_paths=PackedStringArray("itemTransport", "componentsParent")]
 script = ExtResource("1_ury3v")
 data = ExtResource("2_n0h7l")
@@ -18,8 +25,13 @@ componentsParent = NodePath("Components")
 
 [node name="Components" type="Node3D" parent="." unique_id=1941455542]
 
-[node name="ItemTransport" type="Node3D" parent="Components" unique_id=1241795695 node_paths=PackedStringArray("startPos", "endPos")]
+[node name="ItemTransport" type="Node3D" parent="Components" unique_id=1241795695 node_paths=PackedStringArray("followPath")]
 script = ExtResource("5_n0h7l")
-startPos = NodePath("../../ConveyorBelt/BeltStart")
-endPos = NodePath("../../ConveyorBelt/BeltEnd")
+followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Path3D" type="Path3D" parent="Components/ItemTransport" unique_id=296219745]
+curve = SubResource("Curve3D_n0h7l")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Components/ItemTransport/Path3D" unique_id=35360663]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)

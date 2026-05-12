@@ -151,4 +151,9 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 			}
 		}
 	}
+
+	public override int GetItemQuantity(GameResourceData resource)
+	{
+		return inputInventory.GetItemCount(resource);
+	}
 }

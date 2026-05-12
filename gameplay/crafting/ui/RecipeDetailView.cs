@@ -65,7 +65,7 @@ public partial class RecipeDetailView : PanelContainer
 	private ItemPreview CreateItemPreview(GameResourceData itemData, int amount)
 	{
 		var itemPreview = ItemPreviewScene.Instantiate<ItemPreview>();
-		itemPreview.SetResource(itemData);
+		itemPreview.SetResource(itemData, amount);
 		return itemPreview;
 	}
 }
