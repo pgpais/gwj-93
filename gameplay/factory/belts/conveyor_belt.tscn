@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vfp6tpwdpg77" path="res://gameplay/factory/belts/ConveyorBelt.cs" id="1_eemtw"]
 [ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="1_wy8fd"]
-[ext_resource type="PackedScene" uid="uid://dx306tg7f7vfm" path="res://gameplay/factory/belts/curved_conveyor_belt_right.tscn" id="3_kaw5l"]
+[ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="3_s0r61"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="4_c4w4g"]
 [ext_resource type="PackedScene" uid="uid://kxe3khip83bj" path="res://gameplay/factory/belts/curved_conveyor_belt_left.tscn" id="4_viq68"]

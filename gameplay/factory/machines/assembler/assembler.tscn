@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crn7ijla8l7ul" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-fortified.glb" id="4_6m7fc"]
 [ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="5_ft8t3"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="6_6i4ss"]
+[ext_resource type="PackedScene" uid="uid://djimsnd08p6m3" path="res://assets/factory_objects/assembler_model.tscn" id="8_ft8t3"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="9_6m7fc"]
 
 [sub_resource type="Curve3D" id="Curve3D_6m7fc"]
@@ -18,54 +19,67 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g0fbh"]
-size = Vector3(3, 1.4, 2.4980469)
+size = Vector3(2, 1.4, 2.4980469)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ft8t3"]
 height = 1.0
 radius = 1.5
 
-[node name="Assembler" type="Node3D" unique_id=1725021305 node_paths=PackedStringArray("inputs", "output", "interactable")]
+[node name="Assembler" type="Node3D" unique_id=1725021305 node_paths=PackedStringArray("output", "interactable")]
 script = ExtResource("1_1aw3i")
-inputs = [NodePath("InputLeft"), NodePath("InputRight")]
+debug_startingRecipe = ExtResource("2_ter6k")
 output = NodePath("Output")
 interactable = NodePath("Components/Interactable")
-debug_startingRecipe = ExtResource("2_ter6k")
 
 [node name="Model" type="Node3D" parent="." unique_id=380016524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
 
 [node name="machine2" parent="Model" unique_id=2054626450 instance=ExtResource("1_g0fbh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+visible = false
 
 [node name="machine3" parent="Model" unique_id=177814456 instance=ExtResource("1_g0fbh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+visible = false
 
 [node name="machine4" parent="Model" unique_id=390507815 instance=ExtResource("1_g0fbh")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0, 0.5)
+visible = false
 
 [node name="machine5" parent="Model" unique_id=1587090640 instance=ExtResource("1_g0fbh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+visible = false
 
 [node name="machine6" parent="Model" unique_id=720159438 instance=ExtResource("1_g0fbh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
+visible = false
 
 [node name="conveyor-corner2" parent="Model" unique_id=1297589978 instance=ExtResource("2_1aw3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+visible = false
 
 [node name="conveyor-junction-t2" parent="Model" unique_id=587814466 instance=ExtResource("3_ter6k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 0, 1.5)
+visible = false
 
 [node name="machine-fortified2" parent="Model" unique_id=1729065046 instance=ExtResource("4_6m7fc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+visible = false
 
 [node name="conveyor2" parent="Model" unique_id=231581322 instance=ExtResource("5_ft8t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+visible = false
 
 [node name="conveyor3" parent="Model" unique_id=2025694309 instance=ExtResource("5_ft8t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+visible = false
 
 [node name="conveyor4" parent="Model" unique_id=125525816 instance=ExtResource("5_ft8t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+visible = false
+
+[node name="Assembler_Model" parent="Model" unique_id=449730407 instance=ExtResource("8_ft8t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
 [node name="Output" type="Node3D" parent="." unique_id=1376798658 node_paths=PackedStringArray("followPath")]
 script = ExtResource("6_6i4ss")
@@ -79,7 +93,7 @@ curve = SubResource("Curve3D_6m7fc")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
 
 [node name="InputLeft" type="Node3D" parent="." unique_id=1551652400 node_paths=PackedStringArray("followPath")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 script = ExtResource("6_6i4ss")
 followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
@@ -91,7 +105,7 @@ curve = SubResource("Curve3D_6m7fc")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
 
 [node name="InputRight" type="Node3D" parent="." unique_id=417576367 node_paths=PackedStringArray("followPath")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 script = ExtResource("6_6i4ss")
 followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
@@ -106,7 +120,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=332025067]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.7, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.7, 1)
 shape = SubResource("BoxShape3D_g0fbh")
 
 [node name="Components" type="Node3D" parent="." unique_id=16610]
@@ -117,7 +131,7 @@ script = ExtResource("9_6m7fc")
 metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=1474680246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 shape = SubResource("CylinderShape3D_ft8t3")
 
 [editable path="Model/machine-fortified2"]

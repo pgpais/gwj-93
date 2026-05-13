@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" format=4 uid="uid://c1d0uh3g6duqu"]
+[gd_resource type="Resource" format=4 uid="uid://c1d0uh3g6duqu"]
 
 [ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_6qu5j"]
 [ext_resource type="Texture2D" uid="uid://d2t66t3vuxlcy" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine.png" id="2_gxffc"]
