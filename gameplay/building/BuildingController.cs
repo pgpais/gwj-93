@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using static DirectionUtils;
 
@@ -71,6 +72,11 @@ public partial class BuildingController : Node3D
 		}
 	}
 
+	private void TryRemoveBuilding()
+	{
+		FactoryGrid.Instance.RemoveBuilding(_currentGridPos);
+	}
+
 	private void CancelBuilding()
 	{
 		_ghost.Hide();
@@ -123,15 +129,20 @@ public partial class BuildingController : Node3D
 			}
 		}
 
+		var worldPos = GetMouseWorldPosition();
+		_currentGridPos = FactoryGrid.Instance.WorldToGrid(worldPos);
+
 		if (isBuilding)
 		{
-			var worldPos = GetMouseWorldPosition();
-			_currentGridPos = FactoryGrid.Instance.WorldToGrid(worldPos);
-
 			if (@event.IsActionPressed("place_building"))
 			{
 				TryPlaceBuilding();
 			}
+		}
+
+		if (@event.IsActionPressed("remove_building"))
+		{
+			TryRemoveBuilding();
 		}
 	}
 

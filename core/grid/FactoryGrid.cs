@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using Godot;
 using Godot.Collections;
@@ -110,13 +111,47 @@ public partial class FactoryGrid : Node3D
 		{
 			grid[gridPos] = building;
 		}
-
+		building.SetData(buildingData);
 		building.OnPlaced();
 
 		GD.Print($"Placed {building.Name} at {gridPos}");
 		// GD.Print(GridToString(gridPos, true));
 
 		return building;
+	}
+
+	public void RemoveBuilding(Vector3I currentGridPos)
+	{
+		var building = Get(currentGridPos);
+		if (building == null) return;
+
+		var buildingData = building.Data;
+
+		var footprint = buildingData.Footprint;
+		var gridPos = building.GridPosition;
+		var direction = building.direction;
+
+		if (footprint != null)
+		{
+			for (int x = 0; x < footprint.Count; x++)
+			{
+				for (int z = 0; z < footprint[x].Count; z++)
+				{
+					if (footprint[x][z])
+					{
+						var offset = x * -direction.GetDirectionVector() + z * direction.RotateLeft().GetDirectionVector();
+						grid.Remove(gridPos + offset);
+						GD.Print(GridToString(gridPos + offset, true));
+					}
+				}
+			}
+		}
+		else
+		{
+			grid.Remove(gridPos);
+		}
+
+		building.OnRemoved();
 	}
 
 	public Building Get(Vector3I pos)
