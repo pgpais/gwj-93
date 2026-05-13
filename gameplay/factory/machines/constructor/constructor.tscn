@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="2_u8fdu"]
 [ext_resource type="PackedScene" uid="uid://oul8rh1qmb75" path="res://gameplay/factory/belts/conveyor_belt.tscn" id="3_t0vy7"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="6_48vmo"]
+[ext_resource type="PackedScene" uid="uid://cuqlgdmoui8c3" path="res://assets/factory_objects/constructor_model.tscn" id="7_dwhy7"]
 
 [sub_resource type="Curve3D" id="Curve3D_48vmo"]
 _data = {
@@ -19,12 +20,13 @@ height = 1.0
 
 [node name="Constructor" type="Node3D" unique_id=2021182075 node_paths=PackedStringArray("input", "output", "interactable")]
 script = ExtResource("1_u8fdu")
+debug_startingRecipe = ExtResource("2_t0vy7")
 input = NodePath("Input")
 output = NodePath("Output")
 interactable = NodePath("Components/Interactable")
-debug_startingRecipe = ExtResource("2_t0vy7")
 
 [node name="machine-window2" parent="." unique_id=118367443 instance=ExtResource("1_nk4a2")]
+visible = false
 
 [node name="Input" type="Node3D" parent="." unique_id=146211316 node_paths=PackedStringArray("followPath")]
 script = ExtResource("2_u8fdu")
@@ -49,6 +51,7 @@ curve = SubResource("Curve3D_48vmo")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
 
 [node name="ConveyorBelt" parent="." unique_id=931640884 instance=ExtResource("3_t0vy7")]
+visible = false
 
 [node name="Components" type="Node3D" parent="." unique_id=1661008949]
 
@@ -59,3 +62,5 @@ metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=1740957891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_48vmo")
+
+[node name="Constructor_Model" parent="." unique_id=1356047489 instance=ExtResource("7_dwhy7")]

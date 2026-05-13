@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vfp6tpwdpg77" path="res://gameplay/factory/belts/ConveyorBelt.cs" id="1_eemtw"]
 [ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="1_wy8fd"]
+[ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="3_s0r61"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="4_c4w4g"]
 
@@ -22,6 +23,9 @@ itemTransport = NodePath("Components/ItemTransport")
 componentsParent = NodePath("Components")
 
 [node name="conveyor2" parent="." unique_id=231581322 instance=ExtResource("1_wy8fd")]
+visible = false
+
+[node name="conveyor_belt" parent="." unique_id=1527113887 instance=ExtResource("3_s0r61")]
 
 [node name="Components" type="Node3D" parent="." unique_id=1781978450]
 
