@@ -9,6 +9,7 @@ public partial class ItemTransport : Node3D
 	[Signal] public delegate void OutputConnectedEventHandler();
 	[Signal] public delegate void FullEventHandler();
 	[Signal] public delegate void HasCapacityEventHandler();
+	[Signal] public delegate void ItemTansportedEventHandler(GameResource item);
 
 
 	[Export] float beltSpeed = 2f;

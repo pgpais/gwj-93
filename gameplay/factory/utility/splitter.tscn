@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://xenpiedm802d"]
+
+[ext_resource type="Script" uid="uid://c2vwpby5yf7qb" path="res://gameplay/factory/utility/Splitter.cs" id="1_obo25"]
+[ext_resource type="PackedScene" uid="uid://f7l0f57g6uba" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-window.glb" id="1_qp17b"]
+[ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="2_obo25"]
+[ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_lh0ho"]
+
+[sub_resource type="Curve3D" id="Curve3D_5au6b"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_olwud"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Splitter" type="Node3D" unique_id=1076543173 node_paths=PackedStringArray("input", "outputs")]
+script = ExtResource("1_obo25")
+input = NodePath("Input")
+outputs = [NodePath("OutputFrontLeft"), NodePath("OutputFrontRight")]
+
+[node name="model" type="Node3D" parent="." unique_id=1300228646]
+
+[node name="machine-window2" parent="model" unique_id=118367443 instance=ExtResource("1_qp17b")]
+
+[node name="conveyor_belt" parent="model/machine-window2" unique_id=1527113887 instance=ExtResource("2_obo25")]
+
+[node name="machine-window3" parent="model" unique_id=479045561 instance=ExtResource("1_qp17b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="conveyor_belt" parent="model/machine-window3" unique_id=1962870752 instance=ExtResource("2_obo25")]
+
+[node name="machine-window4" parent="model" unique_id=2114911425 instance=ExtResource("1_qp17b")]
+transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, -0.25, 0, -1)
+
+[node name="Input" type="Node3D" parent="." unique_id=2026770132 node_paths=PackedStringArray("followPath")]
+script = ExtResource("3_lh0ho")
+followPath = NodePath("Path3D/PathFollow3D")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Path3D" type="Path3D" parent="Input" unique_id=1410097047]
+curve = SubResource("Curve3D_5au6b")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Input/Path3D" unique_id=37626085]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
+
+[node name="OutputFrontRight" type="Node3D" parent="." unique_id=1028459810 node_paths=PackedStringArray("followPath")]
+script = ExtResource("3_lh0ho")
+followPath = NodePath("Path3D/PathFollow3D")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Path3D" type="Path3D" parent="OutputFrontRight" unique_id=623594900]
+curve = SubResource("Curve3D_olwud")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="OutputFrontRight/Path3D" unique_id=1322328063]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.4, 0)
+
+[node name="OutputFrontLeft" type="Node3D" parent="." unique_id=1020679174 node_paths=PackedStringArray("followPath")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("3_lh0ho")
+followPath = NodePath("Path3D/PathFollow3D")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Path3D" type="Path3D" parent="OutputFrontLeft" unique_id=1880021333]
+curve = SubResource("Curve3D_olwud")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="OutputFrontLeft/Path3D" unique_id=1009484747]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.4, 0)
