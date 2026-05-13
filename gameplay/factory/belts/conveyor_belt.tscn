@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="3_s0r61"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="4_c4w4g"]
+[ext_resource type="PackedScene" uid="uid://kxe3khip83bj" path="res://gameplay/factory/belts/curved_conveyor_belt_left.tscn" id="4_viq68"]
 
 [sub_resource type="Curve3D" id="Curve3D_c4w4g"]
 _data = {
@@ -13,32 +14,58 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_kaw5l"]
+bake_interval = 30.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.4, 0.5, 0, 0, 0, 0, 0, 0, 0.1, 0.4, 0.1, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_viq68"]
+bake_interval = 30.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.4, -0.5, 0, 0, 0, 0, 0, 0, 0.1, 0.4, -0.1, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s0r61"]
 height = 1.0
 radius = 0.29003906
 
-[node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("itemTransport", "componentsParent")]
+[node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("itemTransport", "straightBelt", "curveRightBelt", "curveLeftBelt", "componentsParent")]
 script = ExtResource("1_eemtw")
 itemTransport = NodePath("Components/ItemTransport")
+straightBelt = NodePath("conveyor2")
+straightItemTransportCurve = SubResource("Curve3D_c4w4g")
+curveRightBelt = NodePath("CurvedConveyorBeltRight")
+curveRightItemTransportCurve = SubResource("Curve3D_kaw5l")
+curveLeftBelt = NodePath("CurvedConveyorBeltLeft")
+curveLeftItemTransportCurve = SubResource("Curve3D_viq68")
 componentsParent = NodePath("Components")
 
 [node name="conveyor2" parent="." unique_id=231581322 instance=ExtResource("1_wy8fd")]
 visible = false
 
-[node name="conveyor_belt" parent="." unique_id=1527113887 instance=ExtResource("3_s0r61")]
+[node name="CurvedConveyorBeltRight" parent="." unique_id=671464040 instance=ExtResource("3_kaw5l")]
+visible = false
+
+[node name="CurvedConveyorBeltLeft" parent="." unique_id=2090543071 instance=ExtResource("4_viq68")]
 
 [node name="Components" type="Node3D" parent="." unique_id=1781978450]
 
-[node name="ItemTransport" type="Node3D" parent="Components" unique_id=886194860 node_paths=PackedStringArray("followPath")]
+[node name="ItemTransport" type="Node3D" parent="Components" unique_id=886194860 node_paths=PackedStringArray("path", "followPath")]
 script = ExtResource("3_xtqex")
+path = NodePath("Path3D")
 followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 
 [node name="Path3D" type="Path3D" parent="Components/ItemTransport" unique_id=8171476]
-curve = SubResource("Curve3D_c4w4g")
+curve = SubResource("Curve3D_viq68")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Components/ItemTransport/Path3D" unique_id=428681196]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
+transform = Transform3D(-0.9701424, 0, -0.24253552, 0, 1, 0, 0.24253552, 0, -0.9701424, 0, 0.4, -0.5)
 
 [node name="Interactable" type="Area3D" parent="Components" unique_id=1260434122]
 script = ExtResource("4_c4w4g")

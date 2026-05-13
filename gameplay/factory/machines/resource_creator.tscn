@@ -25,8 +25,9 @@ componentsParent = NodePath("Components")
 
 [node name="Components" type="Node3D" parent="." unique_id=1941455542]
 
-[node name="ItemTransport" type="Node3D" parent="Components" unique_id=1241795695 node_paths=PackedStringArray("followPath")]
+[node name="ItemTransport" type="Node3D" parent="Components" unique_id=1241795695 node_paths=PackedStringArray("path", "followPath")]
 script = ExtResource("5_n0h7l")
+path = NodePath("Path3D")
 followPath = NodePath("Path3D/PathFollow3D")
 metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
 

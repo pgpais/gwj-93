@@ -5,12 +5,15 @@ using Godot.Collections;
 [GlobalClass]
 public partial class ItemTransport : Node3D
 {
+	[Signal] public delegate void InputConnectedEventHandler();
+	[Signal] public delegate void OutputConnectedEventHandler();
 	[Signal] public delegate void FullEventHandler();
 	[Signal] public delegate void HasCapacityEventHandler();
 
 
 	[Export] float beltSpeed = 2f;
 
+	[Export] Path3D path;
 	[Export] PathFollow3D followPath;
 
 	[Export] ItemTransport nextPort;
@@ -55,6 +58,11 @@ public partial class ItemTransport : Node3D
 		}
 	}
 
+	public void SetCurve(Curve3D curve)
+	{
+		path.Curve = curve;
+	}
+
 	/// <summary>
 	/// Connect this Transport to another
 	/// </summary>
@@ -62,6 +70,8 @@ public partial class ItemTransport : Node3D
 	public void ConnectTo(ItemTransport nextPort)
 	{
 		this.nextPort = nextPort;
+
+		EmitSignal(SignalName.OutputConnected);
 	}
 
 	public void SetFilter(Array<GameResourceData> items, bool isWhitelist)
@@ -157,5 +167,11 @@ public partial class ItemTransport : Node3D
 			nextPort.ReceiveItem(currentItem);
 			ClearItem();
 		}
+	}
+
+	public void ConnectOutputToThis(ItemTransport otherOutputPort)
+	{
+		otherOutputPort.ConnectTo(this);
+		EmitSignal(SignalName.InputConnected);
 	}
 }

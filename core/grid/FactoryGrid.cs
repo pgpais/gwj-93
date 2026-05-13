@@ -91,8 +91,6 @@ public partial class FactoryGrid : Node3D
 		building.GridPosition = gridPos;
 		building.direction = direction;
 
-		building.OnPlaced();
-
 		if (footprint != null)
 		{
 			for (int x = 0; x < footprint.Count; x++)
@@ -112,6 +110,8 @@ public partial class FactoryGrid : Node3D
 		{
 			grid[gridPos] = building;
 		}
+
+		building.OnPlaced();
 
 		GD.Print($"Placed {building.Name} at {gridPos}");
 		// GD.Print(GridToString(gridPos, true));
