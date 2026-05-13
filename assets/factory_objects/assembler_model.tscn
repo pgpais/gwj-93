@@ -156,7 +156,6 @@ mesh = SubResource("ArrayMesh_ulfa7")
 surface_material_override/0 = ExtResource("1_o3yab")
 surface_material_override/1 = ExtResource("2_mod40")
 surface_material_override/2 = ExtResource("3_6yo85")
-surface_material_override/3 = ExtResource("4_ea606")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="assembler" unique_id=1790090093]
 

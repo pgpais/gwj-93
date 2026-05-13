@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://oul8rh1qmb75"]
 
 [ext_resource type="Script" uid="uid://vfp6tpwdpg77" path="res://gameplay/factory/belts/ConveyorBelt.cs" id="1_eemtw"]
-[ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="1_wy8fd"]
 [ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="3_s0r61"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="4_c4w4g"]
+[ext_resource type="PackedScene" uid="uid://dx306tg7f7vfm" path="res://gameplay/factory/belts/curved_conveyor_belt_right.tscn" id="4_kaw5l"]
 [ext_resource type="PackedScene" uid="uid://kxe3khip83bj" path="res://gameplay/factory/belts/curved_conveyor_belt_left.tscn" id="4_viq68"]
 
 [sub_resource type="Curve3D" id="Curve3D_c4w4g"]
@@ -37,7 +37,7 @@ radius = 0.29003906
 [node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("itemTransport", "straightBelt", "curveRightBelt", "curveLeftBelt", "componentsParent")]
 script = ExtResource("1_eemtw")
 itemTransport = NodePath("Components/ItemTransport")
-straightBelt = NodePath("conveyor2")
+straightBelt = NodePath("conveyor_belt")
 straightItemTransportCurve = SubResource("Curve3D_c4w4g")
 curveRightBelt = NodePath("CurvedConveyorBeltRight")
 curveRightItemTransportCurve = SubResource("Curve3D_kaw5l")
@@ -45,13 +45,13 @@ curveLeftBelt = NodePath("CurvedConveyorBeltLeft")
 curveLeftItemTransportCurve = SubResource("Curve3D_viq68")
 componentsParent = NodePath("Components")
 
-[node name="conveyor2" parent="." unique_id=231581322 instance=ExtResource("1_wy8fd")]
+[node name="conveyor_belt" parent="." unique_id=1527113887 instance=ExtResource("3_s0r61")]
+
+[node name="CurvedConveyorBeltLeft" parent="." unique_id=2107346972 instance=ExtResource("4_viq68")]
 visible = false
 
-[node name="CurvedConveyorBeltRight" parent="." unique_id=671464040 instance=ExtResource("3_kaw5l")]
+[node name="CurvedConveyorBeltRight" parent="." unique_id=507219661 instance=ExtResource("4_kaw5l")]
 visible = false
-
-[node name="CurvedConveyorBeltLeft" parent="." unique_id=2090543071 instance=ExtResource("4_viq68")]
 
 [node name="Components" type="Node3D" parent="." unique_id=1781978450]
 

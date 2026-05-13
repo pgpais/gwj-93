@@ -44,7 +44,7 @@ public partial class ConveyorBelt : Building, IItemInput, IItemOutput
 
 		var neighbours = CheckPlacement();
 
-		if (neighbours.FrontExists()) itemTransport.ConnectOutputToThis(neighbours.front);
+		if (neighbours.FrontExists()) itemTransport.ConnectTo(neighbours.front);
 		if (neighbours.LeftExists()) neighbours.left.ConnectTo(itemTransport);
 		if (neighbours.RightExists()) neighbours.right.ConnectTo(itemTransport);
 		if (neighbours.BehindExists()) neighbours.behind.ConnectTo(itemTransport);

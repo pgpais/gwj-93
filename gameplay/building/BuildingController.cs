@@ -97,7 +97,7 @@ public partial class BuildingController : Node3D
 	{
 		var snappedPos = FactoryGrid.Instance.GridToWorld(_currentGridPos);
 
-		_ghost.GlobalPosition = snappedPos;
+		_ghost.GlobalPosition = snappedPos + new Vector3(_buildingData.MeshOffset.X, 0, _buildingData.MeshOffset.Y);
 
 		_ghost.RotationDegrees = new Vector3(0, _direction.GetDirectionAngle(), 0);
 

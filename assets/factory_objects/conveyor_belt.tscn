@@ -6,6 +6,6 @@
 
 [node name="conveyor_belt" unique_id=1527113887 instance=ExtResource("1_6id7f")]
 
-[node name="Conveyor" parent="." index="0" unique_id=847648682]
+[node name="Conveyor" parent="." index="0" unique_id=508158919]
 surface_material_override/0 = ExtResource("2_k2ckp")
 surface_material_override/1 = ExtResource("2_sc3p1")

@@ -12,6 +12,9 @@ public partial class BuildingData : Resource
 
     // Used for presenting the building in the ghost view
     [Export] public Mesh Mesh { get; private set; } //TODO: I'm wondering if we don't have a better way to handle this
+    [Export] public Vector2 MeshOffset { get; private set; }
+
+
 
 
 }

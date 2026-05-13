@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://c2qpjf1bu6ylx"]
 
 [ext_resource type="Script" uid="uid://68537v4vbwcj" path="res://gameplay/factory/machines/assembler/Assembler.cs" id="1_1aw3i"]
-[ext_resource type="PackedScene" uid="uid://fvpiu0tgu6xf" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine.glb" id="1_g0fbh"]
-[ext_resource type="PackedScene" uid="uid://chy0at2mbxgku" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor-corner.glb" id="2_1aw3i"]
 [ext_resource type="Resource" uid="uid://br6xlgas7td6l" path="res://gameplay/crafting/recipes/data/2x4_brick.tres" id="2_ter6k"]
-[ext_resource type="PackedScene" uid="uid://cm8u0ivnerihi" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor-junction-t.glb" id="3_ter6k"]
-[ext_resource type="PackedScene" uid="uid://crn7ijla8l7ul" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-fortified.glb" id="4_6m7fc"]
-[ext_resource type="PackedScene" uid="uid://bcrou7tq5u1mg" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor.glb" id="5_ft8t3"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="6_6i4ss"]
 [ext_resource type="PackedScene" uid="uid://djimsnd08p6m3" path="res://assets/factory_objects/assembler_model.tscn" id="8_ft8t3"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="9_6m7fc"]
@@ -25,58 +20,15 @@ size = Vector3(2, 1.4, 2.4980469)
 height = 1.0
 radius = 1.5
 
-[node name="Assembler" type="Node3D" unique_id=1725021305 node_paths=PackedStringArray("output", "interactable")]
+[node name="Assembler" type="Node3D" unique_id=1725021305 node_paths=PackedStringArray("inputs", "output", "interactable")]
 script = ExtResource("1_1aw3i")
-debug_startingRecipe = ExtResource("2_ter6k")
+inputs = [NodePath("InputLeft"), NodePath("InputRight")]
 output = NodePath("Output")
 interactable = NodePath("Components/Interactable")
+debug_startingRecipe = ExtResource("2_ter6k")
 
 [node name="Model" type="Node3D" parent="." unique_id=380016524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
-
-[node name="machine2" parent="Model" unique_id=2054626450 instance=ExtResource("1_g0fbh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
-visible = false
-
-[node name="machine3" parent="Model" unique_id=177814456 instance=ExtResource("1_g0fbh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
-visible = false
-
-[node name="machine4" parent="Model" unique_id=390507815 instance=ExtResource("1_g0fbh")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0, 0.5)
-visible = false
-
-[node name="machine5" parent="Model" unique_id=1587090640 instance=ExtResource("1_g0fbh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
-visible = false
-
-[node name="machine6" parent="Model" unique_id=720159438 instance=ExtResource("1_g0fbh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
-visible = false
-
-[node name="conveyor-corner2" parent="Model" unique_id=1297589978 instance=ExtResource("2_1aw3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
-visible = false
-
-[node name="conveyor-junction-t2" parent="Model" unique_id=587814466 instance=ExtResource("3_ter6k")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 0, 1.5)
-visible = false
-
-[node name="machine-fortified2" parent="Model" unique_id=1729065046 instance=ExtResource("4_6m7fc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
-visible = false
-
-[node name="conveyor2" parent="Model" unique_id=231581322 instance=ExtResource("5_ft8t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
-visible = false
-
-[node name="conveyor3" parent="Model" unique_id=2025694309 instance=ExtResource("5_ft8t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
-visible = false
-
-[node name="conveyor4" parent="Model" unique_id=125525816 instance=ExtResource("5_ft8t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
-visible = false
 
 [node name="Assembler_Model" parent="Model" unique_id=449730407 instance=ExtResource("8_ft8t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
@@ -133,5 +85,3 @@ metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=1474680246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 shape = SubResource("CylinderShape3D_ft8t3")
-
-[editable path="Model/machine-fortified2"]
