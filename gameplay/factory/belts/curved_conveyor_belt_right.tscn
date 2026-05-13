@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dx306tg7f7vfm"]
+
+[ext_resource type="PackedScene" uid="uid://chy0at2mbxgku" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/conveyor-corner.glb" id="2_w70da"]
+
+[node name="CurvedConveyorBeltRight" type="Node3D" unique_id=931640884]
+
+[node name="conveyor-corner2" parent="." unique_id=1297589978 instance=ExtResource("2_w70da")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
