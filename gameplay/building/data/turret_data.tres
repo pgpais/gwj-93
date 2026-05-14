@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://dc2bgk8ur8x56"]
+
+[ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_4tbgf"]
+[ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="1_t1wa0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_iorho"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ean0f"]
+
+[resource]
+script = ExtResource("1_4tbgf")
+Name = "Turret"
+Scene = ExtResource("1_t1wa0")
+Preview = SubResource("ImageTexture_ean0f")
+Mesh = SubResource("SphereMesh_iorho")
+metadata/_custom_type_script = "uid://c85yj00u6vd8o"

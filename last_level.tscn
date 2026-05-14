@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfs3b8fuu0hv1"]
 
 [ext_resource type="PackedScene" uid="uid://d2fx44qfbp47l" path="res://gameplay/actors/player/player.tscn" id="1_6oha6"]
+[ext_resource type="Script" uid="uid://dwukjoh4pk8ci" path="res://WaveDefenseLevel.cs" id="1_s4ys2"]
 [ext_resource type="Script" uid="uid://b6qiiwj4dfitl" path="res://gameplay/building/BuildingController.cs" id="2_va3an"]
 [ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="3_myfqc"]
 [ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="4_oi736"]
@@ -13,14 +14,16 @@
 [ext_resource type="Script" uid="uid://dth7kt6yabjav" path="res://core/grid/FactoryGrid.cs" id="9_wkr5i"]
 [ext_resource type="Script" uid="uid://f42dbhwdbx0x" path="res://AStarGrid.cs" id="10_d31dq"]
 [ext_resource type="PackedScene" uid="uid://bq3mwgcnolfl6" path="res://gameplay/building/ui/building_selector.tscn" id="13_oi736"]
+[ext_resource type="Script" uid="uid://dsbndatv1c51s" path="res://WaveDefenseUI.cs" id="14_6uk6q"]
 [ext_resource type="PackedScene" uid="uid://cwrgekca5snk" path="res://gameplay/crafting/ui/machine_view.tscn" id="14_d31dq"]
 [ext_resource type="Script" uid="uid://b2taxovv0fupj" path="res://gameplay/actors/enemy/EnemyController.cs" id="16_ecnb3"]
+[ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="18_6uk6q"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oi736"]
-size = Vector2(25, 25)
+size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d31dq"]
-size = Vector3(25, 0.001, 25)
+size = Vector3(100, 1, 100)
 
 [sub_resource type="Resource" id="Resource_ecnb3"]
 script = ExtResource("7_myfqc")
@@ -32,13 +35,15 @@ height = 0.2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d31dq"]
 albedo_color = Color(1, 1, 0, 1)
 
-[node name="LastLevel" type="Node3D" unique_id=267797779]
+[node name="LastLevel" type="Node3D" unique_id=267797779 node_paths=PackedStringArray("enemySpawningManager")]
+script = ExtResource("1_s4ys2")
+startPreparationTime = 10.0
+enemySpawningManager = NodePath("EnemySpawningManager")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1757528475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 50)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1308530130]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022996902, 0)
 mesh = SubResource("PlaneMesh_oi736")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=102905522]
@@ -81,10 +86,6 @@ align_transform_with_view = Callable()
 align_position_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="Enemy" parent="." unique_id=1599298364 node_paths=PackedStringArray("target") instance=ExtResource("8_q3b4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 4.5)
-target = NodePath("../Player")
-
 [node name="FactoryGrid" type="Node3D" parent="." unique_id=1565260177]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 12.5)
 script = ExtResource("9_wkr5i")
@@ -99,25 +100,25 @@ factoryGrid = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 0.7410273, 0.67147493, 0, -0.67147493, 0.7410273, 12.5, 3.4837565, 14.919428)
 
 [node name="EnemySpawner" type="Marker3D" parent="." unique_id=1858409140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.26005685, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 0.26005685, 65.5)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner2" type="Marker3D" parent="." unique_id=1170436510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.26005685, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.26005685, 65.5)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner3" type="Marker3D" parent="." unique_id=365336437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.26005685, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.26005685, 65.5)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner4" type="Marker3D" parent="." unique_id=1144216787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.26005685, 19.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.26005685, 68)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
@@ -126,8 +127,11 @@ metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 script = ExtResource("7_q3b4g")
 metadata/_custom_type_script = "uid://booxukapxqxn4"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1367924852]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1367924852 node_paths=PackedStringArray("waveDefenseLevel", "timeLabel")]
 follow_viewport_enabled = true
+script = ExtResource("14_6uk6q")
+waveDefenseLevel = NodePath("..")
+timeLabel = NodePath("Label")
 
 [node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 node_paths=PackedStringArray("buildingController") instance=ExtResource("13_oi736")]
 anchors_preset = -1
@@ -150,6 +154,17 @@ offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=606044814]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 10.0
+offset_right = 22.0
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "10:00"
+
 [node name="EnemyController" type="Node" parent="." unique_id=1790131841 node_paths=PackedStringArray("aStarGrid", "player", "pathVisualizer")]
 script = ExtResource("16_ecnb3")
 aStarGrid = NodePath("../FactoryGrid/AStarGrid")
@@ -159,3 +174,6 @@ pathVisualizer = NodePath("../MeshInstance3D")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2133129082]
 mesh = SubResource("SphereMesh_ecnb3")
 surface_material_override/0 = SubResource("StandardMaterial3D_d31dq")
+
+[node name="Turret" parent="." unique_id=619616952 instance=ExtResource("18_6uk6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 34)

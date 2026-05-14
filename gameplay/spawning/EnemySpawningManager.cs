@@ -1,4 +1,3 @@
-using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -9,7 +8,7 @@ public partial class EnemySpawningManager : Node
     [Export] float timeBetweenSpawnsVariance = 0.5f;
 
     Player player;
-
+    bool isSpawning = false;
 
     Array<EnemySpawner> spawners = new Array<EnemySpawner>();
 
@@ -34,7 +33,6 @@ public partial class EnemySpawningManager : Node
         spawnTimer.WaitTime = timeBetweenSpawns;
 
         spawnTimer.Timeout += SpawnEnemyInRandomSpawner;
-        spawnTimer.Start();
     }
 
     public void SpawnEnemyInRandomSpawner()
@@ -43,5 +41,17 @@ public partial class EnemySpawningManager : Node
         var enemy = spawner.SpawnEnemy();
 
         enemy.SetTarget(player);
+    }
+
+    public void StopSpawning()
+    {
+        spawnTimer.Stop();
+        isSpawning = false;
+    }
+
+    public void StartSpawning()
+    {
+        spawnTimer.Start();
+        isSpawning = true;
     }
 }
