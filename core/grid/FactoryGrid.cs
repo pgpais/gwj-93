@@ -10,6 +10,9 @@ public partial class FactoryGrid : Node3D
 {
 	public static FactoryGrid Instance { get; private set; }
 
+	[Signal] public delegate void BuildingPlacedEventHandler(Building building, Array<Vector3I> gridPositions);
+	[Signal] public delegate void BuildingRemovedEventHandler(Building building, Array<Vector3I> gridPositions);
+
 	[Export] public float TileSize { get; private set; } = 1.5f;
 
 	[ExportGroup("Gizmo")]
@@ -92,6 +95,8 @@ public partial class FactoryGrid : Node3D
 		building.GridPosition = gridPos;
 		building.direction = direction;
 
+		Array<Vector3I> filledPositions = new();
+
 		if (footprint != null)
 		{
 			for (int x = 0; x < footprint.Count; x++)
@@ -103,6 +108,7 @@ public partial class FactoryGrid : Node3D
 						var offset = x * -direction.GetDirectionVector() + z * direction.RotateLeft().GetDirectionVector();
 						// GD.Print(GridToString(gridPos + offset, true));
 						grid[gridPos + offset] = building;
+						filledPositions.Add(gridPos + offset);
 					}
 				}
 			}
@@ -110,11 +116,13 @@ public partial class FactoryGrid : Node3D
 		else
 		{
 			grid[gridPos] = building;
+			filledPositions.Add(gridPos);
 		}
 		building.SetData(buildingData);
 		building.OnPlaced();
 
 		GD.Print($"Placed {building.Name} at {gridPos}");
+		EmitSignal(SignalName.BuildingPlaced, building, filledPositions);
 		// GD.Print(GridToString(gridPos, true));
 
 		return building;
@@ -131,6 +139,8 @@ public partial class FactoryGrid : Node3D
 		var gridPos = building.GridPosition;
 		var direction = building.direction;
 
+		Array<Vector3I> emptiedPositions = new();
+
 		if (footprint != null)
 		{
 			for (int x = 0; x < footprint.Count; x++)
@@ -141,7 +151,8 @@ public partial class FactoryGrid : Node3D
 					{
 						var offset = x * -direction.GetDirectionVector() + z * direction.RotateLeft().GetDirectionVector();
 						grid.Remove(gridPos + offset);
-						GD.Print(GridToString(gridPos + offset, true));
+						emptiedPositions.Add(gridPos + offset);
+						// GD.Print(GridToString(gridPos + offset, true));
 					}
 				}
 			}
@@ -149,9 +160,14 @@ public partial class FactoryGrid : Node3D
 		else
 		{
 			grid.Remove(gridPos);
+			emptiedPositions.Add(gridPos);
 		}
 
 		building.OnRemoved();
+
+		GD.Print($"Removed {building.Name} at {gridPos}");
+		EmitSignal(SignalName.BuildingRemoved, building, emptiedPositions);
+		// GD.Print(GridToString(gridPos, true));
 	}
 
 	public Building Get(Vector3I pos)

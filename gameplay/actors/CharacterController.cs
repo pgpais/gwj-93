@@ -24,6 +24,8 @@ public partial class CharacterController : Node
 		{
 			HandleMovement(delta);
 		}
+
+		MovInput = Vector2.Zero;
 	}
 
 	private void HandleMovement(double delta)

@@ -112,8 +112,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ru17p")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ra27b"]
-points = PackedVector3Array(-1, 0, -1, -1, 0.7243884, -1, 0.5, 0, -1, -1, 0, 0.99985266, -0.85317147, 0.7243884, -1, -1, 0.9998213, -0.72445583, -0.28974158, 1.409626, -0.53681284, 0.5, 0.6836637, -1, 1, 0, -0.00017398596, -0.6366484, 0, 1.0381839, -0.6366484, 0.7043212, 1.0502253, -1, 0.7243884, 0.99985266, 0.28954577, 1.409626, -0.53681284, -1, 0.9998213, 0.7243085, -0.41131556, 2.009873, 0.49050736, -0.39487082, 2.009873, 0.48107505, 0.34964764, 1.349621, -0.53681284, 0.5, 0.9998213, -0.6869272, 1, 0.7243884, -0.00017398596, 1, 0, 0.99985266, 0.6364527, 0, 1.0381839, -0.39487082, 2.009873, 0.5188043, 0.6364527, 0.7043212, 1.0502253, -0.41131556, 2.009873, 0.509372, -0.37862176, 2.009873, 0.49050736, 1, 0.9998213, 0.27537012, 1, 0.7243884, 0.99985266, -0.37862176, 2.009873, 0.509372, 1, 0.9998213, 0.7243085)
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3yab"]
+size = Vector3(2, 2.009873, 2.0502255)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljxlg"]
 
@@ -159,8 +159,9 @@ surface_material_override/2 = ExtResource("3_6yo85")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="assembler" unique_id=1790090093]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="assembler/StaticBody3D" unique_id=318761674]
-shape = SubResource("ConvexPolygonShape3D_ra27b")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="assembler/StaticBody3D" unique_id=135329145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0049365, 0.025112748)
+shape = SubResource("BoxShape3D_o3yab")
 
 [node name="assembler_hole" type="MeshInstance3D" parent="assembler" unique_id=691364203]
 mesh = SubResource("ArrayMesh_6fhka")

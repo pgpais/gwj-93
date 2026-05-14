@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://dfs3b8fuu0hv1"]
 
 [ext_resource type="PackedScene" uid="uid://d2fx44qfbp47l" path="res://gameplay/actors/player/player.tscn" id="1_6oha6"]
+[ext_resource type="Script" uid="uid://b6qiiwj4dfitl" path="res://gameplay/building/BuildingController.cs" id="2_va3an"]
+[ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="3_myfqc"]
+[ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="4_oi736"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_gl54c"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_va3an"]
-[ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="7_6oha6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_myfqc"]
 [ext_resource type="Script" uid="uid://booxukapxqxn4" path="res://gameplay/spawning/EnemySpawningManager.cs" id="7_q3b4g"]
 [ext_resource type="PackedScene" uid="uid://cwr7fqt4exoii" path="res://gameplay/actors/enemy/enemy.tscn" id="8_q3b4g"]
 [ext_resource type="Script" uid="uid://dvhmv6tn8usj4" path="res://gameplay/spawning/EnemySpawner.cs" id="8_wkr5i"]
 [ext_resource type="Script" uid="uid://dth7kt6yabjav" path="res://core/grid/FactoryGrid.cs" id="9_wkr5i"]
+[ext_resource type="Script" uid="uid://f42dbhwdbx0x" path="res://AStarGrid.cs" id="10_d31dq"]
+[ext_resource type="PackedScene" uid="uid://bq3mwgcnolfl6" path="res://gameplay/building/ui/building_selector.tscn" id="13_oi736"]
+[ext_resource type="PackedScene" uid="uid://cwrgekca5snk" path="res://gameplay/crafting/ui/machine_view.tscn" id="14_d31dq"]
+[ext_resource type="Script" uid="uid://b2taxovv0fupj" path="res://gameplay/actors/enemy/EnemyController.cs" id="16_ecnb3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oi736"]
 size = Vector2(25, 25)
@@ -19,9 +25,17 @@ size = Vector3(25, 0.001, 25)
 [sub_resource type="Resource" id="Resource_ecnb3"]
 script = ExtResource("7_myfqc")
 
+[sub_resource type="SphereMesh" id="SphereMesh_ecnb3"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d31dq"]
+albedo_color = Color(1, 1, 0, 1)
+
 [node name="LastLevel" type="Node3D" unique_id=267797779]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1757528475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 12.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1308530130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022996902, 0)
@@ -31,11 +45,20 @@ mesh = SubResource("PlaneMesh_oi736")
 shape = SubResource("BoxShape3D_d31dq")
 
 [node name="Player" parent="." unique_id=1976705041 instance=ExtResource("1_6oha6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.62363, 1.0016994, 12.5)
+
+[node name="BuildingController" type="Node3D" parent="Player" unique_id=1143648739 node_paths=PackedStringArray("Camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1236315, 1.0016994, 0)
+top_level = true
+script = ExtResource("2_va3an")
+Camera = NodePath("../../Camera3D")
+GhostScene = ExtResource("3_myfqc")
+debug_buildingData = ExtResource("4_oi736")
+metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=954583030]
 physics_interpolation_mode = 1
-transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 11.967622, -0.74118197)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.2588181, 0.965922, 0, -0.9659222, 0.25881806, 16.62363, 11.097622, 11.758818)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1305590645]
@@ -45,55 +68,56 @@ script = ExtResource("5_gl54c")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1080530143 node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 11.967622, -0.74118197)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.2588181, 0.965922, 0, -0.9659222, 0.25881806, 16.62363, 11.097622, 11.758818)
 top_level = true
 script = ExtResource("6_va3an")
 priority = 1
 follow_mode = 5
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_ecnb3")
-follow_offset = Vector3(0, 10, -1)
+follow_offset = Vector3(0, 9.13, -1)
 follow_damping = true
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Enemy" parent="." unique_id=1599298364 node_paths=PackedStringArray("target") instance=ExtResource("8_q3b4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 4.5)
 target = NodePath("../Player")
 
 [node name="FactoryGrid" type="Node3D" parent="." unique_id=1565260177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 12.5)
 script = ExtResource("9_wkr5i")
 TileSize = 1.0
 metadata/_custom_type_script = "uid://dth7kt6yabjav"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1693504448]
-
-[node name="Turret" parent="." unique_id=619616952 instance=ExtResource("7_6oha6")]
+[node name="AStarGrid" type="Node" parent="FactoryGrid" unique_id=419626655 node_paths=PackedStringArray("factoryGrid")]
+script = ExtResource("10_d31dq")
+factoryGrid = NodePath("..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1106349035]
-transform = Transform3D(1, 0, 0, 0, 0.7410273, 0.67147493, 0, -0.67147493, 0.7410273, 0, 3.4837565, 2.4194274)
+transform = Transform3D(1, 0, 0, 0, 0.7410273, 0.67147493, 0, -0.67147493, 0.7410273, 12.5, 3.4837565, 14.919428)
 
 [node name="EnemySpawner" type="Marker3D" parent="." unique_id=1858409140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26005685, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.26005685, 17)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner2" type="Marker3D" parent="." unique_id=1170436510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.26005685, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.26005685, 17)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner3" type="Marker3D" parent="." unique_id=365336437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.26005685, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.26005685, 17)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner4" type="Marker3D" parent="." unique_id=1144216787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.26005685, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.26005685, 19.5)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
@@ -101,3 +125,36 @@ metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 [node name="EnemySpawningManager" type="Node" parent="." unique_id=652412182]
 script = ExtResource("7_q3b4g")
 metadata/_custom_type_script = "uid://booxukapxqxn4"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1367924852]
+follow_viewport_enabled = true
+
+[node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 node_paths=PackedStringArray("buildingController") instance=ExtResource("13_oi736")]
+anchors_preset = -1
+anchor_top = 1.0138888
+buildingController = NodePath("../../Player/BuildingController")
+metadata/_edit_use_anchors_ = true
+
+[node name="MachineView" parent="CanvasLayer" unique_id=1320788613 instance=ExtResource("14_d31dq")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -230.0
+offset_right = 370.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemyController" type="Node" parent="." unique_id=1790131841 node_paths=PackedStringArray("aStarGrid", "player", "pathVisualizer")]
+script = ExtResource("16_ecnb3")
+aStarGrid = NodePath("../FactoryGrid/AStarGrid")
+player = NodePath("../Player")
+pathVisualizer = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2133129082]
+mesh = SubResource("SphereMesh_ecnb3")
+surface_material_override/0 = SubResource("StandardMaterial3D_d31dq")
