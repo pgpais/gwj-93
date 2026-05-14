@@ -9,7 +9,9 @@
 height = 1.0
 radius = 1.0
 
-[node name="Player" unique_id=1976705041 node_paths=PackedStringArray("characterController", "interactor", "_componentsParent") instance=ExtResource("1_8s7nr")]
+[node name="Player" unique_id=1976705041 node_paths=PackedStringArray("characterController", "interactor", "_componentsParent") groups=["player"] instance=ExtResource("1_8s7nr")]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_jftto")
 characterController = NodePath("Components/CharacterController")
 interactor = NodePath("Components/Interactor")

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://fcmamafbatkx"]
+
+[ext_resource type="Script" uid="uid://sqhl8ovea43a" path="res://gameplay/defenses/turrets/Turret.cs" id="1_iorho"]
+[ext_resource type="PackedScene" uid="uid://cvn5y7uvqp2k5" path="res://gameplay/defenses/turrets/projectile.tscn" id="2_3oysa"]
+[ext_resource type="Script" uid="uid://bwugsmigfvf6f" path="res://gameplay/combat/targeting/CloserTargeting.cs" id="3_cjgi4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_iorho"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iorho"]
+albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iorho"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uuuhu"]
+size = Vector3(0.3, 0.3, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wkr5i"]
+height = 1.5
+radius = 15.0
+
+[node name="Turret" type="StaticBody3D" unique_id=619616952 node_paths=PackedStringArray("shootingPoint", "Anchor", "targeting", "timer")]
+script = ExtResource("1_iorho")
+projectile = ExtResource("2_3oysa")
+shootingPoint = NodePath("Anchor/Marker3D")
+projectileSpeed = 30.0
+Anchor = NodePath("Anchor")
+targeting = NodePath("Components/CloserTargeting")
+timer = NodePath("Timer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=978755297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333704, 0)
+mesh = SubResource("SphereMesh_iorho")
+surface_material_override/0 = SubResource("StandardMaterial3D_iorho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1053829303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333704, 0)
+shape = SubResource("SphereShape3D_iorho")
+
+[node name="Anchor" type="Node3D" parent="." unique_id=221888825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Anchor" unique_id=964813850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_uuuhu")
+
+[node name="Marker3D" type="Marker3D" parent="Anchor" unique_id=1268667746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Components" type="Node3D" parent="." unique_id=325537635]
+
+[node name="CloserTargeting" type="Node" parent="Components" unique_id=605439483 node_paths=PackedStringArray("targetingArea")]
+script = ExtResource("3_cjgi4")
+targetingArea = NodePath("../Area3D")
+metadata/_custom_type_script = "uid://bwugsmigfvf6f"
+
+[node name="Area3D" type="Area3D" parent="Components" unique_id=381721918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29686213, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Area3D" unique_id=788758406]
+shape = SubResource("CylinderShape3D_wkr5i")
+
+[node name="Timer" type="Timer" parent="." unique_id=460248381]
+autostart = true

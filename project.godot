@@ -33,6 +33,10 @@ project/assembly_name="GWJ93"
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[global_group]
+
+player=""
+
 [input]
 
 move_up={
@@ -79,6 +83,12 @@ remove_building={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(295, 13),"global_position":Vector2(304, 61),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="default"
+3d_physics/layer_2="enemies"
+3d_physics/layer_3="player"
 
 [physics]
 

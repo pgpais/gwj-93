@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvn5y7uvqp2k5"]
+
+[ext_resource type="Script" uid="uid://c3tfgyy00cllo" path="res://gameplay/defenses/turrets/Projectile.cs" id="1_fys68"]
+[ext_resource type="Script" uid="uid://uemivqyybq72" path="res://gameplay/combat/Hurtbox.cs" id="2_af4q3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xlykc"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xlykc"]
+radius = 0.15
+
+[node name="Projectile" type="RigidBody3D" unique_id=2018023764]
+gravity_scale = 0.0
+script = ExtResource("1_fys68")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2137992665]
+mesh = SubResource("SphereMesh_xlykc")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1450769707]
+script = ExtResource("2_af4q3")
+damage = 10
+metadata/_custom_type_script = "uid://uemivqyybq72"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=2003830567]
+shape = SubResource("SphereShape3D_xlykc")

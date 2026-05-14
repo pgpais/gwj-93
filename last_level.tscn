@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dfs3b8fuu0hv1"]
+
+[ext_resource type="PackedScene" uid="uid://d2fx44qfbp47l" path="res://gameplay/actors/player/player.tscn" id="1_6oha6"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_gl54c"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_va3an"]
+[ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="7_6oha6"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_myfqc"]
+[ext_resource type="Script" uid="uid://booxukapxqxn4" path="res://gameplay/spawning/EnemySpawningManager.cs" id="7_q3b4g"]
+[ext_resource type="PackedScene" uid="uid://cwr7fqt4exoii" path="res://gameplay/actors/enemy/enemy.tscn" id="8_q3b4g"]
+[ext_resource type="Script" uid="uid://dvhmv6tn8usj4" path="res://gameplay/spawning/EnemySpawner.cs" id="8_wkr5i"]
+[ext_resource type="Script" uid="uid://dth7kt6yabjav" path="res://core/grid/FactoryGrid.cs" id="9_wkr5i"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oi736"]
+size = Vector2(25, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d31dq"]
+size = Vector3(25, 0.001, 25)
+
+[sub_resource type="Resource" id="Resource_ecnb3"]
+script = ExtResource("7_myfqc")
+
+[node name="LastLevel" type="Node3D" unique_id=267797779]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1757528475]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1308530130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022996902, 0)
+mesh = SubResource("PlaneMesh_oi736")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=102905522]
+shape = SubResource("BoxShape3D_d31dq")
+
+[node name="Player" parent="." unique_id=1976705041 instance=ExtResource("1_6oha6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1236315, 1.0016994, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=954583030]
+physics_interpolation_mode = 1
+transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 11.967622, -0.74118197)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1305590645]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_gl54c")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1080530143 node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 11.967622, -0.74118197)
+top_level = true
+script = ExtResource("6_va3an")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_ecnb3")
+follow_offset = Vector3(0, 10, -1)
+follow_damping = true
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Enemy" parent="." unique_id=1599298364 node_paths=PackedStringArray("target") instance=ExtResource("8_q3b4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -8)
+target = NodePath("../Player")
+
+[node name="FactoryGrid" type="Node3D" parent="." unique_id=1565260177]
+script = ExtResource("9_wkr5i")
+TileSize = 1.0
+metadata/_custom_type_script = "uid://dth7kt6yabjav"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1693504448]
+
+[node name="Turret" parent="." unique_id=619616952 instance=ExtResource("7_6oha6")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1106349035]
+transform = Transform3D(1, 0, 0, 0, 0.7410273, 0.67147493, 0, -0.67147493, 0.7410273, 0, 3.4837565, 2.4194274)
+
+[node name="EnemySpawner" type="Marker3D" parent="." unique_id=1858409140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26005685, 4.5)
+script = ExtResource("8_wkr5i")
+_enemyScene = ExtResource("8_q3b4g")
+metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
+
+[node name="EnemySpawner2" type="Marker3D" parent="." unique_id=1170436510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.26005685, 4.5)
+script = ExtResource("8_wkr5i")
+_enemyScene = ExtResource("8_q3b4g")
+metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
+
+[node name="EnemySpawner3" type="Marker3D" parent="." unique_id=365336437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.26005685, 4.5)
+script = ExtResource("8_wkr5i")
+_enemyScene = ExtResource("8_q3b4g")
+metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
+
+[node name="EnemySpawner4" type="Marker3D" parent="." unique_id=1144216787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.26005685, 7)
+script = ExtResource("8_wkr5i")
+_enemyScene = ExtResource("8_q3b4g")
+metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
+
+[node name="EnemySpawningManager" type="Node" parent="." unique_id=652412182]
+script = ExtResource("7_q3b4g")
+metadata/_custom_type_script = "uid://booxukapxqxn4"
