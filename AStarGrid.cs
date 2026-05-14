@@ -21,9 +21,6 @@ public partial class AStarGrid : Node
 		};
 		aStarGrid.Update();
 
-
-
-
 		player = GetTree().GetFirstNodeInGroup("player") as Player;
 
 		factoryGrid.BuildingPlaced += OnBuildingPlaced;
@@ -32,32 +29,9 @@ public partial class AStarGrid : Node
 
 	private void OnBuildingPlaced(Building building, Array<Vector3I> gridPositions)
 	{
-		var posVisualizer2 = new MeshInstance3D
-		{
-			Mesh = new SphereMesh
-			{
-				Radius = 0.5f,
-			}
-		};
-		var worldGridPosition2 = aStarGrid.GetPointPosition(new Vector2I(1, 1));
-
-		GetTree().Root.AddChild(posVisualizer2);
-		posVisualizer2.GlobalPosition = new Vector3(worldGridPosition2.X, 1, worldGridPosition2.Y);
-
 		foreach (Vector3I gridPos in gridPositions)
 		{
 			aStarGrid.SetPointSolid(new Vector2I((int)gridPos.X, (int)gridPos.Z), true);
-			var posVisualizer = new MeshInstance3D
-			{
-				Mesh = new SphereMesh
-				{
-					Radius = 0.5f,
-				}
-			};
-			var worldGridPosition = aStarGrid.GetPointPosition(new Vector2I((int)gridPos.X, (int)gridPos.Z));
-			GD.Print("World grid position: " + worldGridPosition);
-			GetTree().Root.AddChild(posVisualizer);
-			posVisualizer.GlobalPosition = new Vector3(worldGridPosition.X, 1, worldGridPosition.Y);
 		}
 	}
 
@@ -67,12 +41,6 @@ public partial class AStarGrid : Node
 		{
 			aStarGrid.SetPointSolid(new Vector2I((int)gridPos.X, (int)gridPos.Z), false);
 		}
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
 	}
 
 	public Vector2[] GetPathToPosition(Vector3 from, Vector3 to)

@@ -8,8 +8,9 @@
 [ext_resource type="Resource" uid="uid://b1lmx6oe1gxhd" path="res://gameplay/building/data/storage_container_data.tres" id="5_mbd54"]
 [ext_resource type="Resource" uid="uid://dfat76dnd65gx" path="res://gameplay/building/data/splitter_data.tres" id="6_unwdd"]
 [ext_resource type="Resource" uid="uid://clm8kq3yidlei" path="res://gameplay/building/data/merger_data.tres" id="7_mbd54"]
+[ext_resource type="Resource" uid="uid://co8g3524gpl6w" path="res://gameplay/building/data/wall_data.tres" id="8_nnvbe"]
 
 [resource]
 script = ExtResource("4_unwdd")
-Buildings = Array[Object]([ExtResource("1_b6371"), ExtResource("2_su7yr"), ExtResource("3_dwme5"), ExtResource("4_su7yr"), ExtResource("5_mbd54"), ExtResource("6_unwdd"), ExtResource("7_mbd54")])
+Buildings = Array[Object]([ExtResource("1_b6371"), ExtResource("2_su7yr"), ExtResource("3_dwme5"), ExtResource("4_su7yr"), ExtResource("5_mbd54"), ExtResource("6_unwdd"), ExtResource("7_mbd54"), ExtResource("8_nnvbe")])
 metadata/_custom_type_script = "uid://jo5wuk1t57y5"

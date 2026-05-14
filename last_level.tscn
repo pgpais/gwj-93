@@ -132,6 +132,7 @@ follow_viewport_enabled = true
 [node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 node_paths=PackedStringArray("buildingController") instance=ExtResource("13_oi736")]
 anchors_preset = -1
 anchor_top = 1.0138888
+anchor_bottom = 1.0138888
 buildingController = NodePath("../../Player/BuildingController")
 metadata/_edit_use_anchors_ = true
 
