@@ -17,7 +17,10 @@
 [ext_resource type="Script" uid="uid://dsbndatv1c51s" path="res://WaveDefenseUI.cs" id="14_6uk6q"]
 [ext_resource type="PackedScene" uid="uid://cwrgekca5snk" path="res://gameplay/crafting/ui/machine_view.tscn" id="14_d31dq"]
 [ext_resource type="Script" uid="uid://b2taxovv0fupj" path="res://gameplay/actors/enemy/EnemyController.cs" id="16_ecnb3"]
+[ext_resource type="Script" uid="uid://oky6wqvoussu" path="res://core/storage/ui/StorageHUDView.cs" id="17_i1c38"]
 [ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="18_6uk6q"]
+[ext_resource type="Resource" uid="uid://ifam1yaybwe2" path="res://core/storage/GameInventory.tres" id="18_hfevf"]
+[ext_resource type="PackedScene" uid="uid://d0wrar3prif60" path="res://gameplay/resources/ui/item_horizontal_view.tscn" id="19_u0ehc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oi736"]
 size = Vector2(100, 100)
@@ -164,6 +167,34 @@ offset_right = 22.0
 offset_bottom = 33.0
 grow_horizontal = 2
 text = "10:00"
+
+[node name="RunInventoryView" type="PanelContainer" parent="CanvasLayer" unique_id=627440640 node_paths=PackedStringArray("viewsContainer")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_i1c38")
+inventory = ExtResource("18_hfevf")
+itemViewScene = ExtResource("19_u0ehc")
+viewsContainer = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/RunInventoryView" unique_id=698932088]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/RunInventoryView/MarginContainer" unique_id=1241988563]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PanelContainer" parent="CanvasLayer/RunInventoryView/MarginContainer/VBoxContainer" unique_id=337997031 instance=ExtResource("19_u0ehc")]
+layout_mode = 2
+
+[node name="PanelContainer2" parent="CanvasLayer/RunInventoryView/MarginContainer/VBoxContainer" unique_id=1989322299 instance=ExtResource("19_u0ehc")]
+layout_mode = 2
+
+[node name="PanelContainer3" parent="CanvasLayer/RunInventoryView/MarginContainer/VBoxContainer" unique_id=1719608905 instance=ExtResource("19_u0ehc")]
+layout_mode = 2
 
 [node name="EnemyController" type="Node" parent="." unique_id=1790131841 node_paths=PackedStringArray("aStarGrid", "player", "pathVisualizer")]
 script = ExtResource("16_ecnb3")

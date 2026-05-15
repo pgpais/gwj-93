@@ -88,7 +88,7 @@ public partial class FactoryGrid : Node3D
 	public Building PlaceBuilding(BuildingData buildingData, Vector3I gridPos = default, Direction direction = default, Array<Array<bool>> footprint = null)
 	{
 		var building = buildingData.Scene.Instantiate<Building>();
-		GetTree().Root.AddChild(building, true);
+		GetTree().CurrentScene.AddChild(building, true);
 
 		building.GlobalPosition = GridToWorld(gridPos);
 		building.RotationDegrees = new Vector3(0, direction.GetDirectionAngle(), 0);

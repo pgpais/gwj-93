@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d0wrar3prif60"]
+
+[ext_resource type="Texture2D" uid="uid://cjwmne3p3uuu4" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-plate-4x4.png" id="1_utc8a"]
+[ext_resource type="Script" uid="uid://c8k6ko1dl8ddu" path="res://gameplay/crafting/ui/ItemPreview.cs" id="1_vytji"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=337997031 node_paths=PackedStringArray("resourceTexture", "resourceNameLabel", "resourceAmountLabel")]
+script = ExtResource("1_vytji")
+resourceTexture = NodePath("MarginContainer/HBoxContainer/TextureRect")
+resourceNameLabel = NodePath("MarginContainer/HBoxContainer/ItemName")
+resourceAmountLabel = NodePath("MarginContainer/HBoxContainer/Amount")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1367787915]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=187320070]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=2103788873]
+layout_mode = 2
+texture = ExtResource("1_utc8a")
+
+[node name="Amount" type="Label" parent="MarginContainer/HBoxContainer" unique_id=452255694]
+layout_mode = 2
+text = "3x"
+horizontal_alignment = 1
+
+[node name="ItemName" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1516637661]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1

@@ -20,7 +20,7 @@ public partial class Turret : Building
 	public void Shoot()
 	{
 		var projectileInstance = projectile.Instantiate<Projectile>();
-		GetTree().Root.AddChild(projectileInstance);
+		GetTree().CurrentScene.AddChild(projectileInstance);
 
 		projectileInstance.GlobalPosition = shootingPoint.GlobalPosition;
 		projectileInstance.GlobalRotation = shootingPoint.GlobalRotation;

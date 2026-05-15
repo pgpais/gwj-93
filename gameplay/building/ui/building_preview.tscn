@@ -14,6 +14,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekh23"]
 
 [node name="BuildingPreview" type="PanelContainer" unique_id=2088636975 node_paths=PackedStringArray("button", "textureRect", "label")]
+custom_minimum_size = Vector2(100, 0)
 script = ExtResource("1_3htpl")
 button = NodePath("Button")
 textureRect = NodePath("MarginContainer/VBoxContainer/BuildingImage")
@@ -30,16 +31,20 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="BuildingImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=2014122836]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
 texture = ExtResource("2_soouu")
 stretch_mode = 4
 
 [node name="BuildingLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=932200772]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_font_sizes/font_size = 10
-text = "Resource Creator"
+text = "Interdimensional Container"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Button" type="Button" parent="." unique_id=1639474041]
 layout_mode = 2

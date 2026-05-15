@@ -4,6 +4,9 @@ using Godot.Collections;
 [GlobalClass]
 public partial class StorageInventory : Inventory
 {
+    [Signal] public delegate void InventoryChangedEventHandler();
+
+    public Dictionary<GameResourceData, int> Items => items;
     [Export] Dictionary<GameResourceData, int> items;
 
     public StorageInventory()
@@ -36,6 +39,7 @@ public partial class StorageInventory : Inventory
         {
             items.Add(item, amount);
         }
+        EmitSignal(SignalName.InventoryChanged);
         return true;
     }
 
@@ -46,6 +50,7 @@ public partial class StorageInventory : Inventory
             items[item] -= amount;
             if (items[item] == 0) items.Remove(item);
 
+            EmitSignal(SignalName.InventoryChanged);
             return true;
         }
         return false;

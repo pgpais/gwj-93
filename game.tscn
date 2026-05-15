@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b1k7q2homxg7t"]
 
 [ext_resource type="MeshLibrary" uid="uid://boto1y0im52wb" path="res://mesh_library.meshlib" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://cahsgeoo08455" path="res://ResourceExtractionLevel.cs" id="1_e8heu"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_hve3p"]
 [ext_resource type="Script" uid="uid://dth7kt6yabjav" path="res://core/grid/FactoryGrid.cs" id="1_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://dfs3b8fuu0hv1" path="res://last_level.tscn" id="2_rvswv"]
 [ext_resource type="PackedScene" uid="uid://dcfjfysapbuc7" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/oopi.glb" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d2fx44qfbp47l" path="res://gameplay/actors/player/player.tscn" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://bkluclb3fec64" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/bevel-hq-brick-1x1-round.glb" id="5_ryrav"]
@@ -13,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://bq3mwgcnolfl6" path="res://gameplay/building/ui/building_selector.tscn" id="12_iotsf"]
 [ext_resource type="Resource" uid="uid://c1d0uh3g6duqu" path="res://gameplay/building/data/resource_creator_data.tres" id="12_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://cwrgekca5snk" path="res://gameplay/crafting/ui/machine_view.tscn" id="13_lc2xo"]
+[ext_resource type="Script" uid="uid://oky6wqvoussu" path="res://core/storage/ui/StorageHUDView.cs" id="14_80cx4"]
+[ext_resource type="PackedScene" uid="uid://d0wrar3prif60" path="res://gameplay/resources/ui/item_horizontal_view.tscn" id="14_215e1"]
+[ext_resource type="Resource" uid="uid://ifam1yaybwe2" path="res://core/storage/GameInventory.tres" id="15_rvswv"]
+[ext_resource type="Script" uid="uid://q0sisowl8vib" path="res://levels/planet_extraction/hud/PlanetCollapseCountdown.cs" id="19_boyg6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e2o6t"]
 size = Vector2(25, 25)
@@ -27,6 +33,9 @@ script = ExtResource("7_j5wjh")
 script = ExtResource("7_j5wjh")
 
 [node name="game" type="Node3D" unique_id=170556669]
+script = ExtResource("1_e8heu")
+timeToExtract = 15.0
+nextLevel = ExtResource("2_rvswv")
 
 [node name="FactoryGrid" type="Node3D" parent="." unique_id=2055808949]
 script = ExtResource("1_mfdv2")
@@ -122,3 +131,59 @@ offset_right = 370.0
 offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RunInventoryView" type="PanelContainer" parent="CanvasLayer" unique_id=1332326815 node_paths=PackedStringArray("viewsContainer")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -111.0
+offset_right = 197.0
+offset_bottom = 111.0
+grow_vertical = 2
+script = ExtResource("14_80cx4")
+inventory = ExtResource("15_rvswv")
+itemViewScene = ExtResource("14_215e1")
+viewsContainer = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/RunInventoryView" unique_id=1133596266]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/RunInventoryView/MarginContainer" unique_id=600088911]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PanelContainer" parent="CanvasLayer/RunInventoryView/MarginContainer/VBoxContainer" unique_id=337997031 instance=ExtResource("14_215e1")]
+layout_mode = 2
+
+[node name="PanelContainer2" parent="CanvasLayer/RunInventoryView/MarginContainer/VBoxContainer" unique_id=1909007868 instance=ExtResource("14_215e1")]
+layout_mode = 2
+
+[node name="PanelContainer3" parent="CanvasLayer/RunInventoryView/MarginContainer/VBoxContainer" unique_id=1971773571 instance=ExtResource("14_215e1")]
+layout_mode = 2
+
+[node name="PlanetCollapseCountdown" type="PanelContainer" parent="CanvasLayer" unique_id=1503614361 node_paths=PackedStringArray("nextLevel", "countdownLabel")]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("19_boyg6")
+nextLevel = NodePath("../..")
+countdownLabel = NodePath("MarginContainer/HBoxContainer/Label2")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlanetCollapseCountdown" unique_id=105374310]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlanetCollapseCountdown/MarginContainer" unique_id=2010859970]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/PlanetCollapseCountdown/MarginContainer/HBoxContainer" unique_id=115243360]
+layout_mode = 2
+text = "Planet Collapses in: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/PlanetCollapseCountdown/MarginContainer/HBoxContainer" unique_id=794294201]
+layout_mode = 2
+text = "10:00"
