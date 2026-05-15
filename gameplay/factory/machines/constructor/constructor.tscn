@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://f7l0f57g6uba" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/machine-window.glb" id="1_nk4a2"]
 [ext_resource type="Script" uid="uid://dhhxllwubd76h" path="res://gameplay/factory/machines/constructor/Constructor.cs" id="1_u8fdu"]
-[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/crafting/recipes/data/1x4_brick.tres" id="2_t0vy7"]
+[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/crafting/recipes/data/proto/1x4_brick.tres" id="2_t0vy7"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="2_u8fdu"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="6_48vmo"]
 [ext_resource type="PackedScene" uid="uid://cuqlgdmoui8c3" path="res://assets/factory_objects/constructor_model.tscn" id="7_dwhy7"]

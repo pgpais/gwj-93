@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingData" format=4 uid="uid://co8g3524gpl6w"]
 
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_dbn14"]
 [ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_msa4q"]
 [ext_resource type="PackedScene" uid="uid://dksmh3gi07ie8" path="res://gameplay/defenses/wall.tscn" id="1_u2xnq"]
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_upqr0"]

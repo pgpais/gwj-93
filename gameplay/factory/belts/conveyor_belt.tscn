@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://vfp6tpwdpg77" path="res://gameplay/factory/belts/ConveyorBelt.cs" id="1_eemtw"]
 [ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="3_s0r61"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="3_xtqex"]
-[ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="4_c4w4g"]
 [ext_resource type="PackedScene" uid="uid://dx306tg7f7vfm" path="res://gameplay/factory/belts/curved_conveyor_belt_right.tscn" id="4_kaw5l"]
 [ext_resource type="PackedScene" uid="uid://kxe3khip83bj" path="res://gameplay/factory/belts/curved_conveyor_belt_left.tscn" id="4_viq68"]
 
@@ -29,10 +28,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_s0r61"]
-height = 1.0
-radius = 0.29003906
 
 [node name="ConveyorBelt" type="Node3D" unique_id=931640884 node_paths=PackedStringArray("itemTransport", "straightBelt", "curveRightBelt", "curveLeftBelt", "componentsParent")]
 script = ExtResource("1_eemtw")
@@ -66,11 +61,3 @@ curve = SubResource("Curve3D_viq68")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Components/ItemTransport/Path3D" unique_id=428681196]
 transform = Transform3D(-0.9701424, 0, -0.24253552, 0, 1, 0, 0.24253552, 0, -0.9701424, 0, 0.4, -0.5)
-
-[node name="Interactable" type="Area3D" parent="Components" unique_id=1260434122]
-script = ExtResource("4_c4w4g")
-metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=2063752279]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CylinderShape3D_s0r61")

@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="GameResourceData" format=4 uid="uid://djpg5e22ssxok"]
+[gd_resource type="Resource" script_class="GameResourceData" format=4 uid="uid://ci1fqfa3e8se7"]
 
-[ext_resource type="Texture2D" uid="uid://cjwmne3p3uuu4" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-plate-4x4.png" id="1_5ds2p"]
-[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_fgwvl"]
-[ext_resource type="Texture2D" uid="uid://qc56hrox4m1q" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/Textures/colormap.png" id="2_71uto"]
+[ext_resource type="Texture2D" uid="uid://cjwmne3p3uuu4" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-plate-4x4.png" id="1_ewlhy"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="2_pfmxx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88eph"]
-resource_name = "colormap"
-cull_mode = 2
-albedo_texture = ExtResource("2_71uto")
-texture_filter = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04rbu"]
+albedo_color = Color(0.6392157, 0.5686275, 0.44705883, 1)
+metallic = 1.0
+metallic_specular = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1t2yc"]
 _surfaces = [{
@@ -34,7 +32,7 @@ _surfaces = [{
 "index_count": 60,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABgAEABgAGAAZAAYAGQAYAAcABwAFABkAGgAJAAoACgAbABoACAAaABsAGwALAAgAHAAOAAwADAAdABwADwAcAB0AHQANAA8AEAARABIAEgATABAAFAAVAB4AHgAfABQAFwAfAB4AHgAWABcA"),
 "lods": [0.057627622, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABQAEAAcACAAJAAoACgALAAgADAANAA4ADwAOAA0AEAARABIAEgATABAAFAAVABYAFgAXABQA")],
-"material": SubResource("StandardMaterial3D_88eph"),
+"material": SubResource("StandardMaterial3D_04rbu"),
 "name": "colormap",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -45,8 +43,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1t2yc")
 
 [resource]
-script = ExtResource("1_fgwvl")
+script = ExtResource("2_pfmxx")
 Name = "4x4 Brick"
 Mesh = SubResource("ArrayMesh_ueead")
-Icon = ExtResource("1_5ds2p")
+Icon = ExtResource("1_ewlhy")
 metadata/_custom_type_script = "uid://dhvw5rapf4uid"

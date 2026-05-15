@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b5cnwh77i2ey5"]
+
+[ext_resource type="PackedScene" uid="uid://i8c4krgxo2i1" path="res://assets/factory_objects/smelter_model.tscn" id="1_2igv3"]
+[ext_resource type="Script" uid="uid://dhhxllwubd76h" path="res://gameplay/factory/machines/constructor/Constructor.cs" id="1_acqv0"]
+[ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="2_acqv0"]
+[ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="3_blqtg"]
+[ext_resource type="Resource" uid="uid://dldvvn4b56i1t" path="res://gameplay/crafting/recipes/data/iron/smelt_iron_recipe.tres" id="3_v8n5k"]
+[ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="3_yg3s7"]
+[ext_resource type="Script" uid="uid://c32m26ximp5lh" path="res://gameplay/crafting/recipes/RecipeCollectionData.cs" id="4_v8n5k"]
+
+[sub_resource type="Resource" id="Resource_crwkj"]
+script = ExtResource("4_v8n5k")
+Recipes = Array[ExtResource("3_blqtg")]([ExtResource("3_v8n5k")])
+metadata/_custom_type_script = "uid://c32m26ximp5lh"
+
+[sub_resource type="Curve3D" id="Curve3D_0smja"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_blqtg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v8n5k"]
+height = 1.0
+
+[sub_resource type="Curve" id="Curve_blqtg"]
+_data = [Vector2(0, 1), 0.0, 0.069944836, 0, 0, Vector2(0.53488374, 1), 0.0, 0.0, 0, 0, Vector2(0.9961241, 0.022804022), -2.3443604, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_v8n5k"]
+curve = SubResource("Curve_blqtg")
+
+[sub_resource type="Gradient" id="Gradient_crwkj"]
+offsets = PackedFloat32Array(0.75630254, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_465ke"]
+gradient = SubResource("Gradient_crwkj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_blqtg"]
+lifetime_randomness = 0.25
+emission_shape_scale = Vector3(0.055, 0.205, 0.125)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 2.365, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+color_ramp = SubResource("GradientTexture1D_465ke")
+alpha_curve = SubResource("CurveTexture_v8n5k")
+turbulence_enabled = true
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbioi"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_465ke"]
+material = SubResource("StandardMaterial3D_fbioi")
+radius = 0.1
+height = 0.2
+
+[node name="Smelter" type="Node3D" unique_id=142745561 node_paths=PackedStringArray("input", "output", "interactable", "componentsParent")]
+script = ExtResource("1_acqv0")
+input = NodePath("Input")
+output = NodePath("Output")
+interactable = NodePath("Components/Interactable")
+recipeCollectionData = SubResource("Resource_crwkj")
+componentsParent = NodePath("Components")
+
+[node name="Model" type="Node3D" parent="." unique_id=563075328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Smelter_Model" parent="Model" unique_id=1906598623 instance=ExtResource("1_2igv3")]
+
+[node name="Input" type="Node3D" parent="." unique_id=1125981872 node_paths=PackedStringArray("followPath")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource("2_acqv0")
+followPath = NodePath("Path3D/PathFollow3D")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Path3D" type="Path3D" parent="Input" unique_id=90880954]
+curve = SubResource("Curve3D_0smja")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Input/Path3D" unique_id=821072105]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
+
+[node name="Output" type="Node3D" parent="." unique_id=1102683859 node_paths=PackedStringArray("followPath")]
+script = ExtResource("2_acqv0")
+followPath = NodePath("Path3D/PathFollow3D")
+metadata/_custom_type_script = "uid://cyqmo6q1vsl2f"
+
+[node name="Path3D" type="Path3D" parent="Output" unique_id=410871681]
+curve = SubResource("Curve3D_blqtg")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Output/Path3D" unique_id=1881534655]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
+
+[node name="Components" type="Node3D" parent="." unique_id=1182558830]
+
+[node name="Interactable" type="Area3D" parent="Components" unique_id=1703441315]
+script = ExtResource("3_yg3s7")
+metadata/_custom_type_script = "uid://dgd1bjlgpplkm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/Interactable" unique_id=1106530628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_v8n5k")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=583394220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7644205, 2.819162, 0)
+amount = 32
+lifetime = 1.23
+explosiveness = 0.24
+trail_enabled = true
+trail_lifetime = 8.45
+process_material = SubResource("ParticleProcessMaterial_blqtg")
+draw_pass_1 = SubResource("SphereMesh_465ke")
+
+[connection signal="StartedCrafting" from="." to="GPUParticles3D" method="set_emitting"]
+[connection signal="StoppedCrafting" from="." to="GPUParticles3D" method="set_emitting"]

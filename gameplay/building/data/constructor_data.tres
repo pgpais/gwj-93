@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingData" format=4 uid="uid://dwqlx5sr2h38t"]
 
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_m4r78"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_whb4q"]
 [ext_resource type="Texture2D" uid="uid://dnlxy28ms5pda" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-window.png" id="2_qbcgd"]
 [ext_resource type="PackedScene" uid="uid://djbscctgifutq" path="res://gameplay/factory/machines/constructor/constructor.tscn" id="3_knk8g"]
 

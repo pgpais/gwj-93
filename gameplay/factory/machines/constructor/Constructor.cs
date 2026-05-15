@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
+using static ConveyorBelt;
 
 public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 {
@@ -28,6 +29,46 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 		}
 
 		PushItemsToOutputs();
+	}
+
+	public override void OnPlaced()
+	{
+		base.OnPlaced();
+
+		input.ConnectToNeighboursOutput(direction.RotateRight().RotateRight());
+		output.ConnectToNeighboursInput(direction);
+	}
+
+	private ItemTransport GetNeighbourInput(DirectionUtils.Direction direction)
+	{
+		var offset = direction.GetDirectionVector();
+		var nextBuilding = FactoryGrid.Instance.GetBuilding(GridPosition + offset);
+		GD.Print($"Next building at {GridPosition + direction.GetDirectionVector()}: {nextBuilding?.Name}");
+		if (nextBuilding is IItemInput itemInput)
+		{
+			var otherInputPort = itemInput.GetInputPort(direction, GridPosition + offset);
+			if (otherInputPort != null)
+			{
+				return otherInputPort;
+			}
+		}
+		return null;
+	}
+
+	private ItemTransport GetNeighbourOutput(DirectionUtils.Direction direction)
+	{
+		var offset = direction.GetDirectionVector();
+		var nextBuilding = FactoryGrid.Instance.GetBuilding(GridPosition + offset);
+		GD.Print($"{direction} Next building at {GridPosition + direction.GetDirectionVector()}: {nextBuilding?.Name}");
+		if (nextBuilding is IItemOutput itemOutput)
+		{
+			var otherOutputPort = itemOutput.GetOutputPort(direction.RotateRight().RotateRight(), GridPosition + offset);
+			if (otherOutputPort != null)
+			{
+				return otherOutputPort;
+			}
+		}
+		return null;
 	}
 
 	private void PullItemsFromInputs()
@@ -133,8 +174,8 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 
 		if (recipe == null) return;
 
-		input.SetFilter(new Array<GameResourceData>(recipe.Input.Keys.ToArray()), true);
-		output.SetFilter(new Array<GameResourceData>(recipe.Output.Keys.ToArray()), true);
+		input.SetFilter(new Array<GameResourceData>(recipe.Input.Keys), true);
+		output.SetFilter(new Array<GameResourceData>(recipe.Output.Keys), true);
 	}
 
 	public override int GetItemQuantity(GameResourceData resource)

@@ -8,6 +8,8 @@ public partial class BuildingPreview : PanelContainer
 	[Export] TextureRect textureRect;
 	[Export] Label label;
 
+	[Export] PackedScene tooltipScene;
+
 	BuildingData buildingData;
 
 	public override void _Ready()
@@ -20,5 +22,19 @@ public partial class BuildingPreview : PanelContainer
 		this.buildingData = buildingData;
 		textureRect.Texture = buildingData.Preview;
 		label.Text = buildingData.Name;
+	}
+
+	public void SetEnabled(bool enabled)
+	{
+		button.Disabled = !enabled;
+	}
+
+	public GodotObject GetTooltip(string forText)
+	{
+		if (buildingData.Cost.Count == 0) return null;
+
+		BuildingTooltip tooltip = tooltipScene.Instantiate<BuildingTooltip>();
+		tooltip.SetBuildingData(buildingData);
+		return tooltip;
 	}
 }

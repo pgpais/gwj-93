@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingData" format=4 uid="uid://b1lmx6oe1gxhd"]
 
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_8lvkt"]
 [ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_b6q51"]
 [ext_resource type="Texture2D" uid="uid://clmkr5m8r1ru7" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-fortified.png" id="2_8lvkt"]
 [ext_resource type="PackedScene" uid="uid://d0igewc88k7jv" path="res://gameplay/factory/machines/containers/interdimensional_container.tscn" id="3_ki3qa"]

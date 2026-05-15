@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
+using static ConveyorBelt;
 
 public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 {
@@ -28,6 +29,18 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 		}
 
 		PushItemsToOutputs();
+	}
+
+	public override void OnPlaced()
+	{
+		base.OnPlaced();
+
+		foreach (var input in inputs)
+		{
+			input.ConnectToNeighboursOutput(direction.RotateRight().RotateRight());
+		}
+
+		output.ConnectToNeighboursInput(direction);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.o

@@ -10,8 +10,9 @@
 [ext_resource type="Resource" uid="uid://clm8kq3yidlei" path="res://gameplay/building/data/merger_data.tres" id="7_mbd54"]
 [ext_resource type="Resource" uid="uid://co8g3524gpl6w" path="res://gameplay/building/data/wall_data.tres" id="8_nnvbe"]
 [ext_resource type="Resource" uid="uid://dc2bgk8ur8x56" path="res://gameplay/building/data/turret_data.tres" id="9_7l3eg"]
+[ext_resource type="Resource" uid="uid://b324hbu7j8rpm" path="res://gameplay/building/data/smelter_data.tres" id="10_mp3a4"]
 
 [resource]
 script = ExtResource("4_unwdd")
-Buildings = Array[Object]([ExtResource("1_b6371"), ExtResource("2_su7yr"), ExtResource("3_dwme5"), ExtResource("4_su7yr"), ExtResource("5_mbd54"), ExtResource("6_unwdd"), ExtResource("7_mbd54"), ExtResource("8_nnvbe"), ExtResource("9_7l3eg")])
+Buildings = Array[Object]([ExtResource("1_b6371"), ExtResource("2_su7yr"), ExtResource("3_dwme5"), ExtResource("4_su7yr"), ExtResource("5_mbd54"), ExtResource("6_unwdd"), ExtResource("7_mbd54"), ExtResource("8_nnvbe"), ExtResource("9_7l3eg"), ExtResource("10_mp3a4")])
 metadata/_custom_type_script = "uid://jo5wuk1t57y5"

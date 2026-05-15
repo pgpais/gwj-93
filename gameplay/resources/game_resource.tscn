@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5ub8plrwk3ij"]
 
 [ext_resource type="Script" uid="uid://bf1e2h1rak3d8" path="res://gameplay/resources/GameResource.cs" id="1_p0lni"]
-[ext_resource type="Resource" uid="uid://bt081y3qh82cv" path="res://gameplay/resources/data/proto_resource.tres" id="2_375yu"]
+[ext_resource type="Resource" uid="uid://bt081y3qh82cv" path="res://gameplay/resources/data/proto/others/proto_resource.tres" id="2_375yu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_375yu"]
 

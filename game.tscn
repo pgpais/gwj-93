@@ -7,9 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dfs3b8fuu0hv1" path="res://last_level.tscn" id="2_rvswv"]
 [ext_resource type="PackedScene" uid="uid://dcfjfysapbuc7" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/oopi.glb" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d2fx44qfbp47l" path="res://gameplay/actors/player/player.tscn" id="3_j5wjh"]
+[ext_resource type="Resource" uid="uid://ccph4qdqipqkb" path="res://gameplay/building/data/interdimensional_storage_container_data.tres" id="3_x5p1p"]
+[ext_resource type="Resource" uid="uid://drqty55dgv73v" path="res://gameplay/resources/data/proto/iron/proto_2x2_brick_iron.tres" id="5_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://bkluclb3fec64" path="res://assets/kenney/kenney_brick-kit/Models/GLB format/bevel-hq-brick-1x1-round.glb" id="5_ryrav"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_eow3j"]
+[ext_resource type="Resource" uid="uid://bvm38oshhwowp" path="res://gameplay/resources/data/proto/copper/proto_2x2_brick_copper.tres" id="6_f1jbl"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_j5wjh"]
+[ext_resource type="Resource" uid="uid://j0rh4c5gautl" path="res://gameplay/resources/data/proto/stone/proto_2x2_brick_stone.tres" id="7_vaj68"]
 [ext_resource type="Script" uid="uid://b6qiiwj4dfitl" path="res://gameplay/building/BuildingController.cs" id="10_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://bvmd3mw4xilju" path="res://gameplay/building/GhostBuilding.tscn" id="12_215e1"]
 [ext_resource type="PackedScene" uid="uid://bq3mwgcnolfl6" path="res://gameplay/building/ui/building_selector.tscn" id="12_iotsf"]
@@ -32,10 +36,15 @@ script = ExtResource("7_j5wjh")
 [sub_resource type="Resource" id="Resource_vef74"]
 script = ExtResource("7_j5wjh")
 
-[node name="game" type="Node3D" unique_id=170556669]
+[node name="game" type="Node3D" unique_id=170556669 node_paths=PackedStringArray("storageSpawnPoint", "resourceCreatorSpawnPoints")]
 script = ExtResource("1_e8heu")
-timeToExtract = 15.0
+timeToExtract = 200.0
 nextLevel = ExtResource("2_rvswv")
+storageSpawnPoint = NodePath("StorageSpawnPoint")
+storageBuildingData = ExtResource("3_x5p1p")
+resourceCreatorSpawnPoints = [NodePath("ResourceSpawnPoints/SpawnPoint1"), NodePath("ResourceSpawnPoints/SpawnPoint2"), NodePath("ResourceSpawnPoints/SpawnPoint3")]
+resourceCreatorBuildingData = ExtResource("12_lc2xo")
+startingResourdces = Array[Object]([ExtResource("5_qhcbd"), ExtResource("6_f1jbl"), ExtResource("7_vaj68")])
 
 [node name="FactoryGrid" type="Node3D" parent="." unique_id=2055808949]
 script = ExtResource("1_mfdv2")
@@ -187,3 +196,17 @@ text = "Planet Collapses in: "
 [node name="Label2" type="Label" parent="CanvasLayer/PlanetCollapseCountdown/MarginContainer/HBoxContainer" unique_id=794294201]
 layout_mode = 2
 text = "10:00"
+
+[node name="ResourceSpawnPoints" type="Node3D" parent="." unique_id=411466759]
+
+[node name="SpawnPoint1" type="Marker3D" parent="ResourceSpawnPoints" unique_id=1256138020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -9.5)
+
+[node name="SpawnPoint2" type="Marker3D" parent="ResourceSpawnPoints" unique_id=482737742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -10)
+
+[node name="SpawnPoint3" type="Marker3D" parent="ResourceSpawnPoints" unique_id=1072263931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="StorageSpawnPoint" type="Marker3D" parent="." unique_id=1057231525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)

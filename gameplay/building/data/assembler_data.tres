@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingData" format=4 uid="uid://di8dbgyfmxewc"]
 
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_8ivh4"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_rp7mt"]
 [ext_resource type="Texture2D" uid="uid://clmkr5m8r1ru7" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-fortified.png" id="2_2ab26"]
 [ext_resource type="PackedScene" uid="uid://c2qpjf1bu6ylx" path="res://gameplay/factory/machines/assembler/assembler.tscn" id="3_qxu3k"]
 
@@ -115,5 +116,5 @@ Scene = ExtResource("3_qxu3k")
 Preview = ExtResource("2_2ab26")
 Footprint = Array[Array]([[true, true], [true, true]])
 Mesh = SubResource("ArrayMesh_ulfa7")
-MeshOffset = Vector2(-0.5, 0.5)
+MeshOffset = Vector2(-0.5, -0.5)
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

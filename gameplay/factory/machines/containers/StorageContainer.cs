@@ -19,7 +19,6 @@ public partial class StorageContainer : Building, IItemInput
 	public override void _Process(double delta)
 	{
 		PullItemsFromInputs();
-		GD.Print($"[{Name}] Storage: {storage.ToString()}");
 	}
 
 	private void PullItemsFromInputs()

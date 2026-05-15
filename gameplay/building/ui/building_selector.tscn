@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5e4w1am6lrr2" path="res://BuildingSelector.cs" id="1_0rlxs"]
 [ext_resource type="Resource" uid="uid://c4y50yl1o3kpy" path="res://gameplay/building/data/buildings_collection.tres" id="2_dkac8"]
+[ext_resource type="Resource" uid="uid://ifam1yaybwe2" path="res://core/storage/GameInventory.tres" id="2_ulqg5"]
 [ext_resource type="PackedScene" uid="uid://chjha50eusle0" path="res://gameplay/building/ui/building_preview.tscn" id="3_ulqg5"]
 
 [node name="BuildingSelector" type="PanelContainer" unique_id=627501354 node_paths=PackedStringArray("previewsContainer")]
@@ -16,6 +17,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_0rlxs")
+inventory = ExtResource("2_ulqg5")
 buildingDataCollection = ExtResource("2_dkac8")
 previewsContainer = NodePath("MarginContainer/HBoxContainer")
 previewScene = ExtResource("3_ulqg5")
@@ -31,7 +33,6 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="BuildingPreview" parent="MarginContainer/HBoxContainer" unique_id=2088636975 instance=ExtResource("3_ulqg5")]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="BuildingPreview2" parent="MarginContainer/HBoxContainer" unique_id=809048655 instance=ExtResource("3_ulqg5")]

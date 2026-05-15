@@ -30,7 +30,13 @@ public partial class RecipeSelectionUI : PanelContainer
 	{
 		ClearRecipes();
 
-		var recipes = recipeCollectionData.Recipes.Where(predicate).ToArray();
+		var machineRecipes = machine.GetAvailableRecipes();
+		if (machineRecipes == null)
+		{
+			machineRecipes = recipeCollectionData.Recipes;
+		}
+
+		var recipes = machineRecipes.Where(predicate).ToArray();
 
 		foreach (var recipe in recipes)
 		{

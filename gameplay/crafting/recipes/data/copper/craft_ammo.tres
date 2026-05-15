@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeData" format=3 uid="uid://dtlhstbi1iyvt"]
+
+[ext_resource type="Texture2D" uid="uid://cfornaqt7s7ti" path="res://assets/kenney/kenney_brick-kit/Previews/round-hq-brick-1x1.png" id="1_i5ld1"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_it5dc"]
+[ext_resource type="Resource" uid="uid://dhbkuap2y6ka5" path="res://gameplay/resources/data/proto/copper/proto_1x2_brick_copper.tres" id="2_bbhwd"]
+[ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="4_4kqd3"]
+[ext_resource type="Resource" uid="uid://bsk4gyfi6cfe7" path="res://gameplay/resources/data/proto/copper/proto_1x1_brick_copper.tres" id="4_qdbbo"]
+
+[resource]
+script = ExtResource("4_4kqd3")
+Input = Dictionary[ExtResource("1_it5dc"), int]({
+ExtResource("2_bbhwd"): 1
+})
+Output = Dictionary[ExtResource("1_it5dc"), int]({
+ExtResource("4_qdbbo"): 2
+})
+Name = "Craft 1x1 Copper"
+Icon = ExtResource("1_i5ld1")
+metadata/_custom_type_script = "uid://cf5te5sqk40pp"

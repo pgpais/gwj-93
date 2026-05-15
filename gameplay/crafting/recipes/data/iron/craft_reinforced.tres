@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RecipeData" format=3 uid="uid://b24bcoysf4och"]
+
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_hf2hk"]
+[ext_resource type="Texture2D" uid="uid://c4dbbxrv3f7tj" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-brick-2x6.png" id="1_ie8ak"]
+[ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="2_ie8ak"]
+[ext_resource type="Resource" uid="uid://dhxss35blsf2q" path="res://gameplay/resources/data/proto/iron/proto_1x2_brick_iron.tres" id="3_l6rtj"]
+[ext_resource type="Resource" uid="uid://ce7ci15p7xryi" path="res://gameplay/resources/data/proto/others/proto_1x4_brick.tres" id="4_2xt27"]
+[ext_resource type="Resource" uid="uid://xdnbtch4i6d7" path="res://gameplay/resources/data/proto/iron/proto_2x6_brick_iron.tres" id="5_7a4im"]
+
+[resource]
+script = ExtResource("2_ie8ak")
+Input = Dictionary[ExtResource("1_hf2hk"), int]({
+ExtResource("3_l6rtj"): 2,
+ExtResource("4_2xt27"): 2
+})
+Output = Dictionary[ExtResource("1_hf2hk"), int]({
+ExtResource("5_7a4im"): 1
+})
+Name = "Craft 2x6 Iron"
+Icon = ExtResource("1_ie8ak")
+metadata/_custom_type_script = "uid://cf5te5sqk40pp"

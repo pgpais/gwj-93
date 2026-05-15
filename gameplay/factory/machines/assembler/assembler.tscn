@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2qpjf1bu6ylx"]
 
 [ext_resource type="Script" uid="uid://68537v4vbwcj" path="res://gameplay/factory/machines/assembler/Assembler.cs" id="1_1aw3i"]
-[ext_resource type="Resource" uid="uid://br6xlgas7td6l" path="res://gameplay/crafting/recipes/data/2x4_brick.tres" id="2_ter6k"]
+[ext_resource type="Resource" uid="uid://br6xlgas7td6l" path="res://gameplay/crafting/recipes/data/proto/2x4_brick.tres" id="2_ter6k"]
 [ext_resource type="Script" uid="uid://cyqmo6q1vsl2f" path="res://gameplay/factory/components/ItemTransport.cs" id="6_6i4ss"]
 [ext_resource type="PackedScene" uid="uid://djimsnd08p6m3" path="res://assets/factory_objects/assembler_model.tscn" id="8_ft8t3"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="9_6m7fc"]

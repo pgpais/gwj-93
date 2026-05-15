@@ -1,6 +1,7 @@
 
 using System;
 using Godot;
+using Godot.Collections;
 
 public abstract partial class RecipeMachine : Building
 {
@@ -8,8 +9,11 @@ public abstract partial class RecipeMachine : Building
     [Signal] public delegate void StoppedCraftingEventHandler();
     [Signal] public delegate void RecipeChangedEventHandler(RecipeData recipe);
 
+    //TODO: set allowed recipes somewhere
+
     [ExportGroup("References")]
     [Export] Interactable interactable;
+    [Export] RecipeCollectionData recipeCollectionData;
 
     [ExportGroup("Debug")]
     [Export] bool debug = false;
@@ -70,6 +74,7 @@ public abstract partial class RecipeMachine : Building
     {
         isCrafting = true;
         craftingTime = 0f;
+        EmitSignal(SignalName.StartedCrafting);
     }
 
     protected virtual void EndCraft()
@@ -77,6 +82,7 @@ public abstract partial class RecipeMachine : Building
         if (!CanCraftRecipe())
         {
             isCrafting = false;
+            EmitSignal(SignalName.StoppedCrafting);
             return;
         }
         else
@@ -85,6 +91,13 @@ public abstract partial class RecipeMachine : Building
         }
     }
 
+
+    public Array<RecipeData> GetAvailableRecipes()
+    {
+        if (recipeCollectionData == null) return null;
+
+        return recipeCollectionData.Recipes;
+    }
 
     public abstract int GetItemQuantity(GameResourceData resource);
     public abstract Func<RecipeData, bool> GetRecipePredicate();

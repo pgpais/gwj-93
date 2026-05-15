@@ -23,6 +23,19 @@ public partial class Splitter : Building, IItemInput, IItemOutput
 		PushItemsToOutput();
 	}
 
+	public override void OnPlaced()
+	{
+		base.OnPlaced();
+
+		input.ConnectToNeighboursInput(direction);
+
+		foreach (var output in outputs)
+		{
+			output.ConnectToNeighboursOutput(direction.RotateRight().RotateRight());
+		}
+	}
+
+
 	private void PullItemsFromInputs()
 	{
 		if (input.HasItem() && inventory.HasCapacity(input.GetCurrentItem().Data))

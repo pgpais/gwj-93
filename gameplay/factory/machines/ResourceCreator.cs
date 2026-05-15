@@ -11,6 +11,8 @@ public partial class ResourceCreator : Building, IItemOutput
 	[ExportGroup("Spawning Settings")]
 	[Export] float spawnRate = 0.5f;
 
+	public void SetResource(GameResourceData itemData) => data = itemData;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

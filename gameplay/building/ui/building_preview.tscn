@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bihq6d5dpo7ga" path="res://BuildingPreview.cs" id="1_3htpl"]
 [ext_resource type="Texture2D" uid="uid://d2t66t3vuxlcy" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine.png" id="2_soouu"]
+[ext_resource type="PackedScene" uid="uid://bjjmv4avl76i" path="res://gameplay/building/ui/building_tooltip.tscn" id="2_wtl3k"]
+[ext_resource type="Script" uid="uid://2pwi8fc2uor1" path="res://gameplay/building/ui/BuildingPreviewButton.cs" id="4_wtl3k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3htpl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_soouu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtl3k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wttd8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekh23"]
 
@@ -19,6 +19,7 @@ script = ExtResource("1_3htpl")
 button = NodePath("Button")
 textureRect = NodePath("MarginContainer/VBoxContainer/BuildingImage")
 label = NodePath("MarginContainer/VBoxContainer/BuildingLabel")
+tooltipScene = ExtResource("2_wtl3k")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1969234341]
 layout_mode = 2
@@ -51,5 +52,5 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3htpl")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_soouu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wtl3k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_wttd8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ekh23")
+script = ExtResource("4_wtl3k")

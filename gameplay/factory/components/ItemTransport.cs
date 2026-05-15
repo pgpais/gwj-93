@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Godot.Collections;
+using static DirectionUtils;
 
 [GlobalClass]
 public partial class ItemTransport : Node3D
@@ -174,5 +175,57 @@ public partial class ItemTransport : Node3D
 	{
 		otherOutputPort.ConnectTo(this);
 		EmitSignal(SignalName.InputConnected);
+	}
+
+	public void ConnectToNeighboursOutput(Direction neighbourDirection)
+	{
+		var neighbourPort = GetNeighbourOutput(neighbourDirection);
+		if (neighbourPort != null)
+		{
+			neighbourPort.ConnectTo(this);
+		}
+	}
+
+	public void ConnectToNeighboursInput(Direction neighbourDirection)
+	{
+		var neighbourPort = GetNeighbourInput(neighbourDirection);
+		if (neighbourPort != null)
+		{
+			this.ConnectTo(neighbourPort);
+		}
+	}
+
+	private ItemTransport GetNeighbourInput(Direction direction)
+	{
+		var GridPosition = FactoryGrid.Instance.WorldToGrid(GlobalPosition);
+		var offset = direction.GetDirectionVector();
+		var nextBuilding = FactoryGrid.Instance.GetBuilding(GridPosition + offset);
+		GD.Print($"Next building at {GridPosition + direction.GetDirectionVector()}: {nextBuilding?.Name}");
+		if (nextBuilding is IItemInput itemInput)
+		{
+			var otherInputPort = itemInput.GetInputPort(direction, GridPosition + offset);
+			if (otherInputPort != null)
+			{
+				return otherInputPort;
+			}
+		}
+		return null;
+	}
+
+	private ItemTransport GetNeighbourOutput(Direction direction)
+	{
+		var GridPosition = FactoryGrid.Instance.WorldToGrid(GlobalPosition);
+		var offset = direction.GetDirectionVector();
+		var nextBuilding = FactoryGrid.Instance.GetBuilding(GridPosition + offset);
+		GD.Print($"{direction} Next building at {GridPosition + direction.GetDirectionVector()}: {nextBuilding?.Name}");
+		if (nextBuilding is IItemOutput itemOutput)
+		{
+			var otherOutputPort = itemOutput.GetOutputPort(direction.RotateRight().RotateRight(), GridPosition + offset);
+			if (otherOutputPort != null)
+			{
+				return otherOutputPort;
+			}
+		}
+		return null;
 	}
 }

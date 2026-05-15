@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RecipeData" format=3 uid="uid://dcns2ogqbdc77"]
+
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_l40lg"]
+[ext_resource type="Resource" uid="uid://j0rh4c5gautl" path="res://gameplay/resources/data/proto/stone/proto_2x2_brick_stone.tres" id="2_ftb7c"]
+[ext_resource type="Resource" uid="uid://ci1fqfa3e8se7" path="res://gameplay/resources/data/proto/stone/proto_4x4_brick_stone.tres" id="3_djylj"]
+[ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="4_cxfsq"]
+
+[resource]
+script = ExtResource("4_cxfsq")
+Input = Dictionary[ExtResource("1_l40lg"), int]({
+ExtResource("2_ftb7c"): 1
+})
+Output = Dictionary[ExtResource("1_l40lg"), int]({
+ExtResource("3_djylj"): 4
+})
+Name = "Craft 4x4 Stone"
+metadata/_custom_type_script = "uid://cf5te5sqk40pp"

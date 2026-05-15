@@ -1,11 +1,15 @@
+using System.Collections.Generic;
 using Godot;
 
 public partial class BuildingSelector : PanelContainer
 {
+	[Export] StorageInventory inventory;
 	[Export] BuildingController buildingController;
 	[Export] BuildingDataCollection buildingDataCollection;
 	[Export] Container previewsContainer;
 	[Export] PackedScene previewScene;
+
+	Dictionary<BuildingData, BuildingPreview> buildings = new Dictionary<BuildingData, BuildingPreview>();
 
 	public override void _Ready()
 	{
@@ -14,6 +18,8 @@ public partial class BuildingSelector : PanelContainer
 		if (buildingDataCollection != null)
 		{
 			Init(buildingDataCollection);
+			DisableCostlyBuildings();
+			inventory.InventoryChanged += OnInventoryChanged;
 		}
 	}
 
@@ -31,6 +37,8 @@ public partial class BuildingSelector : PanelContainer
 			preview.SetBuildingData(buildingData);
 			previewsContainer.AddChild(preview);
 
+			buildings.Add(buildingData, preview);
+
 			preview.Pressed += () => SelectBuilding(buildingData);
 		}
 	}
@@ -38,5 +46,26 @@ public partial class BuildingSelector : PanelContainer
 	public void SelectBuilding(BuildingData buildingData)
 	{
 		buildingController.StartBuildingPreview(buildingData);
+	}
+
+	public void OnInventoryChanged()
+	{
+		DisableCostlyBuildings();
+	}
+
+	private void DisableCostlyBuildings()
+	{
+		foreach (var building in buildings)
+		{
+			if (building.Key.Cost.Count <= 0) continue;
+
+			foreach (var buildingCost in building.Key.Cost)
+			{
+				if (!inventory.HasItemAmount(buildingCost.Key, buildingCost.Value))
+				{
+					building.Value.SetEnabled(false);
+				}
+			}
+		}
 	}
 }

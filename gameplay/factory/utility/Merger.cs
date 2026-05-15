@@ -13,6 +13,18 @@ public partial class Merger : Building, IItemInput, IItemOutput
 		inventory = new SlotInventory(1);
 	}
 
+	public override void OnPlaced()
+	{
+		base.OnPlaced();
+
+		foreach (var input in inputs)
+		{
+			input.ConnectToNeighboursOutput(direction.RotateRight().RotateRight());
+		}
+
+		output.ConnectToNeighboursInput(direction);
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

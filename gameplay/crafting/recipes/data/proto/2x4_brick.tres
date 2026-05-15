@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cgnyeyimml8kf" path="res://assets/kenney/kenney_brick-kit/Previews/square-hq-brick-2x4.png" id="1_enmdx"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="2_gm37x"]
-[ext_resource type="Resource" uid="uid://ce7ci15p7xryi" path="res://gameplay/resources/data/proto_1x4_brick.tres" id="3_xh3sl"]
-[ext_resource type="Resource" uid="uid://dhxss35blsf2q" path="res://gameplay/resources/data/proto_1x2_brick.tres" id="4_lqgr2"]
-[ext_resource type="Resource" uid="uid://dg3j2ojjjauii" path="res://gameplay/resources/data/proto_2x4_brick.tres" id="5_8uqpo"]
+[ext_resource type="Resource" uid="uid://ce7ci15p7xryi" path="res://gameplay/resources/data/proto/others/proto_1x4_brick.tres" id="3_xh3sl"]
+[ext_resource type="Resource" uid="uid://dhxss35blsf2q" path="res://gameplay/resources/data/proto/iron/proto_1x2_brick_iron.tres" id="4_lqgr2"]
+[ext_resource type="Resource" uid="uid://dg3j2ojjjauii" path="res://gameplay/resources/data/proto/others/proto_2x4_brick.tres" id="5_8uqpo"]
 [ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="6_pgjvo"]
 
 [resource]

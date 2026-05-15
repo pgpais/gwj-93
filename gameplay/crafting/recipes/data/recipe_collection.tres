@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="RecipeCollectionData" format=3 uid="uid://yaxdlgmjc7wd"]
 
 [ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="1_wng6g"]
+[ext_resource type="Resource" uid="uid://dtlhstbi1iyvt" path="res://gameplay/crafting/recipes/data/copper/craft_ammo.tres" id="2_838l4"]
 [ext_resource type="Script" uid="uid://c32m26ximp5lh" path="res://gameplay/crafting/recipes/RecipeCollectionData.cs" id="2_a81ex"]
-[ext_resource type="Resource" uid="uid://bpxlpkd3b3xcy" path="res://gameplay/crafting/recipes/data/1x4_brick.tres" id="2_slknk"]
-[ext_resource type="Resource" uid="uid://br6xlgas7td6l" path="res://gameplay/crafting/recipes/data/2x4_brick.tres" id="3_5p5ta"]
-[ext_resource type="Resource" uid="uid://0u87qv5o71hw" path="res://gameplay/crafting/recipes/data/4x4_brick.tres" id="4_5p5ta"]
+[ext_resource type="Resource" uid="uid://720wcdlwythm" path="res://gameplay/crafting/recipes/data/iron/craft_iron_plate.tres" id="2_slknk"]
+[ext_resource type="Resource" uid="uid://cwxigeol3dmaj" path="res://gameplay/crafting/recipes/data/iron/craft_iron_rod.tres" id="3_5p5ta"]
+[ext_resource type="Resource" uid="uid://c2rjdhl4clx7c" path="res://gameplay/crafting/recipes/data/copper/craft_wire.tres" id="3_16iu8"]
+[ext_resource type="Resource" uid="uid://p4put1jyfdkr" path="res://gameplay/crafting/recipes/data/iron/craft_screw.tres" id="6_3suoi"]
+[ext_resource type="Resource" uid="uid://dcns2ogqbdc77" path="res://gameplay/crafting/recipes/data/stone/craft_concrete.tres" id="7_kojwp"]
+[ext_resource type="Resource" uid="uid://b24bcoysf4och" path="res://gameplay/crafting/recipes/data/iron/craft_reinforced.tres" id="8_16iu8"]
 
 [resource]
 script = ExtResource("2_a81ex")
-Recipes = Array[ExtResource("1_wng6g")]([ExtResource("2_slknk"), ExtResource("3_5p5ta"), ExtResource("4_5p5ta")])
+Recipes = Array[ExtResource("1_wng6g")]([ExtResource("2_slknk"), ExtResource("3_5p5ta"), ExtResource("6_3suoi"), ExtResource("8_16iu8"), ExtResource("2_838l4"), ExtResource("3_16iu8"), ExtResource("7_kojwp")])
 metadata/_custom_type_script = "uid://c32m26ximp5lh"
