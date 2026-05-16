@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_fre7s"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_uv3qu"]
+[ext_resource type="Resource" uid="uid://oqyeh47kle2n" path="res://gameplay/resources/data/proto/copper/proto_1x4_brick_copper.tres" id="2_rmt7m"]
 [ext_resource type="Texture2D" uid="uid://dnlxy28ms5pda" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-window.png" id="2_uv3qu"]
+[ext_resource type="Resource" uid="uid://067ysh3t1mad" path="res://gameplay/resources/data/proto/iron/proto_1x4_brick_iron.tres" id="3_043x7"]
 [ext_resource type="PackedScene" uid="uid://dmp0xqpie2wbh" path="res://gameplay/factory/utility/merger.tscn" id="3_fre7s"]
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="4_rmt7m"]
 
@@ -82,5 +84,9 @@ Name = "Merger"
 Scene = ExtResource("3_fre7s")
 Preview = ExtResource("2_uv3qu")
 Footprint = Array[Array]([Array[bool]([true, true])])
+Cost = Dictionary[ExtResource("1_uv3qu"), int]({
+ExtResource("2_rmt7m"): 2,
+ExtResource("3_043x7"): 1
+})
 Mesh = SubResource("ArrayMesh_pb8je")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

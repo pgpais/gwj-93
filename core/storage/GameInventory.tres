@@ -1,13 +1,17 @@
 [gd_resource type="Resource" script_class="StorageInventory" format=3 uid="uid://ifam1yaybwe2"]
 
-[ext_resource type="Resource" uid="uid://dhxss35blsf2q" path="res://gameplay/resources/data/proto/iron/proto_1x2_brick_iron.tres" id="1_arj4b"]
 [ext_resource type="Script" uid="uid://dp6jgkpblxd5x" path="res://gameplay/inventory/StorageInventory.cs" id="1_poj0k"]
-[ext_resource type="Resource" uid="uid://ce7ci15p7xryi" path="res://gameplay/resources/data/proto/others/proto_1x4_brick.tres" id="2_6l1am"]
+[ext_resource type="Resource" uid="uid://067ysh3t1mad" path="res://gameplay/resources/data/proto/iron/proto_1x4_brick_iron.tres" id="3_0na8x"]
+[ext_resource type="Resource" uid="uid://xdnbtch4i6d7" path="res://gameplay/resources/data/proto/iron/proto_2x6_brick_iron.tres" id="3_6l1am"]
+[ext_resource type="Resource" uid="uid://ch8olxts6obpp" path="res://gameplay/resources/data/proto/iron/proto_4x4_brick_iron.tres" id="3_8j87n"]
+[ext_resource type="Resource" uid="uid://oqyeh47kle2n" path="res://gameplay/resources/data/proto/copper/proto_1x4_brick_copper.tres" id="4_8j87n"]
 
 [resource]
 script = ExtResource("1_poj0k")
 items = Dictionary[Object, int]({
-ExtResource("1_arj4b"): 10,
-ExtResource("2_6l1am"): 2
+ExtResource("3_6l1am"): 8,
+ExtResource("3_8j87n"): 10,
+ExtResource("3_0na8x"): 4,
+ExtResource("4_8j87n"): 4
 })
 metadata/_custom_type_script = "uid://dp6jgkpblxd5x"

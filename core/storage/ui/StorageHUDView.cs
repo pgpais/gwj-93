@@ -16,8 +16,28 @@ public partial class StorageHUDView : PanelContainer
 
 		ClearViews();
 
-		inventory.InventoryChanged += RefreshUI;
+		inventory.ItemChanged += RefreshItemUI;
 		RefreshUI();
+	}
+
+	private void RefreshItemUI(GameResourceData item, int newAmount)
+	{
+		if (itemViews.ContainsKey(item))
+		{
+			if (newAmount == 0)
+			{
+				itemViews[item].QueueFree();
+				itemViews.Remove(item);
+			}
+			else
+			{
+				itemViews[item].SetResource(item, newAmount);
+			}
+		}
+		else
+		{
+			AddNewItemRow(item, newAmount);
+		}
 	}
 
 	public void ClearViews()

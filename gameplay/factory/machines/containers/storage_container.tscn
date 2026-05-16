@@ -21,6 +21,9 @@ componentsParent = NodePath("Components")
 
 [node name="machine-fortified2" parent="Visuals" unique_id=1729065046 instance=ExtResource("3_fekkb")]
 
+[node name="machine-fortified3" parent="Visuals/machine-fortified2" unique_id=471271552 instance=ExtResource("3_fekkb")]
+transform = Transform3D(-4.371139e-08, 0, -0.36345345, 0, 1, 0, 1, 0, -1.5887055e-08, 0.37538397, 0, 0)
+
 [node name="Label3D" type="Label3D" parent="Visuals" unique_id=832559470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 billboard = 1

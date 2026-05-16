@@ -87,6 +87,12 @@ public partial class Constructor : RecipeMachine, IItemInput, IItemOutput
 			if (!outputInventory.HasItemAmount(result.Key, result.Value)) continue;
 
 			var item = GameResource.Instantiate(result.Key);
+			if (!output.CanReceiveItem(item))
+			{
+				item.QueueFree();
+				continue;
+			}
+
 			AddChild(item);
 			output.ReceiveItem(item);
 

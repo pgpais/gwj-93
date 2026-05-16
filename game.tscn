@@ -22,7 +22,11 @@
 [ext_resource type="Script" uid="uid://oky6wqvoussu" path="res://core/storage/ui/StorageHUDView.cs" id="14_80cx4"]
 [ext_resource type="PackedScene" uid="uid://d0wrar3prif60" path="res://gameplay/resources/ui/item_horizontal_view.tscn" id="14_215e1"]
 [ext_resource type="Resource" uid="uid://ifam1yaybwe2" path="res://core/storage/GameInventory.tres" id="15_rvswv"]
+[ext_resource type="AudioStream" uid="uid://86xsefbwds2i" path="res://assets/sounds/building/blipSelect.wav" id="18_vaj68"]
 [ext_resource type="Script" uid="uid://q0sisowl8vib" path="res://levels/planet_extraction/hud/PlanetCollapseCountdown.cs" id="19_boyg6"]
+[ext_resource type="Script" uid="uid://bbeo2c16lqpvy" path="res://GameAudio.cs" id="24_f1jbl"]
+[ext_resource type="Script" uid="uid://2rhj3npfwwhq" path="res://LevelEndMenu.cs" id="25_i2p71"]
+[ext_resource type="AudioStream" uid="uid://bdmi7at5gqmxt" path="res://assets/music/factory_is_growing.mp3" id="27_xa8c5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e2o6t"]
 size = Vector2(25, 25)
@@ -30,21 +34,26 @@ size = Vector2(25, 25)
 [sub_resource type="BoxShape3D" id="BoxShape3D_e2o6t"]
 size = Vector3(25, 0.001, 25)
 
+[sub_resource type="Environment" id="Environment_vaj68"]
+background_mode = 1
+
 [sub_resource type="Resource" id="Resource_j5wjh"]
 script = ExtResource("7_j5wjh")
 
 [sub_resource type="Resource" id="Resource_vef74"]
 script = ExtResource("7_j5wjh")
 
-[node name="game" type="Node3D" unique_id=170556669 node_paths=PackedStringArray("storageSpawnPoint", "resourceCreatorSpawnPoints")]
+[node name="game" type="Node3D" unique_id=170556669 node_paths=PackedStringArray("storageSpawnPoint", "resourceCreatorSpawnPoints", "levelEndMenu", "levelUIs")]
 script = ExtResource("1_e8heu")
-timeToExtract = 200.0
-nextLevel = ExtResource("2_rvswv")
+timeToExtract = 300.0
+lastLevel = ExtResource("2_rvswv")
 storageSpawnPoint = NodePath("StorageSpawnPoint")
 storageBuildingData = ExtResource("3_x5p1p")
 resourceCreatorSpawnPoints = [NodePath("ResourceSpawnPoints/SpawnPoint1"), NodePath("ResourceSpawnPoints/SpawnPoint2"), NodePath("ResourceSpawnPoints/SpawnPoint3")]
 resourceCreatorBuildingData = ExtResource("12_lc2xo")
 startingResourdces = Array[Object]([ExtResource("5_qhcbd"), ExtResource("6_f1jbl"), ExtResource("7_vaj68")])
+levelEndMenu = NodePath("CanvasLayer/LevelEndMenu")
+levelUIs = [NodePath("CanvasLayer/BuildingSelector"), NodePath("CanvasLayer/MachineView"), NodePath("CanvasLayer/PlanetCollapseCountdown")]
 
 [node name="FactoryGrid" type="Node3D" parent="." unique_id=2055808949]
 script = ExtResource("1_mfdv2")
@@ -55,7 +64,7 @@ metadata/_custom_type_script = "uid://dth7kt6yabjav"
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1068225102]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1844984996]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022996902, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08493137, 0)
 mesh = SubResource("PlaneMesh_e2o6t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1408676540]
@@ -71,8 +80,9 @@ data = {
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=117207278]
 physics_interpolation_mode = 1
-transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 5.9676213, -0.74118197)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.17364757, 0.9848038, 0, -0.984804, 0.17364752, 4.1236315, 7.986503, -0.32635248)
 top_level = true
+environment = SubResource("Environment_vaj68")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=612939804]
 process_priority = 300
@@ -81,7 +91,7 @@ script = ExtResource("1_hve3p")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=458275489]
-transform = Transform3D(-0.41641304, -0.9063991, 0.07099966, -0.34127524, 0.22821262, 0.91183907, -0.8426931, 0.3554712, -0.40436223, 0, 4.761544, 0)
+transform = Transform3D(-0.41641295, -0.906399, 0.07099963, 0.2510596, -0.03958106, 0.96716195, -0.87382454, 0.420564, 0.2440423, 0, 4.761544, 0)
 shadow_enabled = true
 
 [node name="oopi2" parent="." unique_id=317335373 instance=ExtResource("3_fc0e3")]
@@ -91,14 +101,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.558005, 0.000500679, 7.129
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.272297, -2.3841858e-07, 5.8953915)
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=11480595 node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(0.99999964, 0, 0, 0, 0.25881812, 0.965922, 0, -0.96592224, 0.25881806, 4.1236315, 5.9676213, -0.74118197)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.17364757, 0.9848038, 0, -0.984804, 0.17364752, 4.1236315, 7.986503, -0.32635248)
 top_level = true
 script = ExtResource("6_eow3j")
 priority = 1
 follow_mode = 5
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_j5wjh")
-follow_offset = Vector3(0, 4, -1)
+follow_offset = Vector3(0, 6, -0.5)
 follow_damping = true
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
@@ -119,12 +129,18 @@ top_level = true
 script = ExtResource("10_lc2xo")
 Camera = NodePath("../../Camera3D")
 GhostScene = ExtResource("12_215e1")
+gameInventory = ExtResource("15_rvswv")
+buildSound = ExtResource("18_vaj68")
 debug_buildingData = ExtResource("12_lc2xo")
 metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=830004089]
 
 [node name="BuildingSelector" parent="CanvasLayer" unique_id=627501354 node_paths=PackedStringArray("buildingController") instance=ExtResource("12_iotsf")]
+offset_left = 372.0
+offset_top = -129.0
+offset_right = -372.0
+offset_bottom = 0.0
 buildingController = NodePath("../../Player/BuildingController")
 
 [node name="MachineView" parent="CanvasLayer" unique_id=1320788613 instance=ExtResource("13_lc2xo")]
@@ -197,16 +213,79 @@ text = "Planet Collapses in: "
 layout_mode = 2
 text = "10:00"
 
+[node name="LevelEndMenu" type="PanelContainer" parent="CanvasLayer" unique_id=934012537 node_paths=PackedStringArray("titleLabel", "descriptionLabel", "continueButton")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_i2p71")
+extractionTitle = "Planet has Collapsed"
+extractionDescription = "You still have a few chances to collect materials before defending the Core"
+lastExtractionTitle = "Planet has Collapsed"
+lastExtractionDescription = "You still have some time to build your defenses but the enemy is about to reach your position. Good luck."
+titleLabel = NodePath("MarginContainer/VBoxContainer/Label")
+descriptionLabel = NodePath("MarginContainer/VBoxContainer/Label2")
+continueButton = NodePath("MarginContainer/VBoxContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LevelEndMenu" unique_id=1425987605]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelEndMenu/MarginContainer" unique_id=971361154]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LevelEndMenu/MarginContainer/VBoxContainer" unique_id=1083647715]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Planet has Collapsed"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelEndMenu/MarginContainer/VBoxContainer" unique_id=57508028]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/LevelEndMenu/MarginContainer/VBoxContainer" unique_id=935526459]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "You still have some time to build your defenses but the enemy is about to reach your position. Good luck."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/LevelEndMenu/MarginContainer/VBoxContainer" unique_id=840560699]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next Level"
+
 [node name="ResourceSpawnPoints" type="Node3D" parent="." unique_id=411466759]
 
 [node name="SpawnPoint1" type="Marker3D" parent="ResourceSpawnPoints" unique_id=1256138020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -9.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10)
 
 [node name="SpawnPoint2" type="Marker3D" parent="ResourceSpawnPoints" unique_id=482737742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
 
 [node name="SpawnPoint3" type="Marker3D" parent="ResourceSpawnPoints" unique_id=1072263931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
 [node name="StorageSpawnPoint" type="Marker3D" parent="." unique_id=1057231525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, -4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=583134604]
+volume_db = -14.578
+script = ExtResource("24_f1jbl")
+
+[node name="LevelMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=560313019]
+stream = ExtResource("27_xa8c5")
+volume_db = -10.0
+autoplay = true

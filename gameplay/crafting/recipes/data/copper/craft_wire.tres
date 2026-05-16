@@ -14,6 +14,6 @@ ExtResource("2_3my08"): 2
 Output = Dictionary[ExtResource("1_7diw8"), int]({
 ExtResource("3_lyloi"): 1
 })
-Name = "Craft 1x4 Copper"
+Name = "Craft Wire"
 Icon = ExtResource("1_lyloi")
 metadata/_custom_type_script = "uid://cf5te5sqk40pp"

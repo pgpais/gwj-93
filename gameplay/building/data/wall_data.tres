@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dksmh3gi07ie8" path="res://gameplay/defenses/wall.tscn" id="1_u2xnq"]
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_upqr0"]
 [ext_resource type="Texture2D" uid="uid://6v4t1friwcdc" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/structure-medium.png" id="2_dbn14"]
+[ext_resource type="Resource" uid="uid://p26uhy7txpqh" path="res://gameplay/resources/data/proto/stone/proto_1x2_brick_stone.tres" id="2_uma0x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jk8k"]
 resource_name = "colormap"
@@ -50,5 +51,8 @@ script = ExtResource("1_upqr0")
 Name = "Wall"
 Scene = ExtResource("1_u2xnq")
 Preview = ExtResource("2_dbn14")
+Cost = Dictionary[ExtResource("1_dbn14"), int]({
+ExtResource("2_uma0x"): 2
+})
 Mesh = SubResource("ArrayMesh_uma0x")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

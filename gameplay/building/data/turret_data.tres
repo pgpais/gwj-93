@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_4tbgf"]
 [ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="1_t1wa0"]
+[ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_vyo8p"]
+[ext_resource type="Resource" uid="uid://bsk4gyfi6cfe7" path="res://gameplay/resources/data/proto/copper/proto_1x1_brick_copper.tres" id="2_aqlx1"]
+[ext_resource type="Resource" uid="uid://p26uhy7txpqh" path="res://gameplay/resources/data/proto/stone/proto_1x2_brick_stone.tres" id="3_ppiyf"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_iorho"]
 
@@ -12,5 +15,9 @@ script = ExtResource("1_4tbgf")
 Name = "Turret"
 Scene = ExtResource("1_t1wa0")
 Preview = SubResource("ImageTexture_ean0f")
+Cost = Dictionary[ExtResource("1_vyo8p"), int]({
+ExtResource("2_aqlx1"): 10,
+ExtResource("3_ppiyf"): 2
+})
 Mesh = SubResource("SphereMesh_iorho")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_ju3ld"]
 [ext_resource type="PackedScene" uid="uid://b5cnwh77i2ey5" path="res://gameplay/factory/machines/smelter/smelter.tscn" id="2_200kb"]
+[ext_resource type="Resource" uid="uid://ch8olxts6obpp" path="res://gameplay/resources/data/proto/iron/proto_4x4_brick_iron.tres" id="2_blctj"]
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="2_iejqr"]
+[ext_resource type="Texture2D" uid="uid://cli08iuo6ath4" path="res://assets/Screenshot_20260516_172651.png" id="3_blctj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyg4f"]
 
@@ -90,7 +92,11 @@ shadow_mesh = SubResource("ArrayMesh_yfj7v")
 script = ExtResource("2_iejqr")
 Name = "Smelter"
 Scene = ExtResource("2_200kb")
+Preview = ExtResource("3_blctj")
 Footprint = Array[Array]([Array[bool]([true]), [true]])
+Cost = Dictionary[ExtResource("1_ju3ld"), int]({
+ExtResource("2_blctj"): 2
+})
 Mesh = SubResource("ArrayMesh_blctj")
 MeshOffset = Vector2(-0.5, 0)
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

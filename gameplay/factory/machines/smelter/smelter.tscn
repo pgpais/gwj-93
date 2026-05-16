@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://cf5te5sqk40pp" path="res://gameplay/crafting/recipes/RecipeData.cs" id="3_blqtg"]
 [ext_resource type="Resource" uid="uid://dldvvn4b56i1t" path="res://gameplay/crafting/recipes/data/iron/smelt_iron_recipe.tres" id="3_v8n5k"]
 [ext_resource type="Script" uid="uid://dgd1bjlgpplkm" path="res://gameplay/interacting/Interactable.cs" id="3_yg3s7"]
+[ext_resource type="Resource" uid="uid://cd16rwdxrxkl4" path="res://gameplay/crafting/recipes/data/copper/smelt_copper_recipe.tres" id="4_crwkj"]
 [ext_resource type="Script" uid="uid://c32m26ximp5lh" path="res://gameplay/crafting/recipes/RecipeCollectionData.cs" id="4_v8n5k"]
 
 [sub_resource type="Resource" id="Resource_crwkj"]
 script = ExtResource("4_v8n5k")
-Recipes = Array[ExtResource("3_blqtg")]([ExtResource("3_v8n5k")])
+Recipes = Array[ExtResource("3_blqtg")]([ExtResource("3_v8n5k"), ExtResource("4_crwkj")])
 metadata/_custom_type_script = "uid://c32m26ximp5lh"
 
 [sub_resource type="Curve3D" id="Curve3D_0smja"]
@@ -52,6 +53,7 @@ direction = Vector3(0, 1, 0)
 initial_velocity_min = 0.099999994
 initial_velocity_max = 0.19999999
 gravity = Vector3(0, 2.365, 0)
+attractor_interaction_enabled = false
 scale_min = 0.19999999
 scale_max = 0.79999995
 color_ramp = SubResource("GradientTexture1D_465ke")
@@ -117,6 +119,7 @@ shape = SubResource("CylinderShape3D_v8n5k")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=583394220]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7644205, 2.819162, 0)
+emitting = false
 amount = 32
 lifetime = 1.23
 explosiveness = 0.24
@@ -125,5 +128,5 @@ trail_lifetime = 8.45
 process_material = SubResource("ParticleProcessMaterial_blqtg")
 draw_pass_1 = SubResource("SphereMesh_465ke")
 
-[connection signal="StartedCrafting" from="." to="GPUParticles3D" method="set_emitting"]
-[connection signal="StoppedCrafting" from="." to="GPUParticles3D" method="set_emitting"]
+[connection signal="StartedCrafting" from="." to="GPUParticles3D" method="set_emitting" binds= [true]]
+[connection signal="StoppedCrafting" from="." to="GPUParticles3D" method="set_emitting" binds= [false]]

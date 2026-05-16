@@ -13,5 +13,5 @@ ExtResource("2_ftb7c"): 1
 Output = Dictionary[ExtResource("1_l40lg"), int]({
 ExtResource("3_djylj"): 4
 })
-Name = "Craft 4x4 Stone"
+Name = "Craft Concrete"
 metadata/_custom_type_script = "uid://cf5te5sqk40pp"

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://hf4313kgewdw" path="res://assets/kenney/kenney_factory-kit_3.0/Models/GLB format/Textures/colormap.png" id="1_d8j12"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_kjjix"]
 [ext_resource type="Texture2D" uid="uid://clmkr5m8r1ru7" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-fortified.png" id="2_kjjix"]
-[ext_resource type="PackedScene" uid="uid://d3xsp657r251n" path="res://gameplay/factory/machines/containers/storage_container.tscn" id="3_l5auv"]
+[ext_resource type="PackedScene" uid="uid://d0igewc88k7jv" path="res://gameplay/factory/machines/containers/interdimensional_container.tscn" id="4_kjjix"]
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="4_l3bol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4pkl"]
@@ -47,8 +47,8 @@ shadow_mesh = SubResource("ArrayMesh_tm15h")
 
 [resource]
 script = ExtResource("4_l3bol")
-Name = "Container"
-Scene = ExtResource("3_l5auv")
+Name = "To Ship"
+Scene = ExtResource("4_kjjix")
 Preview = ExtResource("2_kjjix")
 Mesh = SubResource("ArrayMesh_acfre")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

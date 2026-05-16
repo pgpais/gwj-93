@@ -102,6 +102,10 @@ public partial class ConveyorBelt : Building, IItemInput, IItemOutput
 		var offset = direction.GetDirectionVector();
 		var nextBuilding = FactoryGrid.Instance.GetBuilding(GridPosition + offset);
 		GD.Print($"{direction} Next building at {GridPosition + direction.GetDirectionVector()}: {nextBuilding?.Name}");
+
+		if (nextBuilding == null) return null;
+		if (nextBuilding.direction != direction.RotateRight().RotateRight()) return null;
+
 		if (nextBuilding is IItemOutput itemOutput)
 		{
 			var otherOutputPort = itemOutput.GetOutputPort(direction.RotateRight().RotateRight(), GridPosition + offset);

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_m4r78"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_whb4q"]
+[ext_resource type="Resource" uid="uid://ch8olxts6obpp" path="res://gameplay/resources/data/proto/iron/proto_4x4_brick_iron.tres" id="2_knk8g"]
 [ext_resource type="Texture2D" uid="uid://dnlxy28ms5pda" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-window.png" id="2_qbcgd"]
 [ext_resource type="PackedScene" uid="uid://djbscctgifutq" path="res://gameplay/factory/machines/constructor/constructor.tscn" id="3_knk8g"]
+[ext_resource type="Resource" uid="uid://067ysh3t1mad" path="res://gameplay/resources/data/proto/iron/proto_1x4_brick_iron.tres" id="3_rp1qu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhnrc"]
 
@@ -90,5 +92,9 @@ script = ExtResource("1_m4r78")
 Name = "Constructor"
 Scene = ExtResource("3_knk8g")
 Preview = ExtResource("2_qbcgd")
+Cost = Dictionary[ExtResource("1_whb4q"), int]({
+ExtResource("2_knk8g"): 2,
+ExtResource("3_rp1qu"): 2
+})
 Mesh = SubResource("ArrayMesh_j44n2")
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

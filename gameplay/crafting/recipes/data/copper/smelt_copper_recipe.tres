@@ -13,5 +13,6 @@ ExtResource("2_u5tom"): 1
 Output = Dictionary[ExtResource("1_q2xbn"), int]({
 ExtResource("3_7cdk0"): 2
 })
-Name = "Smelt Iron"
+Name = "Smelt Copper"
+RecipeColor = Color(0.69730926, 0.26092643, 2.8878452e-07, 1)
 metadata/_custom_type_script = "uid://cf5te5sqk40pp"

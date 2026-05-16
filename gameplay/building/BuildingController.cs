@@ -9,9 +9,12 @@ public partial class BuildingController : Node3D
 	[Export] public PackedScene GhostScene;
 	[Export] public float TileSize = 1.0f;
 
+	[Export] Inventory gameInventory;
+	[Export] AudioStream buildSound;
+
 	private BuildingData _buildingData;
 	private GhostBuilding _ghost;
-	private Direction _direction = Direction.North;
+	private Direction _direction = Direction.South;
 	private Vector3I _currentGridPos;
 
 	bool isBuilding;
@@ -26,6 +29,8 @@ public partial class BuildingController : Node3D
 	{
 		_ghost = GhostScene.Instantiate<GhostBuilding>();
 		AddChild(_ghost);
+
+		CancelBuilding();
 
 		if (_debug)
 		{
@@ -74,7 +79,13 @@ public partial class BuildingController : Node3D
 
 	private void TryRemoveBuilding()
 	{
-		FactoryGrid.Instance.RemoveBuilding(_currentGridPos);
+		var removedBuilding = FactoryGrid.Instance.RemoveBuilding(_currentGridPos);
+		if (removedBuilding == null) return;
+
+		foreach (var cost in removedBuilding.Data.Cost)
+		{
+			gameInventory.TryAddItem(cost.Key, cost.Value);
+		}
 	}
 
 	private void CancelBuilding()
@@ -91,12 +102,22 @@ public partial class BuildingController : Node3D
 		_ghost.Show();
 	}
 
-	public void TryPlaceBuilding()
+	public bool TryPlaceBuilding()
 	{
 		if (!FactoryGrid.Instance.IsPlacementValid(_currentGridPos, _direction, _buildingData.Footprint))
-			return;
+			return false;
+		foreach (var cost in _buildingData.Cost)
+		{
+			if (!gameInventory.HasItemAmount(cost.Key, cost.Value)) return false;
+		}
+
 
 		FactoryGrid.Instance.PlaceBuilding(_buildingData, _currentGridPos, _direction, _buildingData.Footprint);
+		foreach (var cost in _buildingData.Cost)
+		{
+			gameInventory.TryRemoveItem(cost.Key, cost.Value);
+		}
+		return true;
 	}
 
 	private void UpdateGhost()
@@ -135,9 +156,12 @@ public partial class BuildingController : Node3D
 
 		if (isBuilding)
 		{
-			if (@event.IsActionPressed("place_building"))
+			if (@event.IsActionPressed("place_building", true))
 			{
-				TryPlaceBuilding();
+				if (TryPlaceBuilding())
+				{
+					GameAudio.Instance.PlayAudio(buildSound, 0.8f, 1.2f);
+				}
 			}
 		}
 

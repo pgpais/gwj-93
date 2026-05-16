@@ -18,15 +18,18 @@
 [ext_resource type="PackedScene" uid="uid://cwrgekca5snk" path="res://gameplay/crafting/ui/machine_view.tscn" id="14_d31dq"]
 [ext_resource type="Script" uid="uid://b2taxovv0fupj" path="res://gameplay/actors/enemy/EnemyController.cs" id="16_ecnb3"]
 [ext_resource type="Script" uid="uid://oky6wqvoussu" path="res://core/storage/ui/StorageHUDView.cs" id="17_i1c38"]
-[ext_resource type="PackedScene" uid="uid://fcmamafbatkx" path="res://gameplay/defenses/turrets/turret.tscn" id="18_6uk6q"]
 [ext_resource type="Resource" uid="uid://ifam1yaybwe2" path="res://core/storage/GameInventory.tres" id="18_hfevf"]
 [ext_resource type="PackedScene" uid="uid://d0wrar3prif60" path="res://gameplay/resources/ui/item_horizontal_view.tscn" id="19_u0ehc"]
+[ext_resource type="MeshLibrary" uid="uid://boto1y0im52wb" path="res://mesh_library.meshlib" id="22_hfevf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oi736"]
 size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d31dq"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="Environment" id="Environment_u0ehc"]
+background_mode = 1
 
 [sub_resource type="Resource" id="Resource_ecnb3"]
 script = ExtResource("7_myfqc")
@@ -44,7 +47,7 @@ startPreparationTime = 10.0
 enemySpawningManager = NodePath("EnemySpawningManager")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1757528475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -0.116641045, 50)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1308530130]
 mesh = SubResource("PlaneMesh_oi736")
@@ -68,6 +71,7 @@ metadata/_custom_type_script = "uid://b6qiiwj4dfitl"
 physics_interpolation_mode = 1
 transform = Transform3D(0.99999964, 0, 0, 0, 0.2588181, 0.965922, 0, -0.9659222, 0.25881806, 16.62363, 11.097622, 11.758818)
 top_level = true
+environment = SubResource("Environment_u0ehc")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1305590645]
 process_priority = 300
@@ -100,28 +104,29 @@ script = ExtResource("10_d31dq")
 factoryGrid = NodePath("..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1106349035]
-transform = Transform3D(1, 0, 0, 0, 0.7410273, 0.67147493, 0, -0.67147493, 0.7410273, 12.5, 3.4837565, 14.919428)
+transform = Transform3D(1, 0, 0, 0, 0.7410273, 0.67147493, 0, -0.67147493, 0.7410273, 12.5, 5.2714148, 14.919428)
+shadow_enabled = true
 
 [node name="EnemySpawner" type="Marker3D" parent="." unique_id=1858409140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 0.26005685, 65.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.965134, 0.26005685, 1.9440842)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner2" type="Marker3D" parent="." unique_id=1170436510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.26005685, 65.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.465134, 0.26005685, 1.9440842)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner3" type="Marker3D" parent="." unique_id=365336437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.26005685, 65.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.465134, 0.26005685, 1.9440842)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
 
 [node name="EnemySpawner4" type="Marker3D" parent="." unique_id=1144216787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.26005685, 68)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.465134, 0.26005685, 4.444084)
 script = ExtResource("8_wkr5i")
 _enemyScene = ExtResource("8_q3b4g")
 metadata/_custom_type_script = "uid://dvhmv6tn8usj4"
@@ -206,5 +211,10 @@ pathVisualizer = NodePath("../MeshInstance3D")
 mesh = SubResource("SphereMesh_ecnb3")
 surface_material_override/0 = SubResource("StandardMaterial3D_d31dq")
 
-[node name="Turret" parent="." unique_id=619616952 instance=ExtResource("18_6uk6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 34)
+[node name="GridMap" type="GridMap" parent="." unique_id=1386452355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.5, 12)
+mesh_library = ExtResource("22_hfevf")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(10, 12, 27, 9, 12, 27, 8, 12, 27, 7, 12, 27, 6, 12, 27, 5, 12, 27, 4, 12, 27, 3, 12, 27, 2, 12, 27, 1, 12, 27, 0, 12, 27, 65535, 12, 27, 65534, 12, 27, 65533, 12, 27, 65532, 12, 27, 65531, 12, 27, 65530, 12, 27, 65529, 12, 27, 65528, 12, 27, 65527, 12, 27, 65526, 12, 27, 65525, 12, 27, 65524, 12, 27, 65523, 11, 1441819, 65523, 10, 1441819, 65523, 9, 1441819, 65523, 8, 1441819, 65523, 7, 1441819, 65523, 6, 1441819, 65523, 5, 1441819, 65523, 4, 1441819, 65523, 3, 1441819, 65523, 2, 1441819, 65523, 1, 1441819, 65523, 0, 1441819, 65523, 65535, 1441819, 65523, 65534, 1441819, 65523, 65533, 1441819, 65523, 65532, 1441819, 65523, 65531, 1441819, 65523, 65530, 1441819, 65523, 65529, 1441819, 65523, 65528, 1441819, 65523, 65527, 1441819, 65523, 65526, 1441819, 65523, 65525, 1441819, 65523, 65524, 1441819, 65524, 65523, 655387, 65525, 65523, 655387, 65526, 65523, 655387, 65527, 65523, 655387, 65528, 65523, 655387, 65529, 65523, 655387, 65531, 65523, 655387, 65530, 65523, 655387, 65532, 65523, 655387, 65533, 65523, 655387, 65534, 65523, 655387, 65535, 65523, 655387, 0, 65523, 655387, 1, 65523, 655387, 2, 65523, 655387, 3, 65523, 655387, 4, 65523, 655387, 5, 65523, 655387, 6, 65523, 655387, 7, 65523, 655387, 8, 65523, 655387, 9, 65523, 655387, 10, 65523, 655387, 11, 65523, 655387, 12, 65524, 1048603, 12, 65525, 1048603, 12, 65526, 1048603, 12, 65527, 1048603, 12, 65528, 1048603, 12, 65529, 1048603, 12, 65530, 1048603, 12, 65531, 1048603, 12, 65532, 1048603, 12, 65533, 1048603, 12, 65534, 1048603, 12, 65535, 1048603, 12, 0, 1048603, 12, 1, 1048603, 12, 2, 1048603, 12, 3, 1048603, 12, 4, 1048603, 12, 5, 1048603, 12, 6, 1048603, 12, 7, 1048603, 12, 8, 1048603, 12, 9, 1048603, 12, 10, 1048603, 65523, 65523, 655379, 65523, 12, 1441811, 12, 12, 19, 12, 65523, 1048595, 12, 11, 1048603, 11, 12, 27, 65534, 65534, 35, 65532, 0, 35, 65531, 0, 35, 65530, 0, 35, 65529, 0, 35, 65528, 0, 35, 65527, 0, 35, 65526, 0, 35, 65525, 0, 35, 65525, 65535, 35, 65526, 65535, 35, 65527, 65535, 35, 65528, 65535, 35, 65529, 65535, 35, 65530, 65535, 35, 65531, 65535, 35, 65532, 65535, 35)
+}

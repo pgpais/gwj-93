@@ -45,6 +45,14 @@ public partial class FactoryGrid : Node3D
 
 	}
 
+	public override void _ExitTree()
+	{
+		if (Instance == this)
+		{
+			Instance = null;
+		}
+	}
+
 	public override void _Process(double delta)
 	{
 		HandleGizmo();
@@ -128,10 +136,10 @@ public partial class FactoryGrid : Node3D
 		return building;
 	}
 
-	public void RemoveBuilding(Vector3I currentGridPos)
+	public Building RemoveBuilding(Vector3I currentGridPos)
 	{
 		var building = Get(currentGridPos);
-		if (building == null) return;
+		if (building == null) return null;
 
 		var buildingData = building.Data;
 
@@ -168,6 +176,7 @@ public partial class FactoryGrid : Node3D
 		GD.Print($"Removed {building.Name} at {gridPos}");
 		EmitSignal(SignalName.BuildingRemoved, building, emptiedPositions);
 		// GD.Print(GridToString(gridPos, true));
+		return building;
 	}
 
 	public Building Get(Vector3I pos)

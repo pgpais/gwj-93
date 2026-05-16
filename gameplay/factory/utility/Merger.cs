@@ -7,10 +7,12 @@ public partial class Merger : Building, IItemInput, IItemOutput
 	[Export] ItemTransport output;
 	[Export] SlotInventory inventory;
 
+	int currentInput = 0;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		inventory = new SlotInventory(1);
+		inventory = new SlotInventory(1, 1);
 	}
 
 	public override void OnPlaced()
@@ -35,12 +37,14 @@ public partial class Merger : Building, IItemInput, IItemOutput
 
 	private void PullItemsFromInputs()
 	{
-		foreach (var input in inputs)
+		for (int i = 0; i < inputs.Count; i++)
 		{
-			if (input.HasItem() && inventory.HasCapacity(input.GetCurrentItem().Data))
-			{
-				ReceiveItem(input.TakeItem());
-			}
+			var input = inputs[currentInput];
+			currentInput = (currentInput + 1) % inputs.Count;
+			if (!input.HasItem()) continue;
+			if (!inventory.HasCapacity(input.GetCurrentItem().Data)) continue;
+
+			ReceiveItem(input.TakeItem());
 		}
 	}
 
@@ -52,6 +56,12 @@ public partial class Merger : Building, IItemInput, IItemOutput
 		if (output.IsFull()) return;
 
 		var itemInstance = GameResource.Instantiate(item);
+		if (!output.CanReceiveItem(itemInstance))
+		{
+			itemInstance.QueueFree();
+			return;
+		}
+
 		AddChild(itemInstance);
 		output.ReceiveItem(itemInstance);
 

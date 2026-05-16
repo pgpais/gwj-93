@@ -76,11 +76,18 @@ public partial class Assembler : RecipeMachine, IItemInput, IItemOutput
 			if (output.IsFull()) return;
 			if (!outputInventory.HasItemAmount(result.Key, result.Value)) continue;
 
-			var item = GameResource.Instantiate(result.Key);
-			AddChild(item);
-			output.ReceiveItem(item);
+			if (outputInventory.TryRemoveItem(result.Key, result.Value))
+			{
+				var item = GameResource.Instantiate(result.Key);
+				if (!output.CanReceiveItem(item))
+				{
+					item.QueueFree();
+					continue;
+				}
 
-			outputInventory.TryRemoveItem(result.Key, result.Value);
+				AddChild(item);
+				output.ReceiveItem(item);
+			}
 		}
 	}
 

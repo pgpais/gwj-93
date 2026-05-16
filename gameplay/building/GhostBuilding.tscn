@@ -7,6 +7,9 @@
 resource_name = "colormap"
 cull_mode = 2
 albedo_texture = ExtResource("2_w1220")
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 1.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uqm0r"]
 _surfaces = [{
@@ -49,5 +52,5 @@ _mesh = NodePath("MeshInstance3D")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1523404393]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2055435492]
-transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 1, 0, 0)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 1, 0, 0)
 mesh = SubResource("ArrayMesh_jqhwg")

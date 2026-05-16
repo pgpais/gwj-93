@@ -31,6 +31,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=350137120]
 layout_mode = 2
+alignment = 1
 
 [node name="BuildingPreview" parent="MarginContainer/HBoxContainer" unique_id=2088636975 instance=ExtResource("3_ulqg5")]
 layout_mode = 2

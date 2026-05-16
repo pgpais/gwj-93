@@ -12,7 +12,7 @@ public partial class Splitter : Building, IItemInput, IItemOutput
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		inventory = new SlotInventory(1);
+		inventory = new SlotInventory(1, 1);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,11 +27,11 @@ public partial class Splitter : Building, IItemInput, IItemOutput
 	{
 		base.OnPlaced();
 
-		input.ConnectToNeighboursInput(direction);
+		input.ConnectToNeighboursOutput(direction.RotateRight().RotateRight());
 
 		foreach (var output in outputs)
 		{
-			output.ConnectToNeighboursOutput(direction.RotateRight().RotateRight());
+			output.ConnectToNeighboursInput(direction);
 		}
 	}
 
@@ -57,6 +57,12 @@ public partial class Splitter : Building, IItemInput, IItemOutput
 			if (output.IsFull()) continue;
 
 			var itemInstance = GameResource.Instantiate(item);
+			if (!output.CanReceiveItem(itemInstance))
+			{
+				itemInstance.QueueFree();
+				continue;
+			}
+
 			AddChild(itemInstance);
 			output.ReceiveItem(itemInstance);
 

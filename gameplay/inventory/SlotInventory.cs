@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Godot.Collections;
 
@@ -7,12 +8,16 @@ public partial class SlotInventory : Inventory
     [Export] Array<Slot> slots;
     [Export] int capacity;
 
-    public SlotInventory(int numberOfSlots = 1)
+    public SlotInventory(int numberOfSlots = 1, int stackSize = -1)
     {
         slots = new Array<Slot>();
         for (int i = 0; i < numberOfSlots; i++)
         {
-            slots.Add(new Slot());
+            var slot = new Slot
+            {
+                stackSize = stackSize
+            };
+            slots.Add(slot);
         }
 
         capacity = numberOfSlots;
@@ -37,17 +42,33 @@ public partial class SlotInventory : Inventory
 
     public override bool HasCapacity(GameResourceData item, int amount = 1)
     {
-        if (slots.Count < capacity)
+        int spaceAvailable = 0;
+        foreach (var slot in slots)
         {
-            return true;
+            if (slot.stackSize > 0)
+            {
+                if (slot.item == null)
+                {
+                    spaceAvailable += slot.stackSize;
+                }
+                else if (slot.item == item)
+                {
+                    spaceAvailable += slot.stackSize - slot.amount;
+                }
+            }
+            else
+            {
+                if (slot.item == null)
+                {
+                    spaceAvailable += item.MaxStack;
+                }
+                else if (slot.item == item)
+                {
+                    spaceAvailable = item.MaxStack - slot.amount;
+                }
+            }
         }
-
-        if ((GetItemCount(item) + amount) % item.MaxStack > 0)
-        {
-            return true;
-        }
-
-        return false;
+        return spaceAvailable >= amount;
     }
 
     public override bool HasItemAmount(GameResourceData item, int amount = 1)

@@ -164,7 +164,7 @@ public partial class ItemTransport : Node3D
 
 	private void SendItem()
 	{
-		if (!nextPort.IsFull())
+		if (!nextPort.IsFull() && nextPort.CanReceiveItem(currentItem))
 		{
 			nextPort.ReceiveItem(currentItem);
 			ClearItem();

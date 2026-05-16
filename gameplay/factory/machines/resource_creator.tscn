@@ -13,13 +13,17 @@ _data = {
 }
 point_count = 2
 
-[node name="ResourceCreator" type="Node3D" unique_id=263480292 node_paths=PackedStringArray("itemTransport", "componentsParent")]
+[node name="ResourceCreator" type="Node3D" unique_id=263480292 node_paths=PackedStringArray("itemTransport", "label", "componentsParent")]
 script = ExtResource("1_ury3v")
 data = ExtResource("2_n0h7l")
 itemTransport = NodePath("Components/ItemTransport")
+label = NodePath("Label3D")
 componentsParent = NodePath("Components")
 
 [node name="machine2" parent="." unique_id=2054626450 instance=ExtResource("3_n0h7l")]
+
+[node name="machine3" parent="machine2" unique_id=218385486 instance=ExtResource("3_n0h7l")]
+transform = Transform3D(-4.371139e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.1855694e-08, -0.27800846, 0, 0)
 
 [node name="ConveyorBelt" parent="." unique_id=931640884 instance=ExtResource("4_1mw5e")]
 
@@ -36,3 +40,8 @@ curve = SubResource("Curve3D_n0h7l")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Components/ItemTransport/Path3D" unique_id=35360663]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.4, 0)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1269943180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "Resource"

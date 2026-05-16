@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://c85yj00u6vd8o" path="res://gameplay/building/BuildingData.cs" id="1_8ivh4"]
 [ext_resource type="Script" uid="uid://dhvw5rapf4uid" path="res://gameplay/resources/GameResourceData.cs" id="1_rp7mt"]
 [ext_resource type="Texture2D" uid="uid://clmkr5m8r1ru7" path="res://assets/kenney/kenney_factory-kit_3.0/Previews/machine-fortified.png" id="2_2ab26"]
+[ext_resource type="Resource" uid="uid://xdnbtch4i6d7" path="res://gameplay/resources/data/proto/iron/proto_2x6_brick_iron.tres" id="2_v4hyj"]
+[ext_resource type="Resource" uid="uid://oqyeh47kle2n" path="res://gameplay/resources/data/proto/copper/proto_1x4_brick_copper.tres" id="3_64q4w"]
 [ext_resource type="PackedScene" uid="uid://c2qpjf1bu6ylx" path="res://gameplay/factory/machines/assembler/assembler.tscn" id="3_qxu3k"]
+[ext_resource type="Resource" uid="uid://ch8olxts6obpp" path="res://gameplay/resources/data/proto/iron/proto_4x4_brick_iron.tres" id="4_87401"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr4ci"]
 
@@ -115,6 +118,11 @@ Name = "Assembler"
 Scene = ExtResource("3_qxu3k")
 Preview = ExtResource("2_2ab26")
 Footprint = Array[Array]([[true, true], [true, true]])
+Cost = Dictionary[ExtResource("1_rp7mt"), int]({
+ExtResource("2_v4hyj"): 2,
+ExtResource("3_64q4w"): 4,
+ExtResource("4_87401"): 2
+})
 Mesh = SubResource("ArrayMesh_ulfa7")
 MeshOffset = Vector2(-0.5, -0.5)
 metadata/_custom_type_script = "uid://c85yj00u6vd8o"

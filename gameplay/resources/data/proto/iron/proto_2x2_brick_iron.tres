@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_srbdi")
 
 [resource]
 script = ExtResource("3_tmg0t")
-Name = "2x2 Brick"
+Name = "Iron Ore"
 Mesh = SubResource("ArrayMesh_8j2q2")
 Icon = ExtResource("1_ui2to")
 metadata/_custom_type_script = "uid://dhvw5rapf4uid"
