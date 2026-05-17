@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b63bmbm886ojx"]
+
+[ext_resource type="Shader" uid="uid://bfkgpr1e534mn" path="res://assets/materials/shaders/screenspace_edge_highlight.gdshader" id="1_8f5s0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h68a2"]
+render_priority = 90
+shader = ExtResource("1_8f5s0")
+shader_parameter/edge_brightness = 0.1
+shader_parameter/sample_distance = 12.0
+shader_parameter/depth_threshold = 0.05
+shader_parameter/depth_artifact_correction_coef = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hgxqe"]
+material = SubResource("ShaderMaterial_h68a2")
+flip_faces = true
+size = Vector2(5, 5)
+orientation = 2
+
+[node name="OutlineOverlay" type="MeshInstance3D" unique_id=1525931967]
+cast_shadow = 0
+extra_cull_margin = 16384.0
+ignore_occlusion_culling = true
+mesh = SubResource("PlaneMesh_hgxqe")

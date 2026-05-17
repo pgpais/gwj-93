@@ -9,10 +9,12 @@
 [ext_resource type="Material" uid="uid://bprwdonqs2cag" path="res://assets/materials/base_material_b.tres" id="7_uqucn"]
 [ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="8_cc1j8"]
 [ext_resource type="PackedScene" uid="uid://dp2lajat22nim" path="res://assets/factory_objects/conveyor_port_out.tscn" id="9_76okg"]
+[ext_resource type="AnimationLibrary" uid="uid://doq2hp1f55bv2" path="res://assets/anim_libraries/drill_lib.res" id="10_76okg"]
+[ext_resource type="Script" uid="uid://bpxwm8yrwkkdt" path="res://core/animation/SpinModifier3D.gd" id="10_stgul"]
 
-[node name="drill_rig" unique_id=627777304 instance=ExtResource("1_wukxb")]
+[node name="drill_rig" unique_id=1919674961 instance=ExtResource("1_wukxb")]
 
-[node name="DrillChute" parent="." index="0" unique_id=1271678296]
+[node name="DrillChute" parent="." index="0" unique_id=1066516110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0318213, -0.026190758, -0.028519392)
 surface_material_override/0 = ExtResource("2_rel8c")
 
@@ -22,10 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 [node name="conveyor_port_out" parent="." index="2" unique_id=843745094 instance=ExtResource("9_76okg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="DrillRig" parent="." index="3" unique_id=869371918]
+[node name="DrillRig" parent="." index="3" unique_id=2141446021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Skeleton3D" parent="DrillRig" index="0" unique_id=140847492]
+[node name="Skeleton3D" parent="DrillRig" index="0" unique_id=726571228]
 bones/3/position = Vector3(-0.002334714, -1.1600964, -2.7507687)
 bones/3/rotation = Quaternion(0.27059805, -0.6532815, 0.6532815, -0.27059805)
 bones/3/scale = Vector3(0.9999999, 0.99999964, 0.99999976)
@@ -39,7 +41,7 @@ bones/12/position = Vector3(-0.002334714, -1.1600969, -2.7507694)
 bones/12/rotation = Quaternion(-0.65328157, -0.27059796, 0.27059805, 0.6532815)
 bones/12/scale = Vector3(0.9999997, 1, 0.9999997)
 
-[node name="Drill" parent="DrillRig/Skeleton3D" index="0" unique_id=128102043]
+[node name="Drill" parent="DrillRig/Skeleton3D" index="0" unique_id=438884990]
 surface_material_override/0 = ExtResource("2_rel8c")
 surface_material_override/1 = ExtResource("3_cc1j8")
 surface_material_override/2 = ExtResource("4_76okg")
@@ -154,6 +156,29 @@ settings/3/extend_end_bone = true
 settings/3/end_bone/direction = 6
 settings/3/end_bone/length = 1.97
 
+[node name="SpinModifier3D" type="SkeletonModifier3D" parent="DrillRig/Skeleton3D" index="3" unique_id=647266412]
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+active = true
+influence = 1.0
+script = ExtResource("10_stgul")
+bone_name = "Drill_Rotor"
+spin_rpm = 360.0
+spin_axis = 4
+metadata/_custom_type_script = "uid://bpxwm8yrwkkdt"
+
 [node name="FrontRightMarker" type="Marker3D" parent="DrillRig" index="1" unique_id=898625910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.747071, 2)
 
@@ -209,3 +234,6 @@ bone_idx = 9
 override_pose = true
 use_external_skeleton = true
 external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="AnimationPlayer" parent="." index="4" unique_id=1434720075]
+libraries/ = ExtResource("10_76okg")

@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://sqh7usyc5par" path="res://assets/materials/diagetic_indicator_in.tres" id="12_meq2f"]
 [ext_resource type="Material" uid="uid://dmwac6ebikjt" path="res://assets/materials/diagetic_indicator_out.tres" id="13_h3om0"]
 [ext_resource type="PackedScene" uid="uid://ucpviwgm308n" path="res://assets/factory_objects/drill_rig.tscn" id="14_vwk3i"]
+[ext_resource type="PackedScene" uid="uid://b63bmbm886ojx" path="res://assets/scene_objects/outline_overlay.tscn" id="15_83wdb"]
 
 [node name="asset_dump" unique_id=1266491484 instance=ExtResource("1_0post")]
 
@@ -107,3 +108,6 @@ surface_material_override/0 = ExtResource("5_u8hl0")
 
 [node name="drill_rig" parent="." index="19" unique_id=627777304 instance=ExtResource("14_vwk3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.313, -0.1, 3.128)
+
+[node name="OutlineOverlay" parent="." index="20" unique_id=1525931967 instance=ExtResource("15_83wdb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1124535, 0, 7.1867356)

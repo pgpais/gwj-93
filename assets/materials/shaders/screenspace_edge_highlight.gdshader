@@ -27,6 +27,9 @@ void fragment() {
 	float highest_angle_difference = 0.0;
 	float highest_depth_difference = 0.0;
 	
+	float lowest_depth = fragment_depth;
+	vec2 lowest_depth_UV = SCREEN_UV;
+	
 	for (int x = -1; x < 2; x++){
 		for (int y = -1; y < 2; y++){
 			if (abs(x) > 0 || abs(y) > 0){
@@ -38,11 +41,19 @@ void fragment() {
 				float kernel_depth = texture(depth_texture, offset_uv).r;
 				kernel_depth = PROJECTION_MATRIX[3][2] / (kernel_depth + PROJECTION_MATRIX[2][2]);
 				
+				// get UV coords for nearest fragment
+				if (kernel_depth < lowest_depth){
+					lowest_depth = kernel_depth;
+					lowest_depth_UV = offset_uv;
+				}
+				
+				// find largest depth difference in kernel
 				float depth_difference = abs(kernel_depth - fragment_depth);
 				if (depth_difference > highest_depth_difference){
 					highest_depth_difference = depth_difference;
 				}
 				
+				// find largest angle difference in kernel
 				float angle_difference = length(kernel_normal - fragment_normal);
 				if (angle_difference >= highest_angle_difference){
 					highest_angle_difference = angle_difference;
@@ -55,8 +66,9 @@ void fragment() {
 	float angle = 1.0 - dot(normalize(fragment_normal-vec3(0.5)),  vec3(0.0,0.0,1.0));
 	
 	// >= 15 degrees between surfaces
-	if ((highest_angle_difference) >= PI/12.0 || highest_depth_difference >= depth_threshold + angle * depth_artifact_correction_coef){
+	if ((highest_angle_difference) >= PI/24.0 || highest_depth_difference >= depth_threshold + angle * depth_artifact_correction_coef){
 		multiplier *= edge_brightness;
+		fragment_color = texture(color_texture, lowest_depth_UV).rgb;
 	} else {
 		discard;
 	}
