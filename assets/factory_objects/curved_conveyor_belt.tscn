@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dgb8dqgrwqa3s"]
+
+[ext_resource type="PackedScene" uid="uid://cysnikrf4nhj8" path="res://assets/imports/curved_conveyor.glb" id="1_jomyo"]
+[ext_resource type="Material" uid="uid://cecwalmd3srvc" path="res://assets/materials/base_material_a.tres" id="2_44bj0"]
+[ext_resource type="Material" uid="uid://bphm6gtfg7me3" path="res://assets/materials/conveyor_belt.tres" id="3_j3ygt"]
+
+[node name="curved_conveyor" unique_id=1648163606 instance=ExtResource("1_jomyo")]
+
+[node name="CurvedConveyor" parent="." index="0" unique_id=1925344760]
+surface_material_override/0 = ExtResource("2_44bj0")
+surface_material_override/1 = ExtResource("3_j3ygt")

@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://ucpviwgm308n"]
+
+[ext_resource type="PackedScene" uid="uid://b4hkxs423kpsw" path="res://assets/imports/drill_rig.glb" id="1_wukxb"]
+[ext_resource type="Material" uid="uid://cecwalmd3srvc" path="res://assets/materials/base_material_a.tres" id="2_rel8c"]
+[ext_resource type="Material" uid="uid://b8qa03haaeaam" path="res://assets/materials/base_material_metal.tres" id="3_cc1j8"]
+[ext_resource type="Material" uid="uid://plfowxfdaman" path="res://assets/materials/base_material_glass.tres" id="4_76okg"]
+[ext_resource type="Material" uid="uid://sqh7usyc5par" path="res://assets/materials/diagetic_indicator_in.tres" id="5_stgul"]
+[ext_resource type="Material" uid="uid://b6qs5a2nksoay" path="res://assets/materials/hole.tres" id="6_upbvo"]
+[ext_resource type="Material" uid="uid://bprwdonqs2cag" path="res://assets/materials/base_material_b.tres" id="7_uqucn"]
+[ext_resource type="PackedScene" uid="uid://c7p5x4xgd37ab" path="res://assets/factory_objects/conveyor_belt.tscn" id="8_cc1j8"]
+[ext_resource type="PackedScene" uid="uid://dp2lajat22nim" path="res://assets/factory_objects/conveyor_port_out.tscn" id="9_76okg"]
+
+[node name="drill_rig" unique_id=627777304 instance=ExtResource("1_wukxb")]
+
+[node name="DrillChute" parent="." index="0" unique_id=1271678296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0318213, -0.026190758, -0.028519392)
+surface_material_override/0 = ExtResource("2_rel8c")
+
+[node name="conveyor_belt" parent="." index="1" unique_id=1527113887 instance=ExtResource("8_cc1j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="conveyor_port_out" parent="." index="2" unique_id=843745094 instance=ExtResource("9_76okg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="DrillRig" parent="." index="3" unique_id=869371918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Skeleton3D" parent="DrillRig" index="0" unique_id=140847492]
+bones/3/position = Vector3(-0.002334714, -1.1600964, -2.7507687)
+bones/3/rotation = Quaternion(0.27059805, -0.6532815, 0.6532815, -0.27059805)
+bones/3/scale = Vector3(0.9999999, 0.99999964, 0.99999976)
+bones/6/position = Vector3(0.0023351908, -1.1600966, -2.7507696)
+bones/6/rotation = Quaternion(-0.6532815, 0.27059796, -0.2705981, 0.6532815)
+bones/6/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(0.002334714, -1.1600971, -2.7507691)
+bones/9/rotation = Quaternion(-0.2705981, -0.6532815, 0.6532815, 0.27059805)
+bones/9/scale = Vector3(1, 0.99999994, 1)
+bones/12/position = Vector3(-0.002334714, -1.1600969, -2.7507694)
+bones/12/rotation = Quaternion(-0.65328157, -0.27059796, 0.27059805, 0.6532815)
+bones/12/scale = Vector3(0.9999997, 1, 0.9999997)
+
+[node name="Drill" parent="DrillRig/Skeleton3D" index="0" unique_id=128102043]
+surface_material_override/0 = ExtResource("2_rel8c")
+surface_material_override/1 = ExtResource("3_cc1j8")
+surface_material_override/2 = ExtResource("4_76okg")
+surface_material_override/3 = ExtResource("5_stgul")
+surface_material_override/4 = ExtResource("6_upbvo")
+surface_material_override/5 = ExtResource("7_uqucn")
+
+[node name="LegIK" type="CCDIK3D" parent="DrillRig/Skeleton3D" index="1" unique_id=372164140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+active = false
+angular_delta_limit = 1.5707963267948966
+deterministic = true
+setting_count = 4
+settings/0/target_node = NodePath("../../FrontRightMarker")
+settings/1/target_node = NodePath("../../FrontLeftMarker")
+settings/2/target_node = NodePath("../../BackRightMarker")
+settings/3/target_node = NodePath("../../BackLeftMarker")
+settings/0/root_bone_name = "FrontUpperLeg.R"
+settings/0/root_bone = 4
+settings/0/end_bone_name = "FrontLowerLeg.R"
+settings/0/end_bone = 5
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 1.97
+settings/0/joint_count = 2
+settings/1/root_bone_name = "FrontUpperLeg.L"
+settings/1/root_bone = 1
+settings/1/end_bone_name = "FrontLowerLeg.L"
+settings/1/end_bone = 2
+settings/1/extend_end_bone = true
+settings/1/end_bone/direction = 6
+settings/1/end_bone/length = 1.97
+settings/1/joint_count = 2
+settings/2/root_bone_name = "BackUpperLeg.R"
+settings/2/root_bone = 10
+settings/2/end_bone_name = "BackLowerLeg.R"
+settings/2/end_bone = 11
+settings/2/extend_end_bone = true
+settings/2/end_bone/direction = 6
+settings/2/end_bone/length = 1.97
+settings/2/joint_count = 2
+settings/3/root_bone_name = "BackUpperLeg.L"
+settings/3/root_bone = 7
+settings/3/end_bone_name = "BackLowerLeg.L"
+settings/3/end_bone = 8
+settings/3/extend_end_bone = true
+settings/3/end_bone/direction = 6
+settings/3/end_bone/length = 1.97
+settings/3/joint_count = 2
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+settings/2/joints/0/rotation_axis = 3
+settings/2/joints/0/limitation = null
+settings/2/joints/1/rotation_axis = 3
+settings/2/joints/1/limitation = null
+settings/3/joints/0/rotation_axis = 3
+settings/3/joints/0/limitation = null
+settings/3/joints/1/rotation_axis = 3
+settings/3/joints/1/limitation = null
+
+[node name="LegIK_2Bone" type="TwoBoneIK3D" parent="DrillRig/Skeleton3D" index="2" unique_id=710996036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+setting_count = 4
+settings/0/target_node = NodePath("../../FrontRightMarker")
+settings/0/pole_node = NodePath("../../FrontRightMarker/FR_Pole")
+settings/0/root_bone_name = "FrontUpperLeg.R"
+settings/0/root_bone = 4
+settings/0/middle_bone_name = "FrontLowerLeg.R"
+settings/0/middle_bone = 5
+settings/0/pole_direction = 0
+settings/0/use_virtual_end = true
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 1.97
+settings/1/target_node = NodePath("../../FrontLeftMarker")
+settings/1/pole_node = NodePath("../../FrontLeftMarker/FL_Pole")
+settings/1/root_bone_name = "FrontUpperLeg.L"
+settings/1/root_bone = 1
+settings/1/middle_bone_name = "FrontLowerLeg.L"
+settings/1/middle_bone = 2
+settings/1/pole_direction = 0
+settings/1/use_virtual_end = true
+settings/1/extend_end_bone = true
+settings/1/end_bone/direction = 6
+settings/1/end_bone/length = 1.97
+settings/2/target_node = NodePath("../../BackRightMarker")
+settings/2/pole_node = NodePath("../../BackRightMarker/BR_Pole")
+settings/2/root_bone_name = "BackUpperLeg.R"
+settings/2/root_bone = 10
+settings/2/middle_bone_name = "BackLowerLeg.R"
+settings/2/middle_bone = 11
+settings/2/pole_direction = 0
+settings/2/use_virtual_end = true
+settings/2/extend_end_bone = true
+settings/2/end_bone/direction = 6
+settings/2/end_bone/length = 1.97
+settings/3/target_node = NodePath("../../BackLeftMarker")
+settings/3/pole_node = NodePath("../../BackLeftMarker/BL_Pole")
+settings/3/root_bone_name = "BackUpperLeg.L"
+settings/3/root_bone = 7
+settings/3/middle_bone_name = "BackLowerLeg.L"
+settings/3/middle_bone = 8
+settings/3/pole_direction = 0
+settings/3/use_virtual_end = true
+settings/3/extend_end_bone = true
+settings/3/end_bone/direction = 6
+settings/3/end_bone/length = 1.97
+
+[node name="FrontRightMarker" type="Marker3D" parent="DrillRig" index="1" unique_id=898625910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.747071, 2)
+
+[node name="FR_Pole" type="Marker3D" parent="DrillRig/FrontRightMarker" index="0" unique_id=514813591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="DrillRig/FrontRightMarker" index="1" unique_id=781441454]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+bone_name = "FrontFoot.R"
+bone_idx = 6
+override_pose = true
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="FrontLeftMarker" type="Marker3D" parent="DrillRig" index="2" unique_id=128806916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.747071, -2)
+
+[node name="FL_Pole" type="Marker3D" parent="DrillRig/FrontLeftMarker" index="0" unique_id=2093262481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="DrillRig/FrontLeftMarker" index="1" unique_id=1757360992]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+bone_name = "FrontFoot.L"
+bone_idx = 3
+override_pose = true
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="BackRightMarker" type="Marker3D" parent="DrillRig" index="3" unique_id=1939599851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2.747071, 2)
+
+[node name="BR_Pole" type="Marker3D" parent="DrillRig/BackRightMarker" index="0" unique_id=1613217838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="DrillRig/BackRightMarker" index="1" unique_id=1970322474]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+bone_name = "BackFoot.R"
+bone_idx = 12
+override_pose = true
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="BackLeftMarker" type="Marker3D" parent="DrillRig" index="4" unique_id=858062681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2.747071, -2)
+
+[node name="BL_Pole" type="Marker3D" parent="DrillRig/BackLeftMarker" index="0" unique_id=2029915201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="DrillRig/BackLeftMarker" index="1" unique_id=486353231]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+bone_name = "BackFoot.L"
+bone_idx = 9
+override_pose = true
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")

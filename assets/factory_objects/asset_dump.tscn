@@ -13,93 +13,97 @@
 [ext_resource type="Material" uid="uid://cgbkcdanes5dy" path="res://assets/materials/base_material_rubbery.tres" id="11_j2a3a"]
 [ext_resource type="Material" uid="uid://sqh7usyc5par" path="res://assets/materials/diagetic_indicator_in.tres" id="12_meq2f"]
 [ext_resource type="Material" uid="uid://dmwac6ebikjt" path="res://assets/materials/diagetic_indicator_out.tres" id="13_h3om0"]
+[ext_resource type="PackedScene" uid="uid://ucpviwgm308n" path="res://assets/factory_objects/drill_rig.tscn" id="14_vwk3i"]
 
 [node name="asset_dump" unique_id=1266491484 instance=ExtResource("1_0post")]
 
-[node name="assembler" parent="." index="0" unique_id=144379115]
+[node name="assembler" parent="." index="0" unique_id=630625408]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("3_83wdb")
 surface_material_override/2 = ExtResource("4_euylr")
 surface_material_override/3 = ExtResource("5_u8hl0")
 
-[node name="battery" parent="." index="1" unique_id=1134134500]
+[node name="battery" parent="." index="1" unique_id=1908769809]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("3_83wdb")
 
-[node name="oil_rock_001" parent="." index="2" unique_id=1488411657]
+[node name="oil_rock_001" parent="." index="2" unique_id=1703331792]
 surface_material_override/0 = ExtResource("6_prbdc")
 
-[node name="oil_rock" parent="." index="3" unique_id=1568485755]
+[node name="oil_rock" parent="." index="3" unique_id=8358372]
 surface_material_override/0 = ExtResource("7_0ertn")
 
-[node name="ore" parent="." index="4" unique_id=1526582192]
+[node name="ore" parent="." index="4" unique_id=571216026]
 surface_material_override/0 = ExtResource("8_yq56m")
 surface_material_override/1 = ExtResource("9_5ww22")
 
-[node name="ore_rock" parent="." index="5" unique_id=1423189482]
+[node name="ore_rock" parent="." index="5" unique_id=187418313]
 surface_material_override/0 = ExtResource("7_0ertn")
 
-[node name="refiner" parent="." index="6" unique_id=773007822]
+[node name="refiner" parent="." index="6" unique_id=1727359763]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("3_83wdb")
 surface_material_override/2 = ExtResource("4_euylr")
 
-[node name="refiner_upper_arm_a" parent="refiner" index="0" unique_id=1825486584]
+[node name="refiner_upper_arm_a" parent="refiner" index="0" unique_id=2021089713]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("3_83wdb")
 
-[node name="refiner_forearm_a" parent="refiner/refiner_upper_arm_a" index="0" unique_id=1614034885]
-surface_material_override/0 = ExtResource("2_vwk3i")
-surface_material_override/1 = ExtResource("3_83wdb")
-surface_material_override/2 = ExtResource("4_euylr")
-
-[node name="refiner_upper_arm_b" parent="refiner" index="1" unique_id=2121546075]
-surface_material_override/0 = ExtResource("2_vwk3i")
-surface_material_override/1 = ExtResource("3_83wdb")
-
-[node name="refiner_forearm_b" parent="refiner/refiner_upper_arm_b" index="0" unique_id=379119582]
+[node name="refiner_forearm_a" parent="refiner/refiner_upper_arm_a" index="0" unique_id=1839338432]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("3_83wdb")
 surface_material_override/2 = ExtResource("4_euylr")
 
-[node name="rock_small_1" parent="." index="7" unique_id=1721374388]
+[node name="refiner_upper_arm_b" parent="refiner" index="1" unique_id=1762150201]
+surface_material_override/0 = ExtResource("2_vwk3i")
+surface_material_override/1 = ExtResource("3_83wdb")
+
+[node name="refiner_forearm_b" parent="refiner/refiner_upper_arm_b" index="0" unique_id=972836019]
+surface_material_override/0 = ExtResource("2_vwk3i")
+surface_material_override/1 = ExtResource("3_83wdb")
+surface_material_override/2 = ExtResource("4_euylr")
+
+[node name="rock_small_1" parent="." index="7" unique_id=1836945812]
 surface_material_override/0 = ExtResource("7_0ertn")
 
-[node name="rock_tall_1" parent="." index="8" unique_id=1848059949]
+[node name="rock_tall_1" parent="." index="8" unique_id=899105616]
 surface_material_override/0 = ExtResource("7_0ertn")
 
-[node name="tile_corner" parent="." index="9" unique_id=476593363]
+[node name="tile_corner" parent="." index="9" unique_id=2113335241]
 surface_material_override/0 = ExtResource("10_i0jy3")
 
-[node name="tile_edge" parent="." index="10" unique_id=204816994]
+[node name="tile_edge" parent="." index="10" unique_id=645111084]
 surface_material_override/0 = ExtResource("10_i0jy3")
 
-[node name="tile_example" parent="." index="11" unique_id=1104187922]
+[node name="tile_example" parent="." index="11" unique_id=423129122]
 surface_material_override/0 = ExtResource("10_i0jy3")
 
-[node name="tile_full_cover" parent="." index="12" unique_id=212742477]
+[node name="tile_full_cover" parent="." index="12" unique_id=727350052]
 surface_material_override/0 = ExtResource("10_i0jy3")
 
-[node name="tile_no_cover" parent="." index="13" unique_id=1146208768]
+[node name="tile_no_cover" parent="." index="13" unique_id=1216983159]
 surface_material_override/0 = ExtResource("10_i0jy3")
 
-[node name="assembler_hole" parent="." index="14" unique_id=325156265]
+[node name="assembler_hole" parent="." index="14" unique_id=1182858866]
 surface_material_override/0 = ExtResource("5_u8hl0")
 
-[node name="conveyor_port_in" parent="." index="15" unique_id=2056559303]
+[node name="conveyor_port_in" parent="." index="15" unique_id=910795087]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("11_j2a3a")
 surface_material_override/2 = ExtResource("12_meq2f")
 
-[node name="conveyor_port_out" parent="." index="16" unique_id=2037197425]
+[node name="conveyor_port_out" parent="." index="16" unique_id=1662439926]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("11_j2a3a")
 surface_material_override/2 = ExtResource("13_h3om0")
 
-[node name="smelter" parent="." index="17" unique_id=1005907625]
+[node name="smelter" parent="." index="17" unique_id=657067162]
 surface_material_override/0 = ExtResource("2_vwk3i")
 surface_material_override/1 = ExtResource("3_83wdb")
 surface_material_override/2 = ExtResource("11_j2a3a")
 
-[node name="smelter_hole" parent="." index="18" unique_id=1010655493]
+[node name="smelter_hole" parent="." index="18" unique_id=6203946]
 surface_material_override/0 = ExtResource("5_u8hl0")
+
+[node name="drill_rig" parent="." index="19" unique_id=627777304 instance=ExtResource("14_vwk3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.313, -0.1, 3.128)
